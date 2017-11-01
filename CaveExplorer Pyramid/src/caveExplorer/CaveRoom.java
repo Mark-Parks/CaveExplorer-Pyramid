@@ -106,16 +106,19 @@ public class CaveRoom {
 	//where the magic happens
 	public static void setUpCaves() {
 		//size
-		CaveExplorer.caves = new CaveRoom[5][5];
+		CaveExplorer.caves = new NPCRoom[5][5];
 		CaveRoom[][] c = CaveExplorer.caves;
 		//populate default
 		for(int row = 0; row < c.length; row++) {
 			for(int col = 0; col < c[row].length; col ++) {
-				c[row][col] = new CaveRoom("this cave has cood "+row+","+col);
+				c[row][col] = new NPCRoom("this cave has cood "+row+","+col);
 			}
 		}
 		//custom
-		
+		NPC testNPC = new NPC();
+		testNPC.setPosition(3,3);
+		CaveExplorer.npcs = new NPC[1];
+		CaveExplorer.npcs[0] = testNPC;
 		//start room
 		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();
