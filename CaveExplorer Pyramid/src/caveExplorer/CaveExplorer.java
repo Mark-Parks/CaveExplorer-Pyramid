@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class CaveExplorer {
 
-	public static CaveRoom[][] caves;
+	public static CaveRoom[][][] caves;
 	public static Scanner in;//user input
 	public static CaveRoom currentRoom;
 	public static Inventory inventory;
