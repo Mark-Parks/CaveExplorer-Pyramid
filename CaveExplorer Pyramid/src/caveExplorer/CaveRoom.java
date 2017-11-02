@@ -111,7 +111,7 @@ public class CaveRoom {
 		//populate default
 		for(int row = 0; row < c.length; row++) {
 			for(int col = 0; col < c[row].length; col ++) {
-				c[row][col] = new NPCRoom("this cave has cood "+row+","+col);
+				c[row][col] = new NPCRoom("this cave has cord "+row+","+col);
 			}
 		}
 		//custom
