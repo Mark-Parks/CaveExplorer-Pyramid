@@ -1,8 +1,8 @@
 package WeixiongTristanMinigame;
 
-import caveExplorer.CaveRoom;
+import caveExplorer.NPCRoom;
 
-public class TristanRoom extends CaveRoom {
+public class TristanRoom extends NPCRoom {
 
 	public TristanRoom(String description) {
 		super(description);
