@@ -59,6 +59,6 @@ public class TheoRoom extends NPCRoom {
 		while(!in.nextLine().equals(z)) {
 			CaveExplorer.print("Thats the wrong number");
 		}
-		CaveExplorer.print("Wow U guessed the right number");
+		CaveExplorer.print("Wow U guessed the right number");//omegaLUL
 	}
 }
