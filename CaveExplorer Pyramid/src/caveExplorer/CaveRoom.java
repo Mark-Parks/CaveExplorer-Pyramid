@@ -1,5 +1,8 @@
 package caveExplorer;
 
+import WeixiongTristanMinigame.CaveRoom;
+import WeixiongTristanMinigame.TristanRoom;
+
 public class CaveRoom {
 
 	private String description;
@@ -125,12 +128,16 @@ public class CaveRoom {
 		testNPC.setPosition(3,3);
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = testNPC;
+		
+		CaveRoom customRoom1 = new TristanRoom("Text");
+		CaveExplorer.caves[2][3] = customRoom;
 		//start room
 		CaveExplorer.currentRoom = c[0][0][1];
 		CaveExplorer.currentRoom.enter();
 		//doors
 		c[0][0][1].setConnection(SOUTH, c[0][1][1], new Door());
 		c[0][1][1].setConnection(EAST, c[0][1][2], new Door());
+		
 		
 	}
 	

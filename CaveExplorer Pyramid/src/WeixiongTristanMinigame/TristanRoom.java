@@ -9,5 +9,4 @@ public class TristanRoom extends NPCRoom {
 		// TODO Auto-generated constructor stub
 	}
 
-}
-//p
+}//s
