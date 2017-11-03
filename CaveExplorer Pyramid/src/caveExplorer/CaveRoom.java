@@ -1,6 +1,5 @@
 package caveExplorer;
 
-import WeixiongTristanMinigame.CaveRoom;
 import WeixiongTristanMinigame.TristanRoom;
 
 public class CaveRoom {
@@ -138,7 +137,7 @@ public class CaveRoom {
 		c[0][0][1].setConnection(SOUTH, c[0][1][1], new Door());
 		c[0][1][1].setConnection(EAST, c[0][1][2], new Door());
 		
-		
+		//your pen is very long-said no girl ever
 	}
 	
 	public void goToRoom(int direction) {
