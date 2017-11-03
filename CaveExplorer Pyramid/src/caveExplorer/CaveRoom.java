@@ -68,7 +68,7 @@ public class CaveRoom {
 		addRoom(direction,anotherRoom,door);
 		anotherRoom.addRoom(oppositeDirection(direction),this,door);
 	}
-	
+	//i like pp
 	
 	public void addRoom(int dir, CaveRoom caveRoom, Door door) {
 		borderingRooms[dir] = caveRoom;
