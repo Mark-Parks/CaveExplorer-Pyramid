@@ -6,8 +6,6 @@ public class TristanRoom extends NPCRoom {
 
 	public TristanRoom(String description) {
 		super(description);
-		// TODO Auto-generated constructor stub
 	}
 
 }
-//p
