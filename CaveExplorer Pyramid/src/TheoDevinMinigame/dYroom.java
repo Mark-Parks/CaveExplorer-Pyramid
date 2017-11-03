@@ -6,7 +6,7 @@ import caveExplorer.NPCRoom;
 
 public class dYroom extends NPCRoom {
 	
-	public NPC npc;
+	
 
 	public dYroom(String description) {
 		super(description);
@@ -21,8 +21,7 @@ public class dYroom extends NPCRoom {
 	}	
 	private void performAction(int direction) {
 		if(direction == 4) {
-			if(npc != null && npc.isActive()) {
-				npc.interact();
+				();
 			}else {
 				CaveExplorer.print("There is nothing");
 			}
