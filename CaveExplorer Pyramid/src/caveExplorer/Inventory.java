@@ -1,14 +1,27 @@
 package caveExplorer;
 
+import WeixiongTristanMinigame.*;
+
 public class Inventory {
 
 	private int flr;
+	private Buyables[] bag;
 	private String map;
 	private static int hp;
 
 	public Inventory() {
+		bag = new Buyables[30];
 		updateMap();
 	}
+	
+	public Buyables[] getBag() {
+		return this.bag;
+	}
+	
+	public void addItemToBag() {
+		
+	}
+	
 	public void updateMap() {
 		map = " ";
 		for(int i = 0; i < CaveExplorer.caves[0].length - 1; i++){
