@@ -10,6 +10,7 @@ public class Inventory {
 	private int hp;
 
 	public Inventory() {
+		bag = new Buyables[30];
 		updateMap();
 	}
 	
