@@ -4,11 +4,11 @@ import caveExplorer.CaveExplorer;
 import caveExplorer.CaveRoom;
 import caveExplorer.NPCRoom;
 
-public class NumberSwapRoom extends CaveRoom {
+public class WilliamNumberSwapRoom extends CaveRoom {
 
 	private String board;
 	
-	public NumberSwapRoom(String description) {
+	public WilliamNumberSwapRoom(String description) {
 		super(description);
 		display(createSquare(3));
 	}
