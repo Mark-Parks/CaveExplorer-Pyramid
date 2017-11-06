@@ -1,5 +1,6 @@
 package caveExplorer;
 
+import TheoDevinMinigame.DYroom;
 import TheoDevinMinigame.TheoRoom;
 
 public class CaveRoom {
@@ -128,6 +129,8 @@ public class CaveRoom {
 		testNPC.setPosition(3,3);
 		TheoRoom testTheo = new TheoRoom("asdf");
 		c[0][1][1]= testTheo;
+		DYroom lol = new DYroom("mhm");
+		c[0][2][3]= lol;
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = testNPC;
 		//start room
