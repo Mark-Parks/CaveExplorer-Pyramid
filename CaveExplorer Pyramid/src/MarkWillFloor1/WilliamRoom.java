@@ -16,6 +16,33 @@ public class WilliamRoom extends NPCRoom {
 	public void display(int[][] x) {
 		
 	}
+	
+	public void swapDialogue(){
+		
+	}
+	
+	public void swap(int row1, int col1, int row2, int col2, int[][] array){
+		int x = array[row1][col1];
+		array[row1][col1] = array[row2][col2];
+		array[row2][col2] = int x;
+	}
+	
+	public void rowSum(int row, int[][] array){
+		int sum = 0;
+		for (int i =0; i < array[row].length; i++;){
+			sum += array[row][i];
+		}
+		array[row][array[row].length] = sum;
+	}
+	
+	public void colSum(int col, int[][] array){
+		int sum = 0;
+		for (int i =0; i < array[col].length; i++;){
+			sum += array[i][col];
+		}
+		array[array[col].length][col] = sum;
+	}
+	
 	public int[][] createSquare(int n) {
 		int[] numbers = new int[n*n];
 		for(int i = 0; i < numbers.length; i++) {
@@ -26,11 +53,17 @@ public class WilliamRoom extends NPCRoom {
 			numbers[i] = newNumber;
 		}
 		
-		int[][]squareArray = new int[n][n];
+		int[][]squareArray = new int[n+1][n+1];
 		for(int i = 0; i < n; i++) {
 			for(int j = 0; j < n; j++) {
 				squareArray[i][j] = numbers[i*3+j];
 			}
+		}
+		for(int i = 0; i < n; i++){
+			rowSum(i, squareArray);
+		}
+		for(int i = 0; i < n; i++){
+			colSum(i, squareArray);
 		}
 		return squareArray;
 	}
