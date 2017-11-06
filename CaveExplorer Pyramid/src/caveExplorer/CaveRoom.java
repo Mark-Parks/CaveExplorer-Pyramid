@@ -1,6 +1,6 @@
 package caveExplorer;
 
-import WeixiongTristanMinigame.TristanRoom;
+import WeixiongTristanMinigame.*;
 
 public class CaveRoom {
 
@@ -128,6 +128,11 @@ public class CaveRoom {
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = testNPC;
 		
+
+		CaveRoom customRoom1 = new TristanRoom("Text");
+		CaveRoom customRoom2 = new WeiCustomRoom("A Moogle appears in front of you as you enter the room");
+		CaveExplorer.caves[1][2][3] = customRoom1;
+		CaveExplorer.caves[1][2][4] = customRoom2;
 		//start room
 		CaveExplorer.currentRoom = c[0][0][1];
 		CaveExplorer.currentRoom.enter();
