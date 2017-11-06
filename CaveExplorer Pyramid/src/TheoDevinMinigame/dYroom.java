@@ -19,11 +19,23 @@ public class dYroom extends NPCRoom {
 	public String validthings() {
 		return "wdsaez";
 	}	
-	private void performAction(int direction) {
+	public void act() {
+		CaveExplorer.print("There is nothing to interact with.");
+		String s = CaveExplorer.in.nextLine();
+		while(!s.equalsIgnoreCase("e")) {
+			CaveExplorer.print("Far off in the distance, you hear a damsel in distress.");
+			 s = CaveExplorer.in.nextLine();
+		}
+		CaveExplorer.print("Far off in the distance, you hear a damsel in distress.");
+		active = true;
+	}
+	public void performAction(int direction) {
 		if(direction == 4) {
-				();
+			if(npc != null && npc.isActive()) {
+				npc.interact();
 			}else {
-				CaveExplorer.print("There is nothing");
+				
+				npc.act();
 			}
 		}else {
 			CaveExplorer.print("That key does nothing");
