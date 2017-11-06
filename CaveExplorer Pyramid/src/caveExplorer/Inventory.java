@@ -4,7 +4,7 @@ public class Inventory {
 
 	private int flr;
 	private String map;
-	private int hp;
+	private static int hp;
 
 	public Inventory() {
 		updateMap();
@@ -50,7 +50,7 @@ public class Inventory {
 	public int getHp() {
 		return hp;
 	}
-	public void setHp(int x) {
+	public static void setHp(int x) {
 		hp = x;
 	}
 }

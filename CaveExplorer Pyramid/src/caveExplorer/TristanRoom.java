@@ -3,26 +3,16 @@ package caveExplorer;
 public class TristanRoom extends CaveRoom {
 
 	boolean explored = false;
+	int fullyHealed = 100;
 	
 	public TristanRoom(String description) {
 		super(description);
 	}
 	
 	public void enter() {
-		super.setContents("X");
-		explored = true;
+		super.setContents("There is a fountain in this room. You drink from it and you are"
+				+ "magically healed!");
+		Inventory.setHp(fullyHealed);
 	}
 	
-	public boolean wasEntered() {
-		if(this.explored == true) {
-			return true;
-		}
-		return false;
-	}
-	
-	public void showContents() {
-		if(wasEntered()) {
-			super.setContents("You've been in this room before!");
-		}
-	}
 }

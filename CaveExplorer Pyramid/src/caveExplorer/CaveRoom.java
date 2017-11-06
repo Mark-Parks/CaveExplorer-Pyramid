@@ -128,8 +128,6 @@ public class CaveRoom {
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = testNPC;
 		
-		CaveRoom customRoom1 = new TristanRoom("Text");
-		CaveExplorer.caves[2][3] = customRoom;
 		//start room
 		CaveExplorer.currentRoom = c[0][0][1];
 		CaveExplorer.currentRoom.enter();
