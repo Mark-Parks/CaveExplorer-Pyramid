@@ -4,6 +4,7 @@ public class NPC {
 
 	//fields 
 	private CaveRoom[][] floor;
+	private int currentFlr;
 	private int currentRow;
 	private int currentCol;
 	private NPCRoom currentRoom;
@@ -14,11 +15,11 @@ public class NPC {
 	private String inactiveDescription;
 	
 	public NPC() {
-		this.floor = CaveExplorer.caves;
 		this.activeDescription = "There is a person standing in the room waiting to talk to you. Press 'e' to talk"; 
 		this.inactiveDescription = "that guy is still here";
 		this.currentCol = -1;
 		this.currentRow = -1;
+		this.currentFlr = -1;
 		currentRoom = null;
 		active = true;
 	}
@@ -78,7 +79,7 @@ public class NPC {
 		int[] newPosition = new int[2];
 		newPosition[0] = currentRow+possibleMoves[index][0];
 		newPosition[1] = currentCol+possibleMoves[index][1];
-		while(currentRoom.getDoor(index) == null||!(CaveExplorer.caves[newPosition[0]][newPosition[1]] instanceof NPCRoom)) {
+		while(currentRoom.getDoor(index) == null||!(CaveExplorer.caves[currentFlr][newPosition[0]][newPosition[1]] instanceof NPCRoom)) {
 			index = (int)(Math.random() * possibleMoves.length);
 			newPosition[0] = currentRow+possibleMoves[index][0];
 			newPosition[1] = currentCol+possibleMoves[index][1];

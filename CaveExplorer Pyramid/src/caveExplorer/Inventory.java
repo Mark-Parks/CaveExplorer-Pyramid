@@ -1,8 +1,6 @@
 package caveExplorer;
 
 public class Inventory {
-
-	private int flr;
 	private String map;
 	private int hp;
 
@@ -15,11 +13,11 @@ public class Inventory {
 			map+= "____";
 		}
 		map +="___\n";
-		for(CaveRoom[] flr: CaveExplorer.caves) {
-			for(CaveRoom[][] row: CaveExplorer.caves) {
+		for(CaveRoom[][] flr: CaveExplorer.caves) {
+			for(CaveRoom[] row: flr) {
 				for(int i = 0; i < 3; i++) {
 					String text = "";
-					for(CaveRoom[][][] cr: row) {
+					for(CaveRoom cr: row) {
 						if(cr.getDoor(CaveRoom.WEST) != null && cr.getDoor(CaveRoom.WEST).isOpen()) {
 							text += " ";
 						}else {
