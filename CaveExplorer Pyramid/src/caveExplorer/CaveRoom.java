@@ -1,5 +1,7 @@
 package caveExplorer;
 
+import TheoDevinMinigame.TheoRoom;
+
 public class CaveRoom {
 
 	private String description;
@@ -112,6 +114,7 @@ public class CaveRoom {
 		c[1] = new NPCRoom[4][4];
 		c[2] = new NPCRoom[3][3];
 		
+		
 		//populate default
 		for(int flr =0; flr < c.length; flr++) {
 			for(int row = 0; row < c[flr].length; row++) {
@@ -123,6 +126,8 @@ public class CaveRoom {
 		//custom
 		NPC testNPC = new NPC();
 		testNPC.setPosition(3,3);
+		TheoRoom testTheo = new TheoRoom("asdf");
+		c[0][1][1]= testTheo;
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = testNPC;
 		//start room

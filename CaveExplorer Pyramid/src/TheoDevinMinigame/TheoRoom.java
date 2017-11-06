@@ -16,9 +16,8 @@ public class TheoRoom extends NPCRoom {
 
 	private boolean active;
 	/**
-	 * @param description
 	 */
-	public TheoRoom(String description) {
+	public TheoRoom( String description) {
 		super(description);
 		active = true;
 	}
@@ -38,27 +37,22 @@ public class TheoRoom extends NPCRoom {
 		}
 	}
 	public String validMoves() {
-		return "wdsaz";
+		return "wdsaez";
 	} 
 	public void printValidMoves() {
 		System.out.println("You can only enter 'w','d','s','a' or press 'z' to play a game");
 	}
-	private void performAction(int direction) {
-		if(direction == 4 ) {
-			guessNumber();
+	public void performAction(int direction) {
+		if(direction == 5 ) {
+			badJoke();
 		}
 		else {
-			CaveExplorer.print("That key does nothing OmegaLUL");
+			super.performAction(direction);
 		}
 	}
 
-	private void guessNumber() {
-		String z ="7";
-		Scanner in = new Scanner(System.in);
-		CaveExplorer.print("Guess my random number Xd Kappa haHAA");
-		while(!in.nextLine().equals(z)) {
-			CaveExplorer.print("Thats the wrong number");
-		}
-		CaveExplorer.print("Wow U guessed the right number");//omegaLUL
+	private void badJoke() {
+		CaveExplorer.print("Heres a joke");
+		CaveExplorer.print("There are 10 types of people in the world those who understand binary and those who dont");
 	}
 }

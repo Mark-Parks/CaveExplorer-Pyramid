@@ -35,7 +35,7 @@ public class NPCRoom extends CaveRoom {
 		return "wdsae";
 	}
 	
-	private void performAction(int direction) {
+	public void performAction(int direction) {
 		if(direction == 4) {
 			if(npc != null && npc.isActive()) {
 				npc.interact();
