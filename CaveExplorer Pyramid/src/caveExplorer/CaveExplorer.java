@@ -4,12 +4,13 @@ import java.util.Scanner;
 
 public class CaveExplorer {
 
-	public static CaveRoom[][][] caves;
+	public static CaveRoom[][][] caves = new CaveRoom[3][][];;
 	public static Scanner in;//user input
 	public static CaveRoom currentRoom;
 	public static Inventory inventory;
 	public static boolean playing = true;
 	public static NPC[] npcs;
+	
 	
 	public static void main(String[] args) {
 		in = new Scanner(System.in);

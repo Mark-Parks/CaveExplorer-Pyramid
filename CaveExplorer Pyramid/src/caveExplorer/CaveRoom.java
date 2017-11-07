@@ -68,7 +68,6 @@ public class CaveRoom {
 		addRoom(direction,anotherRoom,door);
 		anotherRoom.addRoom(oppositeDirection(direction),this,door);
 	}
-	//i like pp
 	
 	public void addRoom(int dir, CaveRoom caveRoom, Door door) {
 		borderingRooms[dir] = caveRoom;
@@ -113,7 +112,7 @@ public class CaveRoom {
 		c[2] = new NPCRoom[3][3];
 		
 		//populate default
-		for(int flr =0; flr < c.length; flr++) {
+		for(int flr = 0; flr < c.length; flr++) {
 			for(int row = 0; row < c[flr].length; row++) {
 				for(int col = 0; col < c[flr][row].length; col ++) {
 					c[flr][row][col] = new NPCRoom("this cave has cord "+flr+","+row+","+col);
@@ -122,7 +121,7 @@ public class CaveRoom {
 		}
 		//custom
 		NPC testNPC = new NPC();
-		testNPC.setPosition(3,3);
+		testNPC.setPosition(0,3,3);
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = testNPC;
 		//start room
