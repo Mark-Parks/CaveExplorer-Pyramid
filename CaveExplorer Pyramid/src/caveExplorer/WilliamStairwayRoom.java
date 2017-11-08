@@ -13,6 +13,21 @@ public class WilliamStairwayRoom extends NPCRoom {
 	public String validMoves() {
 		return "wdsaeu";
 	}
+	private boolean isValid(String input) {
+		return validMoves().indexOf(input) != -1 && input.length() == 1;
+	}
+	public void interpretInput(String input) {
+		while(!isValid(input)){
+			printValidMoves();
+			input = CaveExplorer.in.nextLine();
+		}
+		int direction = validMoves().indexOf(input);
+		if(direction < 4) {
+			goToRoom(direction);
+		}else {
+			performAction(direction);
+		}
+	}
 	public void performAction(int direction) {
 		if(direction == 5) {
 			setFloor(getFloor()+1);
