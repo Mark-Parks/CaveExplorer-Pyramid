@@ -66,9 +66,10 @@ public class NPC {
 	public void autoMove() {
 		if(active) {
 			int[] move = calculateMove();
-			int newRow = move[0];
-			int newCol = move[1];
-			setPosition(0,newRow, newCol);
+			int newFlr = move[0];
+			int newRow = move[1];
+			int newCol = move[2];
+			setPosition(newFlr,newRow, newCol);
 		}
 	}
 

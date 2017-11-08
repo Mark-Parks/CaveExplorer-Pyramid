@@ -10,7 +10,6 @@ public class CaveExplorer {
 	public static Inventory inventory;
 	public static boolean playing = true;
 	public static NPC[] npcs;
-	public static Mummy[] mummys;
 	
 	
 	public static void main(String[] args) {
@@ -37,7 +36,7 @@ public class CaveExplorer {
 	}
 
 	private static void moveNPCs() {
-		for(Mummy n: mummys) {
+		for(NPC n: npcs) {
 			n.autoMove();
 		}
 		inventory.updateMap();

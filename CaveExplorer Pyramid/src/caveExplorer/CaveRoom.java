@@ -122,8 +122,8 @@ public class CaveRoom {
 		//custom
 		Mummy mummy1 = new Mummy();
 		mummy1.setPosition(0,2,2);
-		CaveExplorer.mummys = new Mummy[1];
-		CaveExplorer.mummys[0] = mummy1;
+		CaveExplorer.npcs = new NPC[1];
+		CaveExplorer.npcs[0] = mummy1;
 		//start room
 		CaveExplorer.currentRoom = c[0][0][0];
 		CaveExplorer.currentRoom.enter();

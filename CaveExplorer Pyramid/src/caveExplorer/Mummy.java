@@ -27,6 +27,7 @@ public class Mummy extends NPC {
 			if(currentRoom != null) {
 				currentRoom.leaveNPC();
 			}
+			active = true;
 			currentFlr = flr;
 			currentRow = row;
 			currentCol = col;
