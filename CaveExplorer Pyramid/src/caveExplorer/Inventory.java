@@ -3,18 +3,19 @@ package caveExplorer;
 public class Inventory {
 	private String map;
 	private int hp;
+	private CaveRoom[][] level;
 
 	public Inventory() {
 		updateMap();
 	}
 	public void updateMap() {
+		level = CaveExplorer.caves[CaveExplorer.currentRoom.getFloor()];
 		map = " ";
 		for(int i = 0; i < CaveExplorer.caves[0].length - 1; i++){
 			map+= "____";
 		}
 		map +="___\n";
-		for(CaveRoom[][] flr: CaveExplorer.caves) {
-			for(CaveRoom[] row: flr) {
+			for(CaveRoom[] row: level) {
 				for(int i = 0; i < 3; i++) {
 					String text = "";
 					for(CaveRoom cr: row) {
@@ -37,7 +38,7 @@ public class Inventory {
 					}
 					text += "|";
 					map += text + "\n";
-				}
+				
 			}
 		}
 	}

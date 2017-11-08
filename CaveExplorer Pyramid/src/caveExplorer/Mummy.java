@@ -37,10 +37,10 @@ public class Mummy extends NPC {
 	}
 	
 	public void interact() {
-		CaveExplorer.print("Let's interact! type 'bye' to leave");
+		CaveExplorer.print(inactiveDescription);
 		String s = CaveExplorer.in.nextLine();
 		while(!s.equalsIgnoreCase("bye")) {
-			CaveExplorer.print("I'm a Spooky Mummy skelly and I will hurt you!");
+			CaveExplorer.print(activeDescription);
 			s = CaveExplorer.in.nextLine();
 		}
 		CaveExplorer.print("see ya");

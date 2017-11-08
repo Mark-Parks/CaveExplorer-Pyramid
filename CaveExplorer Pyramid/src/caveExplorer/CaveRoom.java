@@ -116,6 +116,7 @@ public class CaveRoom {
 			for(int row = 0; row < c[flr].length; row++) {
 				for(int col = 0; col < c[flr][row].length; col ++) {
 					c[flr][row][col] = new NPCRoom("this cave has cord "+flr+","+row+","+col);
+					c[flr][row][col].setFloor(flr);
 				}
 			}
 		}
