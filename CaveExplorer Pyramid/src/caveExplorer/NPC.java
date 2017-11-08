@@ -2,23 +2,22 @@ package caveExplorer;
 
 public class NPC {
 
-	//fields 
-	private CaveRoom[][] floor;
+	private CaveRoom[][][] pyramid = CaveExplorer.caves;
+	private int currentFlr;
 	private int currentRow;
 	private int currentCol;
 	private NPCRoom currentRoom;
-	
-
 	private boolean active;
 	private String activeDescription;
 	private String inactiveDescription;
 	
+	
 	public NPC() {
-		this.floor = CaveExplorer.caves;
 		this.activeDescription = "There is a person standing in the room waiting to talk to you. Press 'e' to talk"; 
 		this.inactiveDescription = "that guy is still here";
 		this.currentCol = -1;
 		this.currentRow = -1;
+		this.currentFlr = -1;
 		currentRoom = null;
 		active = true;
 	}
@@ -50,15 +49,16 @@ public class NPC {
 		return activeDescription;
 	}
 
-	public void setPosition(int row, int col) {
-		if(row > -1 && row < floor.length && col > -1 && col < floor[row].length && floor[row][col] instanceof NPCRoom) {
+	public void setPosition(int flr, int row, int col) {
+		if(flr > -1 && flr < pyramid.length && row > -1 && row < pyramid[flr].length && col > -1 && col < pyramid[flr][row].length && pyramid[flr][row][col] instanceof NPCRoom) {
 			if(currentRoom != null) {
 				currentRoom.leaveNPC();
 			}
 			
+			currentFlr = flr;
 			currentRow = row;
 			currentCol = col;
-			currentRoom = (NPCRoom)floor[row][col];
+			currentRoom = (NPCRoom)pyramid[flr][row][col];
 			currentRoom.enterNPC(this);
 		}
 	}
@@ -66,9 +66,10 @@ public class NPC {
 	public void autoMove() {
 		if(active) {
 			int[] move = calculateMove();
-			int newRow = move[0];
-			int newCol = move[1];
-			setPosition(newRow, newCol);
+			int newFlr = move[0];
+			int newRow = move[1];
+			int newCol = move[2];
+			setPosition(newFlr,newRow, newCol);
 		}
 	}
 
@@ -78,7 +79,7 @@ public class NPC {
 		int[] newPosition = new int[2];
 		newPosition[0] = currentRow+possibleMoves[index][0];
 		newPosition[1] = currentCol+possibleMoves[index][1];
-		while(currentRoom.getDoor(index) == null||!(CaveExplorer.caves[newPosition[0]][newPosition[1]] instanceof NPCRoom)) {
+		while(currentRoom.getDoor(index) == null||!(CaveExplorer.caves[currentFlr][newPosition[0]][newPosition[1]] instanceof NPCRoom)) {
 			index = (int)(Math.random() * possibleMoves.length);
 			newPosition[0] = currentRow+possibleMoves[index][0];
 			newPosition[1] = currentCol+possibleMoves[index][1];

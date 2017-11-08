@@ -1,21 +1,21 @@
 package caveExplorer;
 
-public class Inventory {
-	private String map;
-	private int hp;
-	private CaveRoom[][] level;
+public class WilliamExplorerInventory extends Inventory {
 
-	public Inventory() {
+	private String map;
+	
+	public WilliamExplorerInventory() {
 		updateMap();
 	}
+
 	public void updateMap() {
-		level = CaveExplorer.caves[CaveExplorer.currentRoom.getFloor()];
 		map = " ";
 		for(int i = 0; i < CaveExplorer.caves[0].length - 1; i++){
 			map+= "____";
 		}
 		map +="___\n";
-			for(CaveRoom[] row: level) {
+		for(CaveRoom[][] flr: CaveExplorer.caves) {
+			for(CaveRoom[] row: flr) {
 				for(int i = 0; i < 3; i++) {
 					String text = "";
 					for(CaveRoom cr: row) {
@@ -38,18 +38,8 @@ public class Inventory {
 					}
 					text += "|";
 					map += text + "\n";
-				
+				}
 			}
 		}
-	}
-	
-	public String getDescription() {
-		return map;
-	}
-	public int getHp() {
-		return hp;
-	}
-	public void setHp(int x) {
-		hp = x;
-	}
+	}	
 }
