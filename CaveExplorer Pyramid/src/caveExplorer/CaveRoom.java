@@ -120,17 +120,38 @@ public class CaveRoom {
 			}
 		}
 		//custom
-		NPC testNPC = new NPC();
-		testNPC.setPosition(0,3,3);
-		CaveExplorer.npcs = new NPC[1];
-		CaveExplorer.npcs[0] = testNPC;
+		Mummy mummy1 = new Mummy();
+		mummy1.setPosition(0,2,2);
+		CaveExplorer.mummys = new Mummy[1];
+		CaveExplorer.mummys[0] = mummy1;
 		//start room
-		CaveExplorer.currentRoom = c[0][0][1];
+		CaveExplorer.currentRoom = c[0][0][0];
 		CaveExplorer.currentRoom.enter();
 		//doors
+		c[0][0][0].setConnection(EAST, c[0][0][1], new Door());
 		c[0][0][1].setConnection(SOUTH, c[0][1][1], new Door());
+		c[0][0][2].setConnection(SOUTH, c[0][1][2], new Door());
+		c[0][0][3].setConnection(EAST, c[0][0][4], new Door());
+		c[0][0][3].setConnection(SOUTH, c[0][1][3], new Door());
 		c[0][1][1].setConnection(EAST, c[0][1][2], new Door());
-		
+		c[0][1][2].setConnection(EAST, c[0][1][3], new Door());
+		c[0][1][2].setConnection(SOUTH, c[0][2][2], new Door());
+		c[0][2][0].setConnection(EAST, c[0][2][1], new Door());
+		c[0][2][0].setConnection(SOUTH, c[0][3][0], new Door());
+		c[0][2][1].setConnection(EAST, c[0][2][2], new Door());
+		c[0][2][1].setConnection(SOUTH, c[0][3][1], new Door());
+		c[0][2][2].setConnection(EAST, c[0][2][3], new Door());
+		c[0][2][2].setConnection(SOUTH, c[0][3][2], new Door());
+		c[0][2][3].setConnection(EAST, c[0][2][4], new Door());
+		c[0][2][3].setConnection(SOUTH, c[0][3][3], new Door());
+		c[0][2][4].setConnection(SOUTH, c[0][3][4], new Door());
+		c[0][3][1].setConnection(EAST, c[0][3][2], new Door());
+		c[0][3][2].setConnection(EAST, c[0][3][3], new Door());
+		c[0][3][2].setConnection(SOUTH, c[0][4][2], new Door());
+		c[0][4][0].setConnection(EAST, c[0][4][1], new Door());
+		c[0][4][1].setConnection(EAST, c[0][4][2], new Door());
+		c[0][4][2].setConnection(EAST, c[0][4][3], new Door());
+		c[0][4][3].setConnection(EAST, c[0][4][4], new Door());
 	}
 	
 	public void goToRoom(int direction) {
