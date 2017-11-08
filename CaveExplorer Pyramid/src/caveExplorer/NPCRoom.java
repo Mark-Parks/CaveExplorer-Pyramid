@@ -10,25 +10,24 @@ public class NPCRoom extends CaveRoom {
 	}
 
 	public boolean canenter() {
-		return npc == null;
+		return getNpc() == null;
 	}
 	
 	public void enterNPC(NPC n) {
-		this.npc = n;
+		this.setNpc(n);
 	}
 	
 	public void leaveNPC() {
-		this.npc = null;
+		this.setNpc(null);
 	}
 	
 	public boolean containsNPC() {
-		return npc != null;
+		return getNpc() != null;
 		
 	}
 	
-	
 	public void printValidMoves() {
-		System.out.println("You can only enter 'w','d','s', or 'a' or press 'e' to perform an action");
+		System.out.println("You can only enter 'w','d','s', or 'a' or press 'e' to perform an action.");
 	}
 
 	public String validMoves() {
@@ -37,32 +36,41 @@ public class NPCRoom extends CaveRoom {
 	
 	private void performAction(int direction) {
 		if(direction == 4) {
-			if(npc != null && npc.isActive()) {
-				npc.interact();
+			if(getNpc() != null && getNpc().isActive()) {
+				getNpc().interact();
 			}else {
-				CaveExplorer.print("There is nothing");
+				CaveExplorer.print("There is nothing to interact with.");
 			}
 		}else {
-			CaveExplorer.print("That key does nothing");
+			CaveExplorer.print("That key does nothing.");
 		}
 	}
 	
+	
 	public String getContents() {
-		if(containsNPC() && npc.isActive()) {
-			return npc.getSymbol();
+		if(containsNPC() && getNpc().isActive()) {
+			return getNpc().getSymbol();
 		}else {
 			return super.getContents();
 		}
 	}
 	
 	public String getDescription() {
-		if(containsNPC() && npc.isActive()) 
-			return super.getDescription()+"\n"+npc.getDescription();
-		else if(containsNPC() && !npc.isActive())
-			return super.getDescription()+"\n"+npc.getInactiveDescription();
+		if(containsNPC() && getNpc().isActive()) 
+			return super.getDescription()+"\n"+getNpc().getDescription();
+		else if(containsNPC() && !getNpc().isActive())
+			return super.getDescription()+"\n"+getNpc().getInactiveDescription();
 		else
 			return super.getDescription();
 			
+	}
+
+	public NPC getNpc() {
+		return npc;
+	}
+
+	public void setNpc(NPC npc) {
+		this.npc = npc;
 	}
 	
 }

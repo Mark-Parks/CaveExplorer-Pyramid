@@ -115,7 +115,7 @@ public class CaveRoom {
 		for(int flr = 0; flr < c.length; flr++) {
 			for(int row = 0; row < c[flr].length; row++) {
 				for(int col = 0; col < c[flr][row].length; col ++) {
-					c[flr][row][col] = new NPCRoom("this cave has cord "+flr+","+row+","+col);
+					c[flr][row][col] = new NPCRoom("This cave has coordinates "+flr+","+row+","+col);
 					c[flr][row][col].setFloor(flr);
 				}
 			}
@@ -125,8 +125,10 @@ public class CaveRoom {
 		mummy1.setPosition(0,2,2);
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = mummy1;
+		c[0][0][2] = new WilliamStairwayRoom("There is a staircase leading to the second floor.");
+		
 		//start room
-		CaveExplorer.currentRoom = c[0][0][0];
+		CaveExplorer.currentRoom = c[0][0][0];	
 		CaveExplorer.currentRoom.enter();
 		//doors
 		c[0][0][0].setConnection(EAST, c[0][0][1], new Door());
@@ -201,10 +203,12 @@ public class CaveRoom {
 	public Door getDoor(int direction) {
 		return doors[direction];
 	}
+	
 	public int getFloor() {
 		return floor;
 	}
+	
 	public void setFloor(int x) {
-		floor = x;
+		this.floor = x;
 	}
 }

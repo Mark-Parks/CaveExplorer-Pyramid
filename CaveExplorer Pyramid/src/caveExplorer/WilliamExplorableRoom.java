@@ -1,6 +1,6 @@
 package caveExplorer;
 
-public class WilliamExplorableRoom extends CaveRoom {
+public class WilliamExplorableRoom extends NPCRoom {
 	
 	boolean explored = false;
 	
