@@ -1,6 +1,8 @@
 package caveExplorer;
 
 import WeixiongTristanMinigame.*;
+import TheoDevinMinigame.DYroom;
+import TheoDevinMinigame.TheoRoom;
 
 public class CaveRoom {
 
@@ -113,6 +115,7 @@ public class CaveRoom {
 		c[1] = new NPCRoom[4][4];
 		c[2] = new NPCRoom[3][3];
 		
+		
 		//populate default
 		for(int flr = 0; flr < c.length; flr++) {
 			for(int row = 0; row < c[flr].length; row++) {
@@ -136,6 +139,10 @@ public class CaveRoom {
 		CaveRoom customRoom2 = new WeiCustomRoom("A Moogle appears in front of you as you enter the room");
 		CaveExplorer.caves[1][2][3] = customRoom1;
 		CaveExplorer.caves[1][2][4] = customRoom2;
+		TheoRoom testTheo = new TheoRoom("asdf");
+		c[0][1][1]= testTheo;
+		DYroom lol = new DYroom("mhm");
+		c[0][2][3]= lol;
 		//start room
 		CaveExplorer.currentRoom = c[0][0][0];	
 		CaveExplorer.currentRoom.enter();
