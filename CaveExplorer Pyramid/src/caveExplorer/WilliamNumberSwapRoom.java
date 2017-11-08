@@ -1,9 +1,5 @@
 package caveExplorer;
 
-import caveExplorer.CaveExplorer;
-import caveExplorer.CaveRoom;
-import caveExplorer.NPCRoom;
-
 public class WilliamNumberSwapRoom extends NPCRoom {
 
 	private String board;

@@ -137,8 +137,8 @@ public class CaveRoom {
 
 		CaveRoom customRoom1 = new TristanRoom("Text");
 		CaveRoom customRoom2 = new WeiCustomRoom("A Moogle appears in front of you as you enter the room");
-		CaveExplorer.caves[1][2][3] = customRoom1;
-		CaveExplorer.caves[1][2][4] = customRoom2;
+		CaveExplorer.caves[0][4][4] = customRoom1;
+		//CaveExplorer.caves[1][0][0] = customRoom2;
 		TheoRoom testTheo = new TheoRoom("asdf");
 		c[0][1][1]= testTheo;
 		DYroom lol = new DYroom("mhm");

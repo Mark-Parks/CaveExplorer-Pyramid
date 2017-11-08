@@ -27,7 +27,7 @@ public class WeiCustomRoom extends NPCRoom {
 
 	private void startShopping() {
 		String response = in.nextLine();
-		while(response.toLowerCase().equals("leave")) {
+		while(!response.toLowerCase().equals("leave")) {
 			if(Integer.parseInt(response) > shop.length) {
 				System.out.print("I don't have that item, kupo.");
 				response = in.nextLine();
