@@ -28,14 +28,15 @@ public class WeiCustomRoom extends NPCRoom {
 	private void startShopping() {
 		String response = in.nextLine();
 		while(response.toLowerCase().equals("leave")) {
-			if(response > shop.length) {
-				
+			if(Integer.parseInt(response) > shop.length) {
+				System.out.print("I don't have that item, kupo.");
+				response = in.nextLine();
 			}
 		}
+		System.out.println("Come again, kupo!");
 	}
 
 	public void purchaseItem(int itemNum) {
 		Buyables currentItem = shop[itemNum];
-		
 	}
 }

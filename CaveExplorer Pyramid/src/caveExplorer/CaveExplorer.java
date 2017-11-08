@@ -42,5 +42,4 @@ public class CaveExplorer {
 		}
 		inventory.updateMap();
 	}
-	//hi
 }

@@ -1,6 +1,6 @@
 package caveExplorer;
 
-import WeixiongTristanMinigame.TristanRoom;
+import WeixiongTristanMinigame.*;
 
 public class CaveRoom {
 
@@ -130,6 +130,12 @@ public class CaveRoom {
 		CaveExplorer.npcs[0] = mummy1;
 		c[0][0][2] = new WilliamStairwayRoom("There is a staircase leading to the second floor.");
 		
+		
+
+		CaveRoom customRoom1 = new TristanRoom("Text");
+		CaveRoom customRoom2 = new WeiCustomRoom("A Moogle appears in front of you as you enter the room");
+		CaveExplorer.caves[1][2][3] = customRoom1;
+		CaveExplorer.caves[1][2][4] = customRoom2;
 		//start room
 		CaveExplorer.currentRoom = c[0][0][0];	
 		CaveExplorer.currentRoom.enter();

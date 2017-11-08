@@ -1,13 +1,30 @@
 package caveExplorer;
 
+import WeixiongTristanMinigame.*;
+
 public class Inventory {
+	private int flr;
+	private Buyables[] bag;
+
 	private String map;
-	private int hp;
+
+	private static int hp;
 	private CaveRoom[][] level;
 
+
 	public Inventory() {
+		bag = new Buyables[30];
 		updateMap();
 	}
+	
+	public Buyables[] getBag() {
+		return this.bag;
+	}
+	
+	public void addItemToBag() {
+		
+	}
+	
 	public void updateMap() {
 		level = CaveExplorer.caves[CaveExplorer.currentRoom.getFloor()];
 		map = " ";
@@ -49,7 +66,7 @@ public class Inventory {
 	public int getHp() {
 		return hp;
 	}
-	public void setHp(int x) {
+	public static void setHp(int x) {
 		hp = x;
 	}
 }
