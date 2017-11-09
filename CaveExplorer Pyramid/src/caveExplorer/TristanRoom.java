@@ -13,7 +13,7 @@ public class TristanRoom extends NPCRoom {
 	public void enter() {
 		super.setContents("There is a fountain in this room. You drink from it and you are"
 				+ "magically healed!");
-		Inventory.setHp(fullyHealed);
+		CaveExplorer.inventory.setHp(fullyHealed);
 	}
 	
 	public String getContents() {

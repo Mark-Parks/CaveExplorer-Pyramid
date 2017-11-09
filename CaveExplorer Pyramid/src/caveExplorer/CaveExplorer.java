@@ -10,12 +10,14 @@ public class CaveExplorer {
 	public static Inventory inventory;
 	public static boolean playing = true;
 	public static NPC[] npcs;
+	public static int numKeys;
 	
 	
 	public static void main(String[] args) {
 		in = new Scanner(System.in);
 		CaveRoom.setUpCaves();
 		inventory = new Inventory();
+		inventory.setHp(100);
 		startExploring();
 	}
 
@@ -29,8 +31,8 @@ public class CaveExplorer {
 			print(inventory.getDescription());
 			print(currentRoom.getDescription());
 			print(currentRoom.getDirections());
-			print("Current Floor is "+currentRoom.getFloor());
-			print("You health is "+inventory.getHp()+"!");
+			print("HP : "+inventory.getHp());
+			print("KEYS : "+inventory.getKeys());
 			print("What would you like to do?");
 			currentRoom.interpretInput(in.nextLine());
 		}

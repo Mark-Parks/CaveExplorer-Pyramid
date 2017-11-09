@@ -3,13 +3,11 @@ package caveExplorer;
 import WeixiongTristanMinigame.*;
 
 public class Inventory {
-	private int flr;
 	private Buyables[] bag;
-
 	private String map;
-
 	private static int hp;
 	private CaveRoom[][] level;
+	private static int keys;
 
 
 	public Inventory() {
@@ -66,7 +64,14 @@ public class Inventory {
 	public int getHp() {
 		return hp;
 	}
-	public static void setHp(int x) {
+	public void setHp(int x) {
 		hp = x;
+	}
+
+	public int getKeys() {
+		return keys;
+	}
+	public void addKey() {
+		keys = keys + 1;
 	}
 }

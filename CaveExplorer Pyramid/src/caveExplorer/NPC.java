@@ -38,7 +38,7 @@ public class NPC {
 	}
 
 	public String getSymbol() {
-	return "M";
+	return "P";
 	}
 
 	public String getInactiveDescription() {
