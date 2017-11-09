@@ -213,8 +213,8 @@ public class CaveRoom {
 		c[0][5][2].setConnection(EAST, c[0][5][3], new Door());
 		c[0][5][3].setConnection(EAST, c[0][5][4], new Door());
 		c[0][5][3].setConnection(SOUTH, c[0][6][3], new Door());
-		c[0][5][3].doors[SOUTH].setOpen(false);
-		c[0][5][3].doors[SOUTH].setLocked(true);
+		//c[0][5][3].doors[SOUTH].setOpen(false);
+		//c[0][5][3].doors[SOUTH].setLocked(true);
 		c[0][5][4].setConnection(EAST, c[0][5][5], new Door());
 		c[0][5][5].setConnection(EAST, c[0][5][6], new Door());
 		c[0][6][0].setConnection(EAST, c[0][6][1], new Door());

@@ -62,13 +62,13 @@ public class Mummy extends NPC {
 	}
 	
 	private int[] calculateMove() {
-		int[][] possibleMoves = {{currentFlr,-1,0},{currentFlr,0,1},{currentFlr,1,0},{currentFlr,0,-1}};
+		int[][] possibleMoves = {{0,-1,0},{0,0,1},{0,1,0},{0,0,-1}};
 		int index = (int)(Math.random() * possibleMoves.length);
 		int[] newPosition = new int[3];
 		newPosition[0] = currentFlr+possibleMoves[index][0];
 		newPosition[1] = currentRow+possibleMoves[index][1];
 		newPosition[2] = currentCol+possibleMoves[index][2];
-		while(currentRoom.getDoor(index) == null||!(CaveExplorer.caves[currentFlr][newPosition[1]][newPosition[2]] instanceof NPCRoom)) {
+		while(currentRoom.getDoor(index) == null||!(CaveExplorer.caves[newPosition[0]][newPosition[1]][newPosition[2]] instanceof NPCRoom)) {
 			index = (int)(Math.random() * possibleMoves.length);
 			newPosition[0] = currentFlr+possibleMoves[index][0];
 			newPosition[1] = currentRow+possibleMoves[index][1];
