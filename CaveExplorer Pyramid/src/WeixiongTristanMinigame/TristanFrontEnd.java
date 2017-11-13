@@ -1,14 +1,23 @@
 package WeixiongTristanMinigame;
 
 public class TristanFrontEnd implements WeixiongSupport{
+	
+	private TristanSupport backend;
 
 	public TristanFrontEnd() {
-		// TODO Auto-generated constructor stub
+		backend = new WeixiongBackEnd(this);
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		TristanFrontEnd demo = new TristanFrontEnd();
+		demo.startPlaying();
 	}
 
+	public void startPlaying() {
+		
+	}
+	
+	public void createBoard() {
+		
+	}
 }
