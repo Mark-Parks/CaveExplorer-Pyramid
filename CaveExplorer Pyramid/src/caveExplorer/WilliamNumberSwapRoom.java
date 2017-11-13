@@ -81,7 +81,4 @@ public class WilliamNumberSwapRoom extends NPCRoom {
 		}
 		return false;
 	}
-	
-
-	
 }
