@@ -1,18 +1,16 @@
 package caveExplorer;
 
-import caveExplorer.CaveExplorer;
-import caveExplorer.CaveRoom;
-import caveExplorer.NPCRoom;
-
-public class WilliamNumberSwapRoom extends NPCRoom {
+public class WilliamNumberSwap{
 
 	private int[][] board;
 	private int[] coords1;
 	private int[] coords2;
 	
-	public WilliamNumberSwapRoom(String description) {
-		super(description);
-		display(createSquare(3));
+	public static void main(String[] args) {
+	}
+	
+	public WilliamNumberSwap(int size) {
+		createSquare(size);
 	}
 	
 	public String display(int[][] array) {
