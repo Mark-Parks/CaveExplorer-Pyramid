@@ -6,7 +6,9 @@ import caveExplorer.NPCRoom;
 
 public class WilliamNumberSwapRoom extends NPCRoom {
 
-	private String board;
+	private int[][] board;
+	private int[] coords1;
+	private int[] coords2;
 	
 	public WilliamNumberSwapRoom(String description) {
 		super(description);
@@ -23,14 +25,23 @@ public class WilliamNumberSwapRoom extends NPCRoom {
 		return text;
 	}
 	
-	public void swapDialogue(){
+	public void cancel() {
 		
 	}
+	public void swap1(int row1, int col1, int[][] array){
+		coords1[0] = col1;
+		coords1[1] = row1;
+	}
 	
-	public void swap(int row1, int col1, int row2, int col2, int[][] array){
-		int x = array[row1][col1];
-		array[row1][col1] = array[row2][col2];
-		array[row2][col2] = x;
+	public void swap2(int row2, int col2, int[][] array){
+		coords2[0] = col2;
+		coords2[1] = row2;
+	}
+	
+	public void swap() {
+		int x = board[coords1[0]][coords1[1]];
+		board[coords1[0]][coords1[1]] = board[coords2[0]][coords2[1]];
+		board[coords2[0]][coords2[1]] = x;
 	}
 	
 	public void rowSum(int row, int[][] array){
