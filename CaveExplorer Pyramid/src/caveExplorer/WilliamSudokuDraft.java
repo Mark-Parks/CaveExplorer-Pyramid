@@ -3,7 +3,6 @@ package caveExplorer;
 public class WilliamSudokuDraft {
 	
 	public static void main(String[] args) {
-		
 		int[][] square = generateSquare(5);
 		for(int i = 0; i < square[0].length; i++ ) {
 			for(int j = 0; j < square[0].length; j++ ) {

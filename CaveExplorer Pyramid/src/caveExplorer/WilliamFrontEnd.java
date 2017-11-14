@@ -10,10 +10,20 @@ public class WilliamFrontEnd implements MarkSupporter{
 		demo.play();
 	}
 
-	private void play() {
-		// TODO Auto-generated method stub
-		
+
+	public void play(){
+	    while(backend.stillPlaying()){
+	        displayBoard();
+	        displayScore();
+	        String input = backend.getValidUserInput();
+	        respondToInput(input);
+	        backend.computerMove();
+	        analyzeBoard();
+	        updateScore();
+	    }
+	        printGameOverMessage(backend.victorious());
 	}
+	
 	public WilliamFrontEnd() {
 		backend = new MarkBackEnd(this);
 	}
