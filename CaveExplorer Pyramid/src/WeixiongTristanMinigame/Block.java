@@ -1,6 +1,7 @@
 package WeixiongTristanMinigame;
 
 public class Block {
+	//hello
 	
 	private String contents;
 
