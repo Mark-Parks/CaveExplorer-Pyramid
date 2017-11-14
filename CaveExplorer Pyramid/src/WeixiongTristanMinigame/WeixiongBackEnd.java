@@ -7,5 +7,10 @@ public class WeixiongBackEnd implements TristanSupport{
 	
 	public WeixiongBackEnd(WeixiongSupport frontend) {
 		this.frontend = frontend;
+		this.maze = new Block[5][5];
+	}
+
+	public void createMaze() {
+		
 	}
 }

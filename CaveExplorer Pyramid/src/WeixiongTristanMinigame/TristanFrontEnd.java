@@ -14,10 +14,10 @@ public class TristanFrontEnd implements WeixiongSupport{
 	}
 
 	public void startPlaying() {
-		
+		drawMaze(backend.maze);
 	}
 	
-	public void createBoard() {
+	public void createMaze() {
 		
 	}
 }
