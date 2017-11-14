@@ -2,8 +2,6 @@ package caveExplorer;
 
 import java.util.Scanner;
 
-import WeixiongTristanMinigame.Buyables;
-
 public class WeiCustomRoom extends NPCRoom {
 	private static Scanner in;
 	private int size;
