@@ -74,7 +74,7 @@ public class DevinFrontEnd implements TheoSupport {
 		System.out.println(cols.substring(0, plots[0].length+2));
 	//}
 		
-	//}
+	//}f
 	public void printMsg(String msg){
 		System.out.println(msg);
 	}
