@@ -17,17 +17,12 @@ public class WilliamNumberSquare{
 	public void cancel() {
 		
 	}
-	public void swap1(int row1, int col1, int[][] array){
+	
+	public void swap(int row1, int col1, int row2, int col2, int[][]array) {
 		coords1[0] = col1;
 		coords1[1] = row1;
-	}
-	
-	public void swap2(int row2, int col2, int[][] array){
 		coords2[0] = col2;
 		coords2[1] = row2;
-	}
-	
-	public void swap() {
 		int x = board[coords1[0]][coords1[1]];
 		board[coords1[0]][coords1[1]] = board[coords2[0]][coords2[1]];
 		board[coords2[0]][coords2[1]] = x;

@@ -18,6 +18,7 @@ public interface WilliamSupporter {
 	
 	public void computerMove();
 
-	public Object victorious();
+	public String victorious();
+
 
 }
