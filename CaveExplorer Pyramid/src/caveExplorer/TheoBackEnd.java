@@ -5,11 +5,30 @@ public class TheoBackEnd implements DevinSupport{
 	private TheoSupport frontend;
 	private TheoDevinPlot[][] plots;
 	private int numMatch;
+	private String[] values;
 	
 	public TheoBackEnd( TheoSupport frontend) {
 		this.frontend = frontend;
 		plots = new TheoDevinPlot[4][4];
 		numMatch = 0;
+		values = new String [16];
+		values[0] = "A";
+		values[1] = "A";
+		values[2] = "B";
+		values[3] = "B";
+		values[4] = "C";
+		values[5] = "C";
+		values[6] = "D";
+		values[7] = "D";
+		values[8] = "E";
+		values[9] = "E";
+		values[10] = "F";
+		values[11] = "F";
+		values[12] = "G";
+		values[13] = "G";
+		values[14] = "H";
+		values[15] = "H";
+		
 		createPlot();
 	}
 	public boolean isMoveValid() {
@@ -34,6 +53,18 @@ public class TheoBackEnd implements DevinSupport{
 				plots[row][col]= new TheoDevinPlot(row,col);
 			}
 			//add values to each plot
+			for(int i =0; i<values.length;i++ ) {
+				boolean placed = false;
+					while(placed == false) {
+						int z = (int)(Math.random() * plots.length);
+						int y = (int)(Math.random() * plots[z].length);
+						if(!plots[z][y].isHasValue()) {
+							plots[z][y].setValue(values[i]);
+							plots[z][y].setHasValue(true);
+							placed = true;
+						}
+				}
+			}
 		}
 	}
 	                        
