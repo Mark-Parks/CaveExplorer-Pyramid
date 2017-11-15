@@ -5,7 +5,7 @@ public interface WeixiongSupport {
 	/**
 	 *starts the game 
 	 */
-	void createMaze();
+	void drawMaze(Block[][] maze);
 	/**
 	 * draws the board out, based on the backend array
 	 */

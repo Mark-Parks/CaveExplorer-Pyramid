@@ -12,6 +12,12 @@ public class Block {
 		this.contents = contents;
 	}
 	
+	public Block() {
+		this.contents = " ";
+		isVisible = false;
+		isOccupied = false;
+	}
+	
 	public String getContents() {
 		return contents;
 	}
