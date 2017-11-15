@@ -1,6 +1,6 @@
 package caveExplorer;
 
-public class WilliamNumberSwap{
+public class WilliamNumberSquare{
 
 	private int[][] board;
 	private int[] coords1;
@@ -9,19 +9,10 @@ public class WilliamNumberSwap{
 	public static void main(String[] args) {
 	}
 	
-	public WilliamNumberSwap(int size) {
+	public WilliamNumberSquare(int size) {
 		createSquare(size);
 	}
 	
-	public String display(int[][] array) {
-		String text = "";
-		for(int i = 0; i < array[0].length; i++){
-			for(int j = 0; j < array[0].length; j++){
-				text += array[i][j];
-			}
-		}
-		return text;
-	}
 	
 	public void cancel() {
 		
@@ -77,9 +68,11 @@ public class WilliamNumberSwap{
 		for(int i = 0; i < n; i++){
 			rowSum(i, squareArray);
 		}
+		
 		for(int i = 0; i < n; i++){
 			colSum(i, squareArray);
 		}
+		
 		return squareArray;
 	}
 	public boolean contains(int[] nums, int num) {

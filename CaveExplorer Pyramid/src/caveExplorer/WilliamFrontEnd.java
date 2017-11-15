@@ -11,6 +11,10 @@ public class WilliamFrontEnd implements MarkSupporter{
 	}
 
 
+	public WilliamFrontEnd() {
+		backend = new MarkBackEnd(this);
+	}
+
 	public void play(){
 	    while(backend.stillPlaying()){
 	        displayBoard();
@@ -23,10 +27,41 @@ public class WilliamFrontEnd implements MarkSupporter{
 	    }
 	        printGameOverMessage(backend.victorious());
 	}
-	//
 	
-	public WilliamFrontEnd() {
-		backend = new MarkBackEnd(this);
+	private void printGameOverMessage(Object victorious) {
+		// TODO Auto-generated method stub
+		
 	}
+
+
+	private void updateScore() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	private void analyzeBoard() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	private void respondToInput(String input) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	private void displayScore() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	private void displayBoard() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
 
