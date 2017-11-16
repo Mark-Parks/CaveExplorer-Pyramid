@@ -30,28 +30,30 @@ public class MarkBackEnd implements WilliamSupporter{
 		board[coords2[0]][coords2[1]] = x;
 	}
 	
-	public void rowSum(int row, int[][] array){
+	public int rowSum(int row, int[][] array){
 		int sum = 0;
 		for (int i =0; i < array[row].length; i++){
 			sum += array[row][i];
 		}
 		array[row][array[row].length] = sum;
+		return sum;
 	}
 	
-	public void colSum(int col, int[][] array){
+	public int colSum(int col, int[][] array){
 		int sum = 0;
 		for (int i =0; i < array[col].length; i++){
 			sum += array[i][col];
 		}
 		array[array[col].length][col] = sum;
+		return sum;
 	}
 	
 	public int[][] createBoard(int n) {
 		int[] numbers = new int[n*n];
 		for(int i = 0; i < numbers.length; i++) {
-			int newNumber = (int)(Math.random()*n*n);
+			int newNumber = (int)(Math.random()*n*n-1)+1;
 			while(contains(numbers, newNumber)) {
-				newNumber = (int)(Math.random()*n*n);
+				newNumber = (int)(Math.random()*n*n-1)+1;
 			}
 			numbers[i] = newNumber;
 		}
@@ -73,19 +75,26 @@ public class MarkBackEnd implements WilliamSupporter{
 		return squareArray;
 	}
 	
-	private boolean diagonalCheck() {
-		// TODO Auto-generated method stub
-		return false;
+	private boolean diagonalCheck(int[][] array) {
+		int diagonalSEsum = 0;
+		int diagonalNEsum = 0;
+		
+		int start = array.length - 2;
+		for(int i = 0; i < start; i++) {
+			diagonalSEsum += array[i][i];
+		}
+		for(int i = 0; i < start; i++) {
+			diagonalNEsum += array[i][start];
+		}
+		return diagonalSEsum == diagonalNEsum;
 	}
 
-	private boolean rowCheck() {
-		// TODO Auto-generated method stub
-		return false;
+	private boolean rowCheck(int[][] array) {
+		return rowSum(0,array) == rowSum(1,array) && rowSum(0,array) == rowSum(2,array);
 	}
 
-	private boolean columnCheck() {
-		// TODO Auto-generated method stub
-		return false;
+	private boolean columnCheck(int[][] array) {
+		return colSum(0,array) == colSum(1,array) && colSum(0,array) == colSum(2,array);
 	}
 	
 	public boolean contains(int[] nums, int num) {
@@ -102,7 +111,7 @@ public class MarkBackEnd implements WilliamSupporter{
 	}
 	
 	public boolean victorious() {
-		return columnCheck() && rowCheck() && diagonalCheck();
+		return columnCheck(board) && rowCheck(board) && diagonalCheck(board);
 	}
 	
 	public int[][] getBoard(){
