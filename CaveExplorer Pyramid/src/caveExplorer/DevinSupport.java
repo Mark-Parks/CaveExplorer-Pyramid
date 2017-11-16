@@ -8,4 +8,8 @@ public interface DevinSupport {
 
 	boolean isGameOver();
 
+	boolean isMatch();
+
+	void SymbolsofCards();
+
 }

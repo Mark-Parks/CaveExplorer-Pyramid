@@ -1,6 +1,6 @@
 package caveExplorer;
 
-import java.util.Scanner;
+
 
 public class DevinFrontEnd implements TheoSupport {
 	private DevinSupport backend;
@@ -10,6 +10,7 @@ public class DevinFrontEnd implements TheoSupport {
 
 	public static final void main(String args) {
 		DevinFrontEnd demo = new DevinFrontEnd();
+		
 	}
 	public DevinFrontEnd() {
 		backend = new TheoBackEnd(this);
@@ -40,12 +41,14 @@ public class DevinFrontEnd implements TheoSupport {
 			printMsg(backend.GameoverMsg());	
 	}	
 	
-	private void checkMatch(TheoDevinPlot okdad) {
+	//private void checkMatch(TheoDevinPlot okdad) {
 		
 		
-	}
+	//}
 	public void rules() {
-		
+		System.out.println("You will have "+moves+" chances to find all the matches."
+				+ " To win, you must match 2 of the same cards together by inputting coordinates into the game."
+				);
 	}
 	public void showMatchNum() {
 		System.out.println(matches);
@@ -56,12 +59,12 @@ public class DevinFrontEnd implements TheoSupport {
 		for(int row = 0; row < plots.length; row++){
 			System.out.print(rows.substring(row, row+1)+" ");
 			for(int col = 0; col < plots[row].length; col++){
-				//if(plots[row][col].isRevealed()){ supposed to be when card is flipped, make conditions with it in showMatchNum?
-					//first = true; 
-					//backend.SymbolsofCards(); reveals the value of cards
-					//else if(backend.isMatch())
-					//{ matches++;
-					// first = false;		}
+				if(plots[row][col].isRevealed()){ //supposed to be when card is flipped, make conditions with it in showMatchNum?
+					first = true; 
+					backend.SymbolsofCards(); //reveals the value of cards
+					else if(backend.isMatch())
+					{ matches++;
+					 first = false;		}
 
 				
 
@@ -72,10 +75,31 @@ public class DevinFrontEnd implements TheoSupport {
 			System.out.println(" " + rows.substring(row, row+1));
 		}
 		System.out.println(cols.substring(0, plots[0].length+2));
-	//}
+	}
 		
-	//}f
+	
 	public void printMsg(String msg){
 		System.out.println(msg);
 	}
+	@Override
+	public int getRow() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int getCol() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int getMoves() {
+		// TODO Auto-generated method stub
+		return moves;
+	}
+	@Override
+	public int getMatches() {
+		// TODO Auto-generated method stub
+		return matches;
+	}
 }
+

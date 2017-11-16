@@ -37,5 +37,9 @@ public class TheoDevinPlot {
 	public void setHasValue(boolean hasValue) {
 		this.hasValue = hasValue;
 	}
+	public boolean isRevealed() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }
