@@ -1,8 +1,10 @@
 package caveExplorer;
 
+import java.util.Scanner;
+
 public class WilliamFrontEnd implements MarkSupporter{
 
-	
+	private int[][] board;
 	private WilliamSupporter backend;
 	
 	public static final void main(String[] args) {
@@ -13,15 +15,20 @@ public class WilliamFrontEnd implements MarkSupporter{
 
 	public WilliamFrontEnd() {
 		backend = new MarkBackEnd(this);
+		CaveExplorer.in = new Scanner(System.in);
 	}
 
 	public void play(){
+		System.out.println("You stumble upon a strange sequence of numbers.");
+		 System.out.println("test1");
+		String input = CaveExplorer.in.nextLine();
 	    while(backend.stillPlaying()){
-	        displayBoard();
+	    	 System.out.println("test1");
+	    	displayBoard(board);
 	        displayScore();
-	        String input = backend.getValidUserInput();
+	        System.out.println("test2");
+	        input = CaveExplorer.in.nextLine();
 	        respondToInput(input);
-	        backend.computerMove();
 	        analyzeBoard();
 	        updateScore();
 	    }
@@ -58,9 +65,27 @@ public class WilliamFrontEnd implements MarkSupporter{
 	}
 
 
-	private void displayBoard() {
+	public void displayBoard(int[][] arr) {
+		for(int i = 0; i < arr[0].length-1; i++) {
+			for(int j = 0; j < arr[0].length-1; j++) {
+				System.out.print("cry");
+			}
+			System.out.println("");
+		}
+	}
+
+
+	@Override
+	public String getValidUserInput() {
 		// TODO Auto-generated method stub
-		
+		return null;
+	}
+
+
+	@Override
+	public String getInput() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
