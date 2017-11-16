@@ -30,6 +30,7 @@ public class WilliamFrontEnd implements MarkSupporter{
 	        input = CaveExplorer.in.nextLine();
 	        respondToInput(input);
 	        analyzeBoard();
+	        //
 	        updateScore();
 	    }
 	        printGameOverMessage(backend.victorious());
