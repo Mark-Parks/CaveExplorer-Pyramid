@@ -31,7 +31,7 @@ public class DevinFrontEnd implements TheoSupport {
 		TheoDevinPlot[][]plots = backend.getPlots();//w.e theo calls it
 		TheoDevinPlot L = null;
 		while(!backend.isGameOver()) {//when game is still playing or : while(moves > 0)
-			displayBoard();
+			displayBoard(plots);
 			showMatchNum();
 			System.out.println("Where would you like to press?");
 			TheoDevinPlot okdad = backend.getUserMove();
@@ -41,6 +41,10 @@ public class DevinFrontEnd implements TheoSupport {
 			printMsg(backend.GameoverMsg());	
 	}	
 	
+	private void checkMatch(TheoDevinPlot okdad) {
+		// TODO Auto-generated method stub
+		
+	}
 	//private void checkMatch(TheoDevinPlot okdad) {
 		
 		
@@ -60,15 +64,9 @@ public class DevinFrontEnd implements TheoSupport {
 			System.out.print(rows.substring(row, row+1)+" ");
 			for(int col = 0; col < plots[row].length; col++){
 				if(plots[row][col].isRevealed()){ //supposed to be when card is flipped, make conditions with it in showMatchNum?
-					first = true; 
+					
 					backend.SymbolsofCards(); //reveals the value of cards
-					else if(backend.isMatch())
-					{ matches++;
-					 first = false;		}
-
-				
-
-				}else{
+				}else {
 					System.out.print(".");
 				}
 			}
@@ -76,6 +74,9 @@ public class DevinFrontEnd implements TheoSupport {
 		}
 		System.out.println(cols.substring(0, plots[0].length+2));
 	}
+			
+					
+
 		
 	
 	public void printMsg(String msg){

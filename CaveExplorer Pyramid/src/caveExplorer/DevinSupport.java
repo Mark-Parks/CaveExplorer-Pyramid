@@ -12,4 +12,8 @@ public interface DevinSupport {
 
 	void SymbolsofCards();
 
+	TheoDevinPlot[][] getPlots();
+
+	
+
 }
