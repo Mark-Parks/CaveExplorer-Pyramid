@@ -32,15 +32,24 @@ public class TheoBackEnd implements DevinSupport{
 		createPlot();
 	}
 	public boolean isMoveValid() {
-		return false;
+		if(frontend.getRow() > 3 || frontend.getRow() <0 || frontend.getCol() >3 || frontend.getCol() <0) {
+			return false;
+		}
+		return true;
 	}
 	public boolean isGameOver() {
+		if(frontend.getMatches() >=8 || frontend.getMoves()<0) {
+			return true;
+		}
 		return false;
 	}
 	@Override
 	public String GameoverMsg() {
-		// TODO Auto-generated method stub
-		return null;
+		if(frontend.getMatches() >=8) {
+		return "You win";
+		}else {
+			return "You lose";
+		}
 	}
 	@Override
 	public TheoDevinPlot getUserMove() {
