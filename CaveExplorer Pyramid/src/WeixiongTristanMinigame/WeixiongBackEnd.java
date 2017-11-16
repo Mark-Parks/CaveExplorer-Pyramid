@@ -1,8 +1,11 @@
 package WeixiongTristanMinigame;
 
+import caveExplorer.CaveExplorer;
+
 public class WeixiongBackEnd implements TristanSupport{
 
 	private WeixiongSupport frontend;
+	private boolean gameCleared;
 	public Block[][] maze;
 	private boolean isAlive;
 	private int[] playerPosition;
@@ -12,11 +15,21 @@ public class WeixiongBackEnd implements TristanSupport{
 	
 	public WeixiongBackEnd(WeixiongSupport frontend) {
 		this.frontend = frontend;
-		this.maze = new Block[5][5];
+		this.gameCleared = false;
+		this.maze = new Block[10][10];
 		this.isAlive = true;
 		this.playerPosition = new int[2];
 		setStartingPosition();
 		placeMummys();
+	}
+	
+	public void startPlaying() {
+		System.out.println("As you walk into the room, you find yourself in the middle of a huge maze. In it ");
+		System.out.println("you find 2 mummies prowling the area. If you could walk through, you could probably get ");
+		System.out.println("more places in the pyramid");
+		System.out.println(x); //directions on how to play
+		String repsonse = CaveExplorer.in.nextLine();
+		while()
 	}
 
 	public void createMaze() {
@@ -54,10 +67,10 @@ public class WeixiongBackEnd implements TristanSupport{
 		int[][] validPositions = checkValidMoves();
 	}
 	
-	//tristan was here
-	
 	private int[][] checkValidMoves() {
-		int[][] positions;
+		int[][] positions = new int[8][1];
+		int[][] mummyPositions = {this.mummy1Position, this.mummy2Position};
+		if()
 		return positions;
 	}
 
