@@ -76,5 +76,10 @@ public class TheoBackEnd implements DevinSupport{
 			}
 		}
 	}
-	                        
+	private boolean isMatch(TheoDevinPlot plot1,TheoDevinPlot plot2) {
+		if(plot1.getValue().equals(plot2.getValue())) {
+			return true;
+		}
+		return false;
+	}
 }
