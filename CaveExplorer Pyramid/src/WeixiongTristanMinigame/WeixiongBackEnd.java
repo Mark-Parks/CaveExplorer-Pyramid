@@ -11,6 +11,7 @@ public class WeixiongBackEnd implements TristanSupport{
 	private int[] playerPosition;
 	private int[][] mummies;
 	private int[] mummy1Position;
+
 	private int[] mummy2Position;
 	
 	public WeixiongBackEnd(WeixiongSupport frontend) {
@@ -21,15 +22,6 @@ public class WeixiongBackEnd implements TristanSupport{
 		this.playerPosition = new int[2];
 		setStartingPosition();
 		placeMummys();
-	}
-	
-	public void startPlaying() {
-		System.out.println("As you walk into the room, you find yourself in the middle of a huge maze. In it ");
-		System.out.println("you find 2 mummies prowling the area. If you could walk through, you could probably get ");
-		System.out.println("more places in the pyramid");
-		System.out.println(x); //directions on how to play
-		String repsonse = CaveExplorer.in.nextLine();
-		while()
 	}
 
 	public void createMaze() {
@@ -62,19 +54,37 @@ public class WeixiongBackEnd implements TristanSupport{
 		}
 	}
 	
-	public void moveMummies() {
+	public void moveMummy(int[] mummypsn) {
 		//moves the mummies; will only be called if the player makes a valid move
-		int[][] validPositions = checkValidMoves();
+		int[][] validPositions = checkValidMoves(mummypsn);
+		int idx = (int)(Math.random() * validPositions.length);
+		while(validPositions[idx] == null) {
+			idx = (int)(Math.random() * validPositions.length);
+		}
+		mummypsn = validPositions[idx];
 	}
 	
-	private int[][] checkValidMoves() {
-		int[][] positions = new int[8][1];
-		int[][] mummyPositions = {this.mummy1Position, this.mummy2Position};
-		if()
-		return positions;
+	private int[][] checkValidMoves(int[] psn) {
+		int[][] possiblePositions  = new int[8][2];
+		int xcoord = psn[0];
+		int ycoord = psn[1];
+		
+		return possiblePositions;
 	}
 
 	public Block[][] getMaze(){
 		return this.maze;
+	}
+	
+	public int[] getPlayerPosition() {
+		return playerPosition;
+	}
+
+	public int[] getMummy1Position() {
+		return mummy1Position;
+	}
+
+	public int[] getMummy2Position() {
+		return mummy2Position;
 	}
 }
