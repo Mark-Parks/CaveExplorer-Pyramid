@@ -112,7 +112,7 @@ public class MarkBackEnd implements WilliamSupporter{
 	
 	public boolean victorious() {
 		return columnCheck(board) && rowCheck(board) && diagonalCheck(board);
-	}
+	}//checks if won
 	
 	public int[][] getBoard(){
 		return board;
