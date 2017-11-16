@@ -9,16 +9,10 @@ public interface WilliamSupporter {
 	
 	public boolean stillPlaying();
 	
-
 	public int[][]getBoard();
 	//returns the board
 	
-	public String getValidUserInput();
-
-	
-	public void computerMove();
-
-	public String victorious();
+	public boolean victorious();
 
 
 }
