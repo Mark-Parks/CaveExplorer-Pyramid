@@ -3,7 +3,6 @@ package WeixiongTristanMinigame;
 import caveExplorer.CaveExplorer;
 
 public class WeixiongBackEnd implements TristanSupport{
-	
 	//constants
 	private static final int NORTH = 0;
 	private static final int EAST = 1;
@@ -23,11 +22,10 @@ public class WeixiongBackEnd implements TristanSupport{
 	public WeixiongBackEnd(WeixiongSupport frontend) {
 		this.frontend = frontend;
 		this.gameCleared = false;
-		this.maze = new Block[10][10];
+		this.maze = new Block[6][6];
 		this.isAlive = true;
 		this.playerPosition = new int[2];
 		setStartingPosition();
-		placeMummys();
 	}
 
 	public void createMaze() {
@@ -46,6 +44,7 @@ public class WeixiongBackEnd implements TristanSupport{
 	}
 	
 	public void placeMummys() {
+		//debating on whether or not to fix their paths, will decide later
 		int xcoord;
 		int ycoord;
 		for(int[] mummy: mummies) {
@@ -53,7 +52,7 @@ public class WeixiongBackEnd implements TristanSupport{
 			ycoord = (int)(Math.random() * maze[0].length);
 			while(!maze[xcoord][ycoord].getContents().equals(" ")) {
 				xcoord = (int)(Math.random() * maze.length);
-				ycoord = (int)(Math.random() * 3)+3;
+				ycoord = (int)(Math.random() * 3) + 3;
 			}
 			mummy[0] = xcoord;
 			mummy[1] = ycoord;
@@ -70,13 +69,21 @@ public class WeixiongBackEnd implements TristanSupport{
 		mummypsn = validPositions[idx];
 		for(int i = 0;  i < DIRECTIONS.length; i++) {
 			//looks in every direction for the player, will reset the game if player is found
+			lookForPlayer(mummypsn, DIRECTIONS[i]);
 		}
 	}
 	
 	public void lookForPlayer(int[] mummypsn, int direction){
 		if(containsPlayer(mummypsn, direction)) {
-			
+			resetBoard();
 		}
+	}
+	
+	public void resetBoard() {
+		//resets the board with the mummies and player to their original starting positions
+		System.out.println("Oh no! A mummy saw you! Everything goes black...");
+		System.out.println("You wake up back at the start of the labyrinth. Maybe\nyou should wait for the mummies to make their moves first\nbefore you move.");
+		
 	}
 	
 	public boolean containsPlayer(int[] mummypsn, int direction) {
