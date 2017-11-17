@@ -14,5 +14,10 @@ public interface WilliamSupporter {
 	
 	public boolean victorious();
 
+	public void swap(int a, int b, int c, int d, int[][] board);
+
+	public void updateSums(int[][] board);
+
+
 
 }

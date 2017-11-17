@@ -15,6 +15,8 @@ public class MarkBackEnd implements WilliamSupporter{
 		System.out.println("test1");
 		rowTotals = new int[3];
 		colTotals = new int[3];
+		coords1 = new int[2];
+		coords2 = new int[2];
 		board = new int[4][4];
 		System.out.println("test1");
 		createBoard(3);
@@ -26,10 +28,10 @@ public class MarkBackEnd implements WilliamSupporter{
 	}
 	
 	public void swap(int row1, int col1, int row2, int col2, int[][]array) {
-		coords1[0] = col1;
-		coords1[1] = row1;
-		coords2[0] = col2;
-		coords2[1] = row2;
+		coords1[0] = row1;
+		coords1[1] = col1;
+		coords2[0] = row2;
+		coords2[1] = col2;
 		int x = board[coords1[0]][coords1[1]];
 		board[coords1[0]][coords1[1]] = board[coords2[0]][coords2[1]];
 		board[coords2[0]][coords2[1]] = x;
@@ -67,29 +69,30 @@ public class MarkBackEnd implements WilliamSupporter{
 		System.out.println("test1");
 		for(int i = 0; i < numbers.length; i++) {
 			int newNumber = (int)(Math.random()*(n*n))+1;
-			System.out.println("GEN RANDO NUM");
 			while(contains(numbers, newNumber)) {
 				newNumber = (int)(Math.random()*(n*n))+1;
 			}
-			System.out.println("WHILE ECSAPED");
 			numbers[i] = newNumber;
 		}
-		System.out.println("BOARD CREATED");
+		
 		for(int i = 0; i < n; i++) {
 			for(int j = 0; j < n; j++) {
 				board[i][j] = numbers[i*3+j];
 			}
 		}
-		System.out.println("test1");
-		for(int i = 0; i < n; i++){
+		
+	}
+	
+	public void updateSums(int[][] board) {
+		for(int i = 0; i < board[0].length - 1; i++){
 			showRowSum(i, board);
 		}
-		System.out.println("test1");
-		for(int i = 0; i < n; i++){
+		
+		for(int i = 0; i < board[0].length - 1; i++){
 			showColSum(i, board);
 		}
+		
 		showDiagSum(board);
-		System.out.println("test1");
 	}
 	
 	private boolean diagonalCheck(int[][] array) {
