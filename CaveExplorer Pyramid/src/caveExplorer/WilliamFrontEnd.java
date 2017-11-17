@@ -15,9 +15,7 @@ public class WilliamFrontEnd implements MarkSupporter{
 
 
 	public WilliamFrontEnd() {
-		System.out.println("test1");
 		backend = new MarkBackEnd(this);
-		System.out.println("test1");
 		CaveExplorer.in = new Scanner(System.in);
 	}
 
@@ -25,16 +23,14 @@ public class WilliamFrontEnd implements MarkSupporter{
 		System.out.println("You stumble upon a strange sequence of numbers.");
 		board = backend.getBoard();
 		String input = CaveExplorer.in.nextLine();
+		
 	    while(backend.stillPlaying()){
-	    	System.out.println("test2");
 	    	backend.updateSums(board);
 	    	displayBoard(board);
-	    	System.out.println("test4");
 	        displayScore();
 	        input = CaveExplorer.in.nextLine();
 	        respondToInput(input);
 	        analyzeBoard();
-	        //
 	        updateScore();
 	    }
 	        printGameOverMessage(backend.victorious());
@@ -68,7 +64,6 @@ public class WilliamFrontEnd implements MarkSupporter{
 				int c = Integer.parseInt(input.substring(4,5));
 				int d = Integer.parseInt(input.substring(6,7));
 				backend.swap(a,b,c,d,board);
-				//swap makes a null pointer exception
 				System.out.println("The numbers shift accordingly.");
 			}
 		}

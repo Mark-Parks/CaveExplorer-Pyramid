@@ -10,17 +10,13 @@ public class MarkBackEnd implements WilliamSupporter{
 	private int[] colTotals;
 	
 	public MarkBackEnd(MarkSupporter frontend) {
-		System.out.println("test1");
 		this.frontend = frontend;
-		System.out.println("test1");
 		rowTotals = new int[3];
 		colTotals = new int[3];
 		coords1 = new int[2];
 		coords2 = new int[2];
 		board = new int[4][4];
-		System.out.println("test1");
 		createBoard(3);
-		System.out.println("test1");
 	}
 	
 	public void cancel() {
@@ -39,7 +35,7 @@ public class MarkBackEnd implements WilliamSupporter{
 	
 	public void showRowSum(int row, int[][] array){
 		int sum = 0;
-		for (int i =0; i < array[row].length; i++){
+		for (int i = 0; i < array[row].length; i++){
 			sum += array[row][i];
 		}
 		rowTotals[row] = sum;
@@ -48,7 +44,7 @@ public class MarkBackEnd implements WilliamSupporter{
 	
 	public void showColSum(int col, int[][] array){
 		int sum = 0;
-		for (int i =0; i < array[col].length; i++){
+		for (int i = 0; i < array[col].length; i++){
 			sum += array[i][col];
 		}
 		colTotals[col] = sum;
@@ -64,9 +60,7 @@ public class MarkBackEnd implements WilliamSupporter{
 	}
 	
 	public void createBoard(int n) {
-		System.out.println("test1");
 		int[] numbers = new int[n*n];
-		System.out.println("test1");
 		for(int i = 0; i < numbers.length; i++) {
 			int newNumber = (int)(Math.random()*(n*n))+1;
 			while(contains(numbers, newNumber)) {
