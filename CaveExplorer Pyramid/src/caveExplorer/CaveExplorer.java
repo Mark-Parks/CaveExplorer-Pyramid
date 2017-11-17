@@ -26,8 +26,6 @@ public class CaveExplorer {
 	private static void startExploring() {
 		while(playing) {
 			moveNPCs();
-			System.out.println("\033[3mText goes here\033[0m");
-
 			print(inventory.getDescription());
 			print(currentRoom.getDescription());
 			print(currentRoom.getDirections());

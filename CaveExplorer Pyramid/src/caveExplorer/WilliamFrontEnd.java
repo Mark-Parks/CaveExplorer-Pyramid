@@ -20,8 +20,8 @@ public class WilliamFrontEnd implements MarkSupporter{
 	}
 
 	public void play(){
-		System.out.println(" the sandstone tiles of the walls.");
-		System.out.println("You notice a strange sequence of symbols etched on individual tiles on the sandstone walls.");
+		System.out.println("The carvings are in truth, a strange sequecne of symbols etched onto individual tiles on the sandstone walls.");
+		System.out.println("You recognize them to be hieroglyphic numbers.");
 		board = backend.getBoard();
 		backend.updateSums(board);
 				
@@ -35,7 +35,7 @@ public class WilliamFrontEnd implements MarkSupporter{
 	        backend.updateSums(board);
 	    }
 	    displayBoard(board);
-	    System.out.println("The puzzle");
+	    System.out.println("As you solve the puzzle, the ground trembles. Maybe a new passageway has opened?");
 	}
 	
 	public void printGameOverMessage(Object victorious) {
