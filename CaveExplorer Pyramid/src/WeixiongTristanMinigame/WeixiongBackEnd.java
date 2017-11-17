@@ -62,9 +62,16 @@ public class WeixiongBackEnd implements TristanSupport{
 			idx = (int)(Math.random() * validPositions.length);
 		}
 		mummypsn = validPositions[idx];
+		lookForPlayer(mummypsn);
 	}
 	
-	private int[][] checkValidMoves(int[] psn) {
+	public void lookForPlayer(int[] mummypsn){
+		if(containsPlayer(mummypsn, north){
+			
+		}	
+	}
+	
+	public int[][] checkValidMoves(int[] psn) {
 		int[][] possiblePositions  = new int[8][2];
 		int xcoord = psn[0];
 		int ycoord = psn[1];
