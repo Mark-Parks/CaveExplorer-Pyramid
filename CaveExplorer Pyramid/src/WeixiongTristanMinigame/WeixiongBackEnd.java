@@ -3,6 +3,13 @@ package WeixiongTristanMinigame;
 import caveExplorer.CaveExplorer;
 
 public class WeixiongBackEnd implements TristanSupport{
+	
+	//constants
+	private static final int NORTH = 0;
+	private static final int EAST = 1;
+	private static final int SOUTH = 2;
+	private static final int WEST = 3;
+	private static final int[] DIRECTIONS = {NORTH, EAST, SOUTH, WEST};
 
 	private WeixiongSupport frontend;
 	private boolean gameCleared;
@@ -11,7 +18,6 @@ public class WeixiongBackEnd implements TristanSupport{
 	private int[] playerPosition;
 	private int[][] mummies;
 	private int[] mummy1Position;
-
 	private int[] mummy2Position;
 	
 	public WeixiongBackEnd(WeixiongSupport frontend) {
@@ -62,15 +68,24 @@ public class WeixiongBackEnd implements TristanSupport{
 			idx = (int)(Math.random() * validPositions.length);
 		}
 		mummypsn = validPositions[idx];
-		lookForPlayer(mummypsn);
+		for(int i = 0;  i < DIRECTIONS.length; i++) {
+			//looks in every direction for the player, will reset the game if player is found
+		}
 	}
 	
-	public void lookForPlayer(int[] mummypsn){
-		if(containsPlayer(mummypsn, north){
+	public void lookForPlayer(int[] mummypsn, int direction){
+		if(containsPlayer(mummypsn, direction)) {
 			
-		}	
+		}
 	}
 	
+	public boolean containsPlayer(int[] mummypsn, int direction) {
+		int range = 2;
+		Block nextBlock;
+		
+		return false;
+	}
+
 	public int[][] checkValidMoves(int[] psn) {
 		int[][] possiblePositions  = new int[8][2];
 		int xcoord = psn[0];
