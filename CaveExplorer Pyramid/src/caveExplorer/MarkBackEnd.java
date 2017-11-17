@@ -53,6 +53,14 @@ public class MarkBackEnd implements WilliamSupporter{
 		array[array[col].length-1][col] = sum;
 	}
 	
+	public void showDiagSum(int[][] array){
+		int sum = 0;
+		for(int i = 0; i < array[0].length-1; i++) {
+			sum += array[i][i];
+		}
+		array[array[0].length-1][array[0].length-1] = sum; 
+	}
+	
 	public void createBoard(int n) {
 		System.out.println("test1");
 		int[] numbers = new int[n*n];
@@ -80,6 +88,7 @@ public class MarkBackEnd implements WilliamSupporter{
 		for(int i = 0; i < n; i++){
 			showColSum(i, board);
 		}
+		showDiagSum(board);
 		System.out.println("test1");
 	}
 	
