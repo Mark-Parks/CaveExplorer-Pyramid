@@ -7,9 +7,9 @@ public class DevinFrontEnd implements TheoSupport {
 	private int moves;
 	private int matches;
 
-	public static final void main(String args) {
+	public static final void main(String[] args) {
 		DevinFrontEnd demo = new DevinFrontEnd();
-		demo.play();
+		demo.gameBegins();
 	}
 	public DevinFrontEnd() {
 		backend = new TheoBackEnd(this);
@@ -24,7 +24,7 @@ public class DevinFrontEnd implements TheoSupport {
 	}
 //f
 	
-	public void GameBegins() {
+	public void gameBegins() {
 		/**
 		 * make board, fill it with "." Each turned down card is a dot
 		 * Each card will be assigned a letter randomly. Each letter will have a pair too.
