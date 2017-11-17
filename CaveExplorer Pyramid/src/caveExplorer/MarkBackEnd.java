@@ -35,6 +35,7 @@ public class MarkBackEnd implements WilliamSupporter{
 	
 	public void showRowSum(int row, int[][] array){
 		int sum = 0;
+		array[row][array[row].length-1] = 0;
 		for (int i = 0; i < array[row].length; i++){
 			sum += array[row][i];
 		}
@@ -44,6 +45,7 @@ public class MarkBackEnd implements WilliamSupporter{
 	
 	public void showColSum(int col, int[][] array){
 		int sum = 0;
+		array[array[col].length-1][col] = 0;
 		for (int i = 0; i < array[col].length; i++){
 			sum += array[i][col];
 		}

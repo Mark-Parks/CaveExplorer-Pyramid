@@ -20,20 +20,22 @@ public class WilliamFrontEnd implements MarkSupporter{
 	}
 
 	public void play(){
-		System.out.println("You stumble upon a strange sequence of numbers.");
+		System.out.println(" the sandstone tiles of the walls.");
+		System.out.println("You notice a strange sequence of symbols etched on individual tiles on the sandstone walls.");
 		board = backend.getBoard();
-		String input = CaveExplorer.in.nextLine();
-		
+		backend.updateSums(board);
+				
 	    while(backend.stillPlaying()){
-	    	backend.updateSums(board);
-	    	displayBoard(board);
-	        displayScore();
-	        input = CaveExplorer.in.nextLine();
-	        respondToInput(input);
 	        analyzeBoard();
 	        updateScore();
+	    	displayBoard(board);
+	        displayScore();
+	        String input = CaveExplorer.in.nextLine();
+	        respondToInput(input);
+	        backend.updateSums(board);
 	    }
-	        printGameOverMessage(backend.victorious());
+	    displayBoard(board);
+	    System.out.println("The puzzle");
 	}
 	
 	public void printGameOverMessage(Object victorious) {
