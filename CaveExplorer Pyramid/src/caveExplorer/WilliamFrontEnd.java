@@ -20,13 +20,16 @@ public class WilliamFrontEnd implements MarkSupporter{
 
 	public void play(){
 		System.out.println("You stumble upon a strange sequence of numbers.");
-		 System.out.println("test1");
+		backend.createBoard(3);
+		System.out.println("test1");
 		String input = CaveExplorer.in.nextLine();
 	    while(backend.stillPlaying()){
-	    	 System.out.println("test1");
-	    	displayBoard(board);
+	    	System.out.println("test2");
+	    	board = backend.getBoard();
+	    	System.out.println("test3");
+	    	displayBoard(backend.getBoard());
+	    	  System.out.println("test4");
 	        displayScore();
-	        System.out.println("test2");
 	        input = CaveExplorer.in.nextLine();
 	        respondToInput(input);
 	        analyzeBoard();
