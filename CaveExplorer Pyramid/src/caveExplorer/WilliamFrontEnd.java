@@ -28,7 +28,7 @@ public class WilliamFrontEnd implements MarkSupporter{
 	    	board = backend.getBoard();
 	    	System.out.println("test3");
 	    	displayBoard(backend.getBoard());
-	    	  System.out.println("test4");
+	    	System.out.println("test4");
 	        displayScore();
 	        input = CaveExplorer.in.nextLine();
 	        respondToInput(input);

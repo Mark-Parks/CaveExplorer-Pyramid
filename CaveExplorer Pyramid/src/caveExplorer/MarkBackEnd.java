@@ -48,7 +48,7 @@ public class MarkBackEnd implements WilliamSupporter{
 		return sum;
 	}
 	
-	public int[][] createBoard(int n) {
+	public void createBoard(int n) {
 		int[] numbers = new int[n*n];
 		for(int i = 0; i < numbers.length; i++) {
 			int newNumber = (int)(Math.random()*n*n-1)+1;
@@ -71,8 +71,7 @@ public class MarkBackEnd implements WilliamSupporter{
 		for(int i = 0; i < n; i++){
 			colSum(i, squareArray);
 		}
-		
-		return squareArray;
+		board = squareArray;
 	}
 	
 	private boolean diagonalCheck(int[][] array) {
