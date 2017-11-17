@@ -14,20 +14,21 @@ public class WilliamFrontEnd implements MarkSupporter{
 
 
 	public WilliamFrontEnd() {
+		System.out.println("test1");
 		backend = new MarkBackEnd(this);
+		System.out.println("test1");
 		CaveExplorer.in = new Scanner(System.in);
 	}
 
 	public void play(){
 		System.out.println("You stumble upon a strange sequence of numbers.");
-		backend.createBoard(3);
 		System.out.println("test1");
+		board = backend.getBoard();
 		String input = CaveExplorer.in.nextLine();
 	    while(backend.stillPlaying()){
 	    	System.out.println("test2");
-	    	board = backend.getBoard();
 	    	System.out.println("test3");
-	    	displayBoard(backend.getBoard());
+	    	displayBoard(board);
 	    	System.out.println("test4");
 	        displayScore();
 	        input = CaveExplorer.in.nextLine();

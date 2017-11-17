@@ -3,17 +3,22 @@ package caveExplorer;
 public class MarkBackEnd implements WilliamSupporter{
 
 	private MarkSupporter frontend;
-	
-	public MarkBackEnd(MarkSupporter frontend) {
-		this.frontend = frontend;
-		
-	}
-
 	private int[][] board;
 	private int[] coords1;
 	private int[] coords2;
+	private int[] rowTotals;
+	private int[] colTotals;
 	
-	public static void main(String[] args) {
+	public MarkBackEnd(MarkSupporter frontend) {
+		System.out.println("test1");
+		this.frontend = frontend;
+		System.out.println("test1");
+		rowTotals = new int[3];
+		colTotals = new int[3];
+		board = new int[4][4];
+		System.out.println("test1");
+		createBoard(3);
+		System.out.println("test1");
 	}
 	
 	public void cancel() {
@@ -30,48 +35,52 @@ public class MarkBackEnd implements WilliamSupporter{
 		board[coords2[0]][coords2[1]] = x;
 	}
 	
-	public int rowSum(int row, int[][] array){
+	public void showRowSum(int row, int[][] array){
 		int sum = 0;
 		for (int i =0; i < array[row].length; i++){
 			sum += array[row][i];
 		}
-		array[row][array[row].length] = sum;
-		return sum;
+		rowTotals[row] = sum;
+		array[row][array[row].length-1] = sum;
 	}
 	
-	public int colSum(int col, int[][] array){
+	public void showColSum(int col, int[][] array){
 		int sum = 0;
 		for (int i =0; i < array[col].length; i++){
 			sum += array[i][col];
 		}
-		array[array[col].length][col] = sum;
-		return sum;
+		colTotals[col] = sum;
+		array[array[col].length-1][col] = sum;
 	}
 	
 	public void createBoard(int n) {
+		System.out.println("test1");
 		int[] numbers = new int[n*n];
+		System.out.println("test1");
 		for(int i = 0; i < numbers.length; i++) {
-			int newNumber = (int)(Math.random()*n*n-1)+1;
+			int newNumber = (int)(Math.random()*(n*n))+1;
+			System.out.println("GEN RANDO NUM");
 			while(contains(numbers, newNumber)) {
-				newNumber = (int)(Math.random()*n*n-1)+1;
+				newNumber = (int)(Math.random()*(n*n))+1;
 			}
+			System.out.println("WHILE ECSAPED");
 			numbers[i] = newNumber;
 		}
-		
-		int[][]squareArray = new int[n+1][n+1];
+		System.out.println("BOARD CREATED");
 		for(int i = 0; i < n; i++) {
 			for(int j = 0; j < n; j++) {
-				squareArray[i][j] = numbers[i*3+j];
+				board[i][j] = numbers[i*3+j];
 			}
 		}
+		System.out.println("test1");
 		for(int i = 0; i < n; i++){
-			rowSum(i, squareArray);
+			showRowSum(i, board);
 		}
-		
+		System.out.println("test1");
 		for(int i = 0; i < n; i++){
-			colSum(i, squareArray);
+			showColSum(i, board);
 		}
-		board = squareArray;
+		System.out.println("test1");
 	}
 	
 	private boolean diagonalCheck(int[][] array) {
@@ -89,11 +98,11 @@ public class MarkBackEnd implements WilliamSupporter{
 	}
 
 	private boolean rowCheck(int[][] array) {
-		return rowSum(0,array) == rowSum(1,array) && rowSum(0,array) == rowSum(2,array);
+		return rowTotals[0] == rowTotals[1] && rowTotals[0] == rowTotals[2];
 	}
 
 	private boolean columnCheck(int[][] array) {
-		return colSum(0,array) == colSum(1,array) && colSum(0,array) == colSum(2,array);
+		return colTotals[0] == colTotals[1] && colTotals[0] == colTotals[2];
 	}
 	
 	public boolean contains(int[] nums, int num) {
