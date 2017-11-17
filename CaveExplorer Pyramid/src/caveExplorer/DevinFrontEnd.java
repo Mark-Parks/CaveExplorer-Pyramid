@@ -1,6 +1,6 @@
 package caveExplorer;
 
-
+import java.util.Scanner;
 
 public class DevinFrontEnd implements TheoSupport {
 	private DevinSupport backend;
@@ -10,14 +10,20 @@ public class DevinFrontEnd implements TheoSupport {
 
 	public static final void main(String args) {
 		DevinFrontEnd demo = new DevinFrontEnd();
-		
+		demo.play();
 	}
 	public DevinFrontEnd() {
 		backend = new TheoBackEnd(this);
 		moves = 32;
 		matches = 0;
+		CaveExplorer.in = new Scanner(System.in);
 		first = false; // 1st tile to be clicked upon is flipped or not flipped
 	}
+	private void play() {
+		System.out.println("pls");
+			
+	}
+
 	
 	public void GameBegins() {
 		/**
@@ -35,20 +41,14 @@ public class DevinFrontEnd implements TheoSupport {
 			showMatchNum();
 			System.out.println("Where would you like to press?");
 			TheoDevinPlot okdad = backend.getUserMove();
-			checkMatch(okdad);
+			TheoDevinPlot xdfp = backend.getUserMove();
+			backend.isMatch(okdad,xdfp);
 			//moves--;
 		}
 			printMsg(backend.GameoverMsg());	
 	}	
 	
-	private void checkMatch(TheoDevinPlot okdad) {
-		// TODO Auto-generated method stub
-		
-	}
-	//private void checkMatch(TheoDevinPlot okdad) {
-		
-		
-	//}
+
 	public void rules() {
 		System.out.println("You will have "+moves+" chances to find all the matches."
 				+ " To win, you must match 2 of the same cards together by inputting coordinates into the game."
@@ -63,9 +63,9 @@ public class DevinFrontEnd implements TheoSupport {
 		for(int row = 0; row < plots.length; row++){
 			System.out.print(rows.substring(row, row+1)+" ");
 			for(int col = 0; col < plots[row].length; col++){
-				if(plots[row][col].isRevealed()){ //supposed to be when card is flipped, make conditions with it in showMatchNum?
+				if(plots[row][col].getUp()){ //supposed to be when card is flipped, make conditions with it in showMatchNum?
 					
-					backend.SymbolsofCards(); //reveals the value of cards
+					System.out.print(plots[row][col].getValue()); //reveals the value of cards
 				}else {
 					System.out.print(".");
 				}

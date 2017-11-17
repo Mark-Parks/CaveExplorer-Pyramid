@@ -8,9 +8,7 @@ public interface DevinSupport {
 
 	boolean isGameOver();
 
-	boolean isMatch();
-
-	void SymbolsofCards();
+	boolean isMatch(TheoDevinPlot plot1,TheoDevinPlot plot2);
 
 	TheoDevinPlot[][] getPlots();
 
