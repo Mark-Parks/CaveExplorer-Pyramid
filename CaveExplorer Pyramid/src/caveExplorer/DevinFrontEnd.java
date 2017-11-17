@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class DevinFrontEnd implements TheoSupport {
 	private DevinSupport backend;
-	private boolean first;
 	private int moves;
 	private int matches;
 
@@ -17,7 +16,7 @@ public class DevinFrontEnd implements TheoSupport {
 		moves = 32;
 		matches = 0;
 		CaveExplorer.in = new Scanner(System.in);
-		first = false; // 1st tile to be clicked upon is flipped or not flipped
+		//setFirst(false); // 1st tile to be clicked upon is flipped or not flipped
 	}
 	private void play() {
 		System.out.println("pls");
@@ -35,7 +34,7 @@ public class DevinFrontEnd implements TheoSupport {
 		 * }
 		 */
 		TheoDevinPlot[][]plots = backend.getPlots();//w.e theo calls it
-		TheoDevinPlot L = null;
+		//TheoDevinPlot L = null;
 		while(!backend.isGameOver()) {//when game is still playing or : while(moves > 0)
 			displayBoard(plots);
 			showMatchNum();
@@ -80,7 +79,7 @@ public class DevinFrontEnd implements TheoSupport {
 		
 	
 	public void printMsg(String msg){
-		System.out.println(msg);
+		//lol
 	}
 	@Override
 	public int getRow() {
