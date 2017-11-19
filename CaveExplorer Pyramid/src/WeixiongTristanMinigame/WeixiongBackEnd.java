@@ -13,6 +13,7 @@ public class WeixiongBackEnd implements TristanSupport{
 	private WeixiongSupport frontend;
 	private boolean gameCleared;
 	public Block[][] maze;
+	private Block[][] initMaze;
 	private boolean isAlive;
 	private int[] playerPosition;
 	private int[][] mummies;
@@ -23,6 +24,7 @@ public class WeixiongBackEnd implements TristanSupport{
 		this.frontend = frontend;
 		this.gameCleared = false;
 		this.maze = new Block[6][6];
+		createMaze();
 		this.isAlive = true;
 		this.playerPosition = new int[2];
 		setStartingPosition();
@@ -36,6 +38,9 @@ public class WeixiongBackEnd implements TristanSupport{
 			}
 		}
 		//adds walls; will decide layout later
+		
+		//for resetting the game, we set initMaze equal to maze
+		this.initMaze = this.maze;
 	}
 	
 	public void setStartingPosition() {
@@ -81,15 +86,30 @@ public class WeixiongBackEnd implements TristanSupport{
 	
 	public void resetBoard() {
 		//resets the board with the mummies and player to their original starting positions
-		System.out.println("Oh no! A mummy saw you! Everything goes black...");
-		System.out.println("You wake up back at the start of the labyrinth. Maybe\nyou should wait for the mummies to make their moves first\nbefore you move.");
+		
 		
 	}
 	
 	public boolean containsPlayer(int[] mummypsn, int direction) {
 		int range = 2;
 		Block nextBlock;
-		
+		if(direction % 2 == 0) {
+			if(direction == NORTH) {
+				
+			}
+			if(direction == SOUTH) {
+				
+			}
+		}
+		else 
+		{
+			if(direction == EAST) {
+				
+			}
+			if(direction == WEST) {
+				
+			}
+		}
 		return false;
 	}
 
