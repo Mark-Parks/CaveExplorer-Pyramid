@@ -4,12 +4,11 @@ import java.util.Scanner;
 
 public class WeiCustomRoom extends NPCRoom {
 	private static Scanner in;
-	private int size;
 	private String[] relics = new String[10];
 	
 	public WeiCustomRoom(String description, int size) {
 		super(description);
-		in = new Scanner(System.in);
+		this.relics = new String[size];
 	}
 	
 	public void grabItem() {

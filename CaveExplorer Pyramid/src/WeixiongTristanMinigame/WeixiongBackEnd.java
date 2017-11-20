@@ -110,10 +110,10 @@ public class WeixiongBackEnd implements TristanSupport{
 		if(direction % 2 == 0) {
 			if(direction == NORTH && range > 0 && xcoord > 0) {
 				while(range <=2 && xcoord > 0) {
-					if(maze[xcoord - 1][ycoord] instanceof VerticalWall || maze[xcoord - 1][ycoord] instanceof HorizontalWall) {
+					if(maze[xcoord - range][ycoord] instanceof VerticalWall || maze[xcoord - 1][ycoord] instanceof HorizontalWall) {
 						return false;
 					}
-					else if(maze[xcoord - 1][ycoord].containsPlayer){
+					else if(maze[xcoord - range][ycoord].containsPlayer){
 						return true;
 					}
 					range++;
