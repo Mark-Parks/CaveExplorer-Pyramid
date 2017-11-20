@@ -17,13 +17,18 @@ public class WeixiongBackEnd implements TristanSupport{
 	private int[] mummy1Position;
 	private int[] mummy2Position;
 	
+	public static void main(String[] args) {
+		int[] test = {1,1};
+		WeixiongBackEnd test1 = new WeixiongBackEnd(null);
+		test1.maze = new Block[6][6];
+		test1.createMaze();
+	}
+
 	public WeixiongBackEnd(WeixiongSupport frontend) {
 		this.frontend = frontend;
 		this.gameCleared = false;
 		this.maze = new Block[6][6];
-		createMaze();
 		this.playerPosition = new int[2];
-		setStartingPosition();
 	}
 	
 	public void clearGame() {
@@ -41,6 +46,20 @@ public class WeixiongBackEnd implements TristanSupport{
 	}
 
 	public void createMaze() {
+		for(int i = 0; i < maze.length; i++) {
+			for(int j = 0; j < maze[i].length; j++) {
+				maze[i][j] = new Block();
+			}
+		}
+		maze[0][2] = new VerticalWall();
+		maze[1][2] = new VerticalWall();
+		maze[1][3] = new HorizontalWall();
+		maze[1][4] = new HorizontalWall();
+		maze[1][5] = new HorizontalWall();
+		printMaze(maze);
+	}
+
+	public void createMaze(Block[][] maze) {
 		//populates the maze with roads
 		for(Block[] row: maze) {
 			for(Block col: row) {
@@ -50,16 +69,25 @@ public class WeixiongBackEnd implements TristanSupport{
 		//adds walls; will decide layout later
 		maze[0][2] = new VerticalWall();
 		maze[1][2] = new VerticalWall();
-		maze[1][3] = new HorizontalWall();
-		maze[1][4] = new HorizontalWall();
+		maze[3][3] = new HorizontalWall();
+		maze[5][4] = new HorizontalWall();
 		maze[1][5] = new HorizontalWall();
 		//for resetting the game later, we set initMaze equal to maze
-		this.initMaze = this.maze;
+	}
+	
+	public void printMaze(Block[][] maze) {
+		for(Block[] row: maze) {
+			for(Block block: row) {
+				System.out.print(block.getContents());
+			}
+			System.out.println("");
+		}
 	}
 	
 	public void setStartingPosition() {
 		playerPosition[0] = 0;
 		playerPosition[1] = 0;
+		maze[0][0].setContents("X");
 	}
 	
 	public void placeMummies() {
