@@ -14,9 +14,14 @@ public class TristanFrontEnd implements WeixiongSupport{
 	}
 
 	public void startPlaying() {
+		printIntro();
 		drawMaze(backend.getMaze());
 	}
 	
+	public void printIntro() {
+		
+	}
+
 	public void drawMaze(Block[][] maze) {
 		for(Block[] row: maze) {
 			for(Block block : row) {
@@ -24,5 +29,9 @@ public class TristanFrontEnd implements WeixiongSupport{
 			}
 			System.out.println("");
 		}
+	}
+
+	public void printEndgameMsg() {
+		System.out.println("Congratulations! You've escaped from the mummies");
 	}
 }

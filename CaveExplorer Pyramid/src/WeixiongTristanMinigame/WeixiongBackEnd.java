@@ -12,7 +12,6 @@ public class WeixiongBackEnd implements TristanSupport{
 	private boolean gameCleared;
 	public Block[][] maze;
 	private Block[][] initMaze;
-	private boolean isAlive;
 	private int[] playerPosition;
 	private int[][] mummies;
 	private int[] mummy1Position;
@@ -23,18 +22,20 @@ public class WeixiongBackEnd implements TristanSupport{
 		this.gameCleared = false;
 		this.maze = new Block[6][6];
 		createMaze();
-		this.isAlive = true;
 		this.playerPosition = new int[2];
 		setStartingPosition();
 	}
 	
 	public void clearGame() {
 		gameCleared = true;
+		frontend.printEndgameMsg();
 	}
 	
 	public void move(int[] psn) {
+		maze[playerPosition[0]][playerPosition[1]].setOccupied(true);
 		playerPosition[0] = psn[0];
 		playerPosition[1] = psn[1];
+		maze[psn[0]][psn[1]].setOccupied(true);
 	}
 
 	public boolean valid(String input) {
@@ -50,13 +51,11 @@ public class WeixiongBackEnd implements TristanSupport{
 			}
 		}
 		//adds walls; will decide layout later
-		for(int i = 1; i < maze.length - 1; i++) {
-			maze[0][i] = new HorizontalWall();
-			maze[5][i] = new HorizontalWall();
-			maze[i][0] = new VerticalWall();
-			maze[5-i][0] = new VerticalWall();
-		}
-		
+		maze[0][2] = new VerticalWall();
+		maze[1][2] = new VerticalWall();
+		maze[1][3] = new HorizontalWall();
+		maze[1][4] = new HorizontalWall();
+		maze[1][5] = new HorizontalWall();
 		//for resetting the game later, we set initMaze equal to maze
 		this.initMaze = this.maze;
 	}
@@ -66,7 +65,7 @@ public class WeixiongBackEnd implements TristanSupport{
 		playerPosition[1] = 0;
 	}
 	
-	public void placeMummys() {
+	public void placeMummies() {
 		//debating on whether or not to fix their paths, will decide later
 		int xcoord;
 		int ycoord;
@@ -106,41 +105,60 @@ public class WeixiongBackEnd implements TristanSupport{
 		//resets the board with the mummies and player to their original starting positions
 		this.maze = this.initMaze;
 		setStartingPosition();
+		placeMummies();
 	}
 	
 	public boolean containsPlayer(int[] mummypsn, int direction) {
-		int range = 2;
+		int range = 1;
 		int xcoord = mummypsn[0];
 		int ycoord = mummypsn[1];
 		if(direction % 2 == 0) {
-			if(direction == NORTH) {
-				while(range > 0 && xcoord > 0) {
+			if(direction == NORTH && range > 0 && xcoord > 0) {
+				while(range <=2 && xcoord > 0) {
 					if(maze[xcoord - 1][ycoord] instanceof VerticalWall || maze[xcoord - 1][ycoord] instanceof HorizontalWall) {
 						return false;
 					}
 					else if(maze[xcoord - 1][ycoord].containsPlayer){
 						return true;
 					}
+					range--;
 				}
 			}
 			else{
-				while(range > 0 && xcoord < maze.length - 1) {
-					if(maze[xcoord + 1][ycoord] instanceof VerticalWall || maze[xcoord + 1][ycoord] instanceof HorizontalWall) {
+				while(range <= 2 && xcoord < maze.length - range) {
+					if(maze[xcoord + range][ycoord] instanceof VerticalWall || maze[xcoord + 1][ycoord] instanceof HorizontalWall) {
 						return false;
 					}
-					else if(maze[xcoord - 1][ycoord].containsPlayer){
+					else if(maze[xcoord + range][ycoord].containsPlayer){
 						return true;
 					}
+					range--;
 				}
 			}
 		}
 		else 
 		{
 			if(direction == EAST) {
-				
+				while(range <= 2 && ycoord > maze.length - 1) {
+					if(maze[xcoord][ycoord + range] instanceof VerticalWall || maze[xcoord - 1][ycoord] instanceof HorizontalWall) {
+						return false;
+					}
+					else if(maze[xcoord][ycoord + range].containsPlayer){
+						return true;
+					}
+					range--;
+				}
 			}
 			if(direction == WEST) {
-				
+				while(range <= 2 && ycoord > 0) {
+					if(maze[xcoord][ycoord - range] instanceof VerticalWall || maze[xcoord - 1][ycoord] instanceof HorizontalWall) {
+						return false;
+					}
+					else if(maze[xcoord][ycoord - range].containsPlayer){
+						return true;
+					}
+					range++;
+				}
 			}
 		}
 		return false;
@@ -154,6 +172,10 @@ public class WeixiongBackEnd implements TristanSupport{
 		
 		//still need to figure out what to do if the player and mummy both walk onto the same space
 		return possiblePositions;
+	}
+	
+	public String toCoords(int[] psn) {
+		return "("+psn[0]+","+psn[1]+")";
 	}
 
 	public Block[][] getMaze(){
