@@ -30,7 +30,8 @@ public class DevinFrontEnd implements TheoSupport {
 			CaveExplorer.in.nextLine();
 		}
 		if() {
-			
+			plots [backend.getCoordinput[0],backend.getCoordInput[1]] very important
+
 		}
 		else {
 			System.out.println("You have clicked on the same tile!");
@@ -94,9 +95,10 @@ public class DevinFrontEnd implements TheoSupport {
 
 		
 	
-	public void printMsg(String msg){
-		//
+	/*public void printMsg(String msg){
+		//not needed?
 	}
+	*/
 	@Override
 	public int getRow() {
 		// TODO Auto-generated method stub
