@@ -31,7 +31,7 @@ public class TheoDevinPlot {
 	public void setValue(String value) {
 		this.value = value;
 	}
-	public boolean isHasValue() {
+	public boolean HasValue() {
 		return hasValue;
 	}
 	public void setHasValue(boolean hasValue) {

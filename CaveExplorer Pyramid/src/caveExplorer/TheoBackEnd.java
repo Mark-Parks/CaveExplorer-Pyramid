@@ -67,7 +67,7 @@ public class TheoBackEnd implements DevinSupport{
 					while(placed == false) {
 						int z = (int)(Math.random() * plots.length);
 						int y = (int)(Math.random() * plots[z].length);
-						if(!plots[z][y].isHasValue()) {
+						if(!plots[z][y].HasValue()) {
 							plots[z][y].setValue(values[i]);
 							plots[z][y].setHasValue(true);
 							placed = true;
@@ -86,6 +86,6 @@ public class TheoBackEnd implements DevinSupport{
 	@Override
 	public TheoDevinPlot[][] getPlots() {
 		// TODO Auto-generated method stub
-		return null;
+		return plots;
 	}
 }
