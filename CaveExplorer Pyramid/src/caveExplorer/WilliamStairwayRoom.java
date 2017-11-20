@@ -35,6 +35,7 @@ public class WilliamStairwayRoom extends NPCRoom {
 			CaveExplorer.currentRoom = CaveExplorer.caves[getFloor()][0][0];
 			CaveExplorer.currentRoom.enter();
 			CaveExplorer.inventory.updateMap();
+			System.out.println("The stairway closes behind you as you exit.");
 		}
 		else {
 			CaveExplorer.print("Invalid input");

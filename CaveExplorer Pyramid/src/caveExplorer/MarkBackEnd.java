@@ -3,6 +3,7 @@ package caveExplorer;
 public class MarkBackEnd implements WilliamSupporter{
 
 	private MarkSupporter frontend;
+	private int size;
 	private int[][] board;
 	private int[] coords1;
 	private int[] coords2;
@@ -10,17 +11,14 @@ public class MarkBackEnd implements WilliamSupporter{
 	private int[] colTotals;
 	
 	public MarkBackEnd(MarkSupporter frontend) {
+		this.size = 4;
 		this.frontend = frontend;
-		rowTotals = new int[3];
-		colTotals = new int[3];
+		rowTotals = new int[size];
+		colTotals = new int[size];
 		coords1 = new int[2];
 		coords2 = new int[2];
-		board = new int[4][4];
-		createBoard(3);
-	}
-	
-	public void cancel() {
-		
+		board = new int[size+1][size+1];
+		createBoard(size);
 	}
 	
 	public void swap(int row1, int col1, int row2, int col2, int[][]array) {

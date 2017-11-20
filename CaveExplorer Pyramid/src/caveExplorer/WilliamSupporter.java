@@ -7,17 +7,17 @@ public interface WilliamSupporter {
 	//the bottom of columns, the rightmost-hand side of rows and the bottom-right corner
 	//is used to display the sum of columns, rows and the diagonal
 	
-	public boolean stillPlaying();
-	
 	public int[][]getBoard();
 	//returns the board
 	
 	public boolean victorious();
+	
+	public boolean stillPlaying();
+	//checks victorious
 
 	public void swap(int a, int b, int c, int d, int[][] board);
 
 	public void updateSums(int[][] board);
-
-
-
+	//updates the sums only, because the create
+	
 }
