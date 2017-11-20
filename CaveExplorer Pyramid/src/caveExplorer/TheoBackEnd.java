@@ -86,6 +86,6 @@ public class TheoBackEnd implements DevinSupport{
 	@Override
 	public TheoDevinPlot[][] getPlots() {
 		// TODO Auto-generated method stub
-		return null;
+		return plots;
 	}
 }
