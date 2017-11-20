@@ -88,4 +88,30 @@ public class TheoBackEnd implements DevinSupport{
 		// TODO Auto-generated method stub
 		return plots;
 	}
+	public int[] getCoordInput() {
+		String input = CaveExplorer.in.nextLine();
+		int[] coords = toCoords(input);
+		while(coords == null){
+			System.out.println("You must enter cordinates of the form:\n          <row>,<col>"
+					+ "\n<row> and <col> should be integers.");
+			input = CaveExplorer.in.nextLine();
+			coords = toCoords(input);
+		}
+		return coords;
+	}
+	private int[] toCoords(String input) {
+		try{
+			int a = Integer.parseInt(input.substring(0,1));
+			int b = Integer.parseInt(input.substring(2,3));
+			if(input.substring(1,2).equals(",") && input.length() ==3){
+				int[] coords = {a,b};
+				return coords;
+			}else{
+				return null;
+			}
+		}catch(Exception e){
+			return null;
+		}
+	}
+
 }
