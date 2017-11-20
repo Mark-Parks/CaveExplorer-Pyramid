@@ -38,7 +38,6 @@ public class WeixiongBackEnd implements TristanSupport{
 		maze[psn[0]][psn[1]].setOccupied(true);
 	}
 
-
 	public void createMaze() {
 		//populates the maze with roads
 		for(Block[] row: maze) {
@@ -117,7 +116,7 @@ public class WeixiongBackEnd implements TristanSupport{
 					else if(maze[xcoord - 1][ycoord].containsPlayer){
 						return true;
 					}
-					range--;
+					range++;
 				}
 			}
 			else{
@@ -128,7 +127,7 @@ public class WeixiongBackEnd implements TristanSupport{
 					else if(maze[xcoord + range][ycoord].containsPlayer){
 						return true;
 					}
-					range--;
+					range++;
 				}
 			}
 		}
@@ -142,7 +141,7 @@ public class WeixiongBackEnd implements TristanSupport{
 					else if(maze[xcoord][ycoord + range].containsPlayer){
 						return true;
 					}
-					range--;
+					range++;
 				}
 			}
 			if(direction == WEST) {
@@ -165,7 +164,37 @@ public class WeixiongBackEnd implements TristanSupport{
 		int xcoord = psn[0];
 		int ycoord = psn[1];
 		//if a coordinate is an instance of a block but not a wall, then the mummy and player can move to it
+		if(xcoord - 1 != 0) {
+			possiblePositions[0][0] = xcoord - 1;
+			possiblePositions[0][1] = ycoord;
+		}
+		else {
+			possiblePositions[0] = null;
+		}
+		 
+		if(xcoord + 1 < maze.length - 1) {
+			possiblePositions[1][0] = xcoord + 1;
+			possiblePositions[1][1] = ycoord;
+		}
+		else {
+			possiblePositions[1] = null;
+		}
 		
+		if(ycoord - 1 != 0) {
+			possiblePositions[2][0] = xcoord;
+			possiblePositions[2][1] = ycoord - 1;
+		}
+		else {
+			possiblePositions[2] = null;
+		}
+		 
+		if(ycoord + 1 < maze.length - 1) {
+			possiblePositions[3][0] = xcoord;
+			possiblePositions[3][1] = ycoord + 1;
+		}
+		else {
+			possiblePositions[3] = null;
+		}
 		//still need to figure out what to do if the player and mummy both walk onto the same space
 		return possiblePositions;
 	}
@@ -175,7 +204,7 @@ public class WeixiongBackEnd implements TristanSupport{
 	}
 
 	public Block[][] getMaze(){
-		return this.maze;
+		return maze;
 	}
 	
 	public int[] getPlayerPosition() {
