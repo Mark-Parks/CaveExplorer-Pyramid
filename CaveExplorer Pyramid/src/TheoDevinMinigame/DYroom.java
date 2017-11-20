@@ -4,14 +4,9 @@ import caveExplorer.CaveExplorer;
 import caveExplorer.NPC;
 import caveExplorer.NPCRoom;
 
-public class DYroom extends NPCRoom {
+public class DYroom extends NPC {
 	
 	
-
-	public DYroom(String description) {
-		super(description);
-		// TODO Auto-generated constructor stub
-	}
 	public void printValidMoves() {
 		System.out.println("You can only enter 'w','d','s', or 'a' or press 'e' to perform an action."
 				+ "You can press z for a description of the room.");

@@ -6,6 +6,7 @@ public class DevinFrontEnd implements TheoSupport {
 	private DevinSupport backend;
 	private int moves;
 	private int matches;
+	
 
 	public static final void main(String[] args) {
 		DevinFrontEnd demo = new DevinFrontEnd();
@@ -18,11 +19,25 @@ public class DevinFrontEnd implements TheoSupport {
 		CaveExplorer.in = new Scanner(System.in);
 		//setFirst(false); // 1st tile to be clicked upon is flipped or not flipped
 	}
-	private void play() {
-		System.out.println("pls");
+
+
+
+	/*private void getUserMove(TheoDevinPlot plot1,TheoDevinPlot plot2) {
+		if() {
 			
+		} else {
+			System.out.println("That is not a valid tile!");
+			CaveExplorer.in.nextLine();
+		}
+		if() {
+			
+		}
+		else {
+			System.out.println("You have clicked on the same tile!");
+			CaveExplorer.in.nextLine();
+		}
 	}
-//f
+	*/
 	
 	public void gameBegins() {
 		/**
@@ -33,15 +48,16 @@ public class DevinFrontEnd implements TheoSupport {
 		 * 		game 
 		 * }
 		 */
+		rules();
 		TheoDevinPlot[][]plots = backend.getPlots();//w.e theo calls it
 		//TheoDevinPlot L = null;
 		while(!backend.isGameOver()) {//when game is still playing or : while(moves > 0)
 			displayBoard(plots);
 			showMatchNum();
 			System.out.println("Where would you like to press?");
-			TheoDevinPlot okdad = backend.getUserMove();
-			TheoDevinPlot xdfp = backend.getUserMove();
-			backend.isMatch(okdad,xdfp);
+			TheoDevinPlot move1 = backend.getUserMove();
+			TheoDevinPlot move2 = backend.getUserMove();
+			backend.isMatch(move1,move2);
 			//moves--;
 		}
 			printMsg(backend.GameoverMsg());	
@@ -79,7 +95,7 @@ public class DevinFrontEnd implements TheoSupport {
 		
 	
 	public void printMsg(String msg){
-		//lol
+		//
 	}
 	@Override
 	public int getRow() {
