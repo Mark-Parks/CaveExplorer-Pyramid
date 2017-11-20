@@ -29,6 +29,20 @@ public class WeixiongBackEnd implements TristanSupport{
 		this.playerPosition = new int[2];
 		setStartingPosition();
 	}
+	
+	public void clearGame() {
+		gameCleared = true;
+	}
+	
+	public void move(int[] psn) {
+		playerPosition[0] = psn[0];
+		playerPosition[1] = psn[1];
+	}
+
+	public boolean valid(String input) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 	public void createMaze() {
 		//populates the maze with roads
@@ -38,8 +52,14 @@ public class WeixiongBackEnd implements TristanSupport{
 			}
 		}
 		//adds walls; will decide layout later
+		for(int i = 1; i < maze.length - 1; i++) {
+			maze[0][i] = new HorizontalWall();
+			maze[5][i] = new HorizontalWall();
+			maze[i][0] = new VerticalWall();
+			maze[5-i][0] = new VerticalWall();
+		}
 		
-		//for resetting the game, we set initMaze equal to maze
+		//for resetting the game later, we set initMaze equal to maze
 		this.initMaze = this.maze;
 	}
 	
@@ -86,8 +106,7 @@ public class WeixiongBackEnd implements TristanSupport{
 	
 	public void resetBoard() {
 		//resets the board with the mummies and player to their original starting positions
-		
-		
+		this.maze = this.initMaze;
 	}
 	
 	public boolean containsPlayer(int[] mummypsn, int direction) {
@@ -117,7 +136,8 @@ public class WeixiongBackEnd implements TristanSupport{
 		int[][] possiblePositions  = new int[8][2];
 		int xcoord = psn[0];
 		int ycoord = psn[1];
-		
+		//if a coordinate is an instance of a block but not a wall, then the mummy and player can move to it
+		//still need to figure out what to do if the player and mummy both walk onto the same space
 		return possiblePositions;
 	}
 

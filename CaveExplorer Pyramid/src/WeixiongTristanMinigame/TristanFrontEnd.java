@@ -18,6 +18,11 @@ public class TristanFrontEnd implements WeixiongSupport{
 	}
 	
 	public void drawMaze(Block[][] maze) {
-		//draw the maze
+		for(Block[] row: maze) {
+			for(Block block : row) {
+				System.out.print(block.getContents());
+			}
+			System.out.println("");
+		}
 	}
 }
