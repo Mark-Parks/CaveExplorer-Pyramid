@@ -6,7 +6,7 @@ public class DevinFrontEnd implements TheoSupport {
 	private DevinSupport backend;
 	private int moves;
 	private int matches;
-	private String isUp;
+	
 
 	public static final void main(String[] args) {
 		DevinFrontEnd demo = new DevinFrontEnd();
