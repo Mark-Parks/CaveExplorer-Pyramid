@@ -3,19 +3,16 @@ package WeixiongTristanMinigame;
 public class Block {
 	
 	private String contents;
-	public boolean isVisible;
-	public boolean isOccupied;
+	public boolean containsPlayer;
 	
 	public Block(String contents) {
-		isVisible = false;
-		isOccupied = false;
+		containsPlayer = false;
 		this.contents = contents;
 	}
 	
 	public Block() {
 		this.contents = " ";
-		isVisible = false;
-		isOccupied = false;
+		containsPlayer = false;;
 	}
 	
 	public String getContents() {
@@ -27,23 +24,14 @@ public class Block {
 	}
 
 	public boolean isOccupied() {
-		return isOccupied;
+		return containsPlayer;
 	}
 
 	public void setOccupied(boolean isOccupied) {
-		this.isOccupied = isOccupied;
+		this.containsPlayer = isOccupied;
 	}
 
 	public boolean containsMummy() {
 		return this.contents.equals("M");
 	}
-	
-	public boolean getVisibility() {
-		return isVisible;
-	}
-	
-	public void toggleVisibility(){
-		 isVisible = !isVisible;
-	}
-	
 }

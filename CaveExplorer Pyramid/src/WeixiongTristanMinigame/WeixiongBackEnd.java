@@ -1,7 +1,5 @@
 package WeixiongTristanMinigame;
 
-import caveExplorer.CaveExplorer;
-
 public class WeixiongBackEnd implements TristanSupport{
 	//constants
 	private static final int NORTH = 0;
@@ -107,17 +105,33 @@ public class WeixiongBackEnd implements TristanSupport{
 	public void resetBoard() {
 		//resets the board with the mummies and player to their original starting positions
 		this.maze = this.initMaze;
+		setStartingPosition();
 	}
 	
 	public boolean containsPlayer(int[] mummypsn, int direction) {
 		int range = 2;
-		Block nextBlock;
+		int xcoord = mummypsn[0];
+		int ycoord = mummypsn[1];
 		if(direction % 2 == 0) {
 			if(direction == NORTH) {
-				
+				while(range > 0 && xcoord > 0) {
+					if(maze[xcoord - 1][ycoord] instanceof VerticalWall || maze[xcoord - 1][ycoord] instanceof HorizontalWall) {
+						return false;
+					}
+					else if(maze[xcoord - 1][ycoord].containsPlayer){
+						return true;
+					}
+				}
 			}
-			if(direction == SOUTH) {
-				
+			else{
+				while(range > 0 && xcoord < maze.length - 1) {
+					if(maze[xcoord + 1][ycoord] instanceof VerticalWall || maze[xcoord + 1][ycoord] instanceof HorizontalWall) {
+						return false;
+					}
+					else if(maze[xcoord - 1][ycoord].containsPlayer){
+						return true;
+					}
+				}
 			}
 		}
 		else 
@@ -133,10 +147,11 @@ public class WeixiongBackEnd implements TristanSupport{
 	}
 
 	public int[][] checkValidMoves(int[] psn) {
-		int[][] possiblePositions  = new int[8][2];
+		int[][] possiblePositions  = new int[4][2];
 		int xcoord = psn[0];
 		int ycoord = psn[1];
 		//if a coordinate is an instance of a block but not a wall, then the mummy and player can move to it
+		
 		//still need to figure out what to do if the player and mummy both walk onto the same space
 		return possiblePositions;
 	}
