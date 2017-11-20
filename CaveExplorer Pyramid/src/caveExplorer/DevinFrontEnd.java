@@ -71,7 +71,7 @@ public class DevinFrontEnd implements TheoSupport {
 				);
 	}
 	public void showMatchNum() {
-		System.out.println(matches);
+		System.out.println(matches + " matches so far.");
 	}
 	public void displayBoard(TheoDevinPlot[][]plots) {
 		String rows = "0123";
@@ -88,17 +88,17 @@ public class DevinFrontEnd implements TheoSupport {
 			}
 			System.out.println(" " + rows.substring(row, row+1));
 		}
-		System.out.println(cols.substring(0, plots[0].length+2));
+		System.out.println("  "+cols.substring(0, plots[0].length)+" ");
 	}
 			
 					
 
 		
 	
-	/*public void printMsg(String msg){
+	public void printMsg(String msg){
 		//not needed?
 	}
-	*/
+	
 	@Override
 	public int getRow() {
 		// TODO Auto-generated method stub

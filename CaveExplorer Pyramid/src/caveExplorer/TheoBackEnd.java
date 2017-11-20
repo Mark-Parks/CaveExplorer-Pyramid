@@ -4,13 +4,13 @@ public class TheoBackEnd implements DevinSupport{
 
 	private TheoSupport frontend;
 	private TheoDevinPlot[][] plots;
-	private int numMatch;
+	//private int numMatch;
 	private String[] values;
-	
+
 	public TheoBackEnd( TheoSupport frontend) {
 		this.frontend = frontend;
 		plots = new TheoDevinPlot[4][4];
-		numMatch = 0;
+		//numMatch = 0;
 		values = new String [16];
 		values[0] = "A";
 		values[1] = "A";
@@ -28,7 +28,7 @@ public class TheoBackEnd implements DevinSupport{
 		values[13] = "G";
 		values[14] = "H";
 		values[15] = "H";
-		
+
 		createPlot();
 	}
 	public boolean isMoveValid() {
@@ -38,7 +38,8 @@ public class TheoBackEnd implements DevinSupport{
 		return true;
 	}
 	public boolean isGameOver() {
-		if(frontend.getMatches() >=8 || frontend.getMoves()<0) {
+		String input = CaveExplorer.in.nextLine();
+		if(frontend.getMatches() >=8 || frontend.getMoves()<0 || input.equals("asdf")) {
 			return true;
 		}
 		return false;
@@ -46,35 +47,36 @@ public class TheoBackEnd implements DevinSupport{
 	@Override
 	public String GameoverMsg() {
 		if(frontend.getMatches() >=8) {
-		return "You win";
+			return "You win";
 		}else {
 			return "You lose";
 		}
 	}
 	@Override
 	public TheoDevinPlot getUserMove() {
-		// TODO Auto-generated method stub
-		return null;
+		int [] move = getCoordInput();
+		return plots[move[0]][move[1]];
 	}
-	private void createPlot() {
+	public void createPlot() {
 		for(int row = 0; row<plots.length;row++) {
 			for(int col =0;col<plots[row].length;col++) {
 				plots[row][col]= new TheoDevinPlot(row,col);
 			}
-			//add values to each plot
-			for(int i =0; i<values.length;i++ ) {
-				boolean placed = false;
-					while(placed == false) {
-						int z = (int)(Math.random() * plots.length);
-						int y = (int)(Math.random() * plots[z].length);
-						if(!plots[z][y].HasValue()) {
-							plots[z][y].setValue(values[i]);
-							plots[z][y].setHasValue(true);
-							placed = true;
-						}
+		}
+		//add values to each plot
+		for(int i =0; i<values.length;i++ ) {
+			boolean placed = false;
+			while(placed == false) {
+				int z = (int)(Math.random() * plots.length);
+				int y = (int)(Math.random() * plots[z].length);
+				if(!plots[z][y].hasValue()) {
+					plots[z][y].setValue(values[i]);
+					plots[z][y].setHasValue(true);
+					placed = true;
 				}
 			}
 		}
+
 	}
 	public boolean isMatch(TheoDevinPlot plot1,TheoDevinPlot plot2) {
 		if(plot1.getValue().equals(plot2.getValue())) {
