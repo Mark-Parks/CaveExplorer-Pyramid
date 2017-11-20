@@ -11,6 +11,14 @@ public class TristanFrontEnd implements WeixiongSupport{
 	public static void main(String[] args) {
 		TristanFrontEnd demo = new TristanFrontEnd();
 		demo.startPlaying();
+		demo.play();
+	}
+
+	public void play() {
+		while(!backend.getGameCleared()) {
+			
+		}
+		
 	}
 
 	public void startPlaying() {
@@ -33,5 +41,17 @@ public class TristanFrontEnd implements WeixiongSupport{
 
 	public void printEndgameMsg() {
 		System.out.println("Congratulations! You've escaped from the mummies");
+	}
+
+
+	public void checkUserInput(String input) {
+		if(input.length() == 3) {
+			try {
+				
+			}
+			catch(Exception ex) {
+				
+			}
+		}
 	}
 }

@@ -38,10 +38,6 @@ public class WeixiongBackEnd implements TristanSupport{
 		maze[psn[0]][psn[1]].setOccupied(true);
 	}
 
-	public boolean valid(String input) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	public void createMaze() {
 		//populates the maze with roads
@@ -192,5 +188,9 @@ public class WeixiongBackEnd implements TristanSupport{
 
 	public int[] getMummy2Position() {
 		return mummy2Position;
+	}
+	
+	public boolean getGameCleared() {
+		return this.gameCleared;
 	}
 }

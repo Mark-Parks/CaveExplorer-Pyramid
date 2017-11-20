@@ -5,4 +5,5 @@ public interface TristanSupport {
 	void createMaze();
 	//gets maze from backend
 	Block[][] getMaze();
+	boolean getGameCleared();
 }

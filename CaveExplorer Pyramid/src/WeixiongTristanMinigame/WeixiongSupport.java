@@ -10,4 +10,5 @@ public interface WeixiongSupport {
 	 * draws the board out, based on the backend array
 	 */
 	void printEndgameMsg();
+	void checkUserInput(String coord);
 }
