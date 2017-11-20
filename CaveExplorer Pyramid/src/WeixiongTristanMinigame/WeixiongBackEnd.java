@@ -33,9 +33,11 @@ public class WeixiongBackEnd implements TristanSupport{
 	
 	public void move(int[] psn) {
 		maze[playerPosition[0]][playerPosition[1]].setOccupied(true);
+		maze[playerPosition[0]][playerPosition[1]].setContents(" ");
 		playerPosition[0] = psn[0];
 		playerPosition[1] = psn[1];
 		maze[psn[0]][psn[1]].setOccupied(true);
+		maze[psn[0]][psn[1]].setContents("X");
 	}
 
 	public void createMaze() {
