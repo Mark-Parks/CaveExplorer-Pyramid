@@ -20,8 +20,9 @@ public class WilliamFrontEnd implements MarkSupporter{
 	}
 
 	public void play(){
-		System.out.println("The carvings are in truth, a strange sequecne of symbols etched onto individual tiles on the sandstone walls.");
-		System.out.println("You recognize them to be hieroglyphic numbers.");
+		System.out.println("The carvings are in truth, a strange sequence of symbols etched onto individual tiles on the sandstone walls.");
+		System.out.println("You recognize them to be hieroglyphic numbers. Fortunately, you can read them.");
+		System.out.println("");
 		board = backend.getBoard();
 		backend.updateSums(board);
 				
