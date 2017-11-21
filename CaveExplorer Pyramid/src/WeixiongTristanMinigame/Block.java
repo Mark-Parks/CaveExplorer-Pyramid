@@ -34,21 +34,21 @@ public class Block {
 	}
 
 	public boolean containsMummy() {
-		return this.contents.equals("M");
+		return this.contents.equals(" M ");
 	}
 	
 	public void enterMummy() {
-		contents = "M";
+		contents = " M ";
 		containsMummy = true;
 	}
 	
 	public void leaveMummy() {
-		contents = " ";
+		contents = "   ";
 		containsMummy = false;
 	}
 
 	public void enter() {
-		contents = "X";
+		contents = " X ";
 		containsPlayer = true;
 	}
 	

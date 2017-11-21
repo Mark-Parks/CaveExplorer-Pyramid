@@ -20,7 +20,6 @@ public class WeixiongBackEnd implements TristanSupport{
 	public static void main(String[] args) {
 		int[] test = {1,1};
 		WeixiongBackEnd test1 = new WeixiongBackEnd(null);
-		test1.maze = new Block[6][6];
 		test1.createMaze();
 		test1.printMaze(test1.maze);
 	}
@@ -78,7 +77,7 @@ public class WeixiongBackEnd implements TristanSupport{
 		maze[2][0] = new HorizontalWall();
 		maze[2][3] = new HorizontalWall();
 		maze[3][4] = new HorizontalWall();
-		maze[4][5] = new HorizontalWall();	
+		maze[4][5] = new HorizontalWall();
 		setStartingPosition();
 		placeMummies();
 	}
@@ -121,7 +120,7 @@ public class WeixiongBackEnd implements TristanSupport{
 		for(int[] mummy: mummies) {
 			xcoord = (int)(Math.random() * maze.length);
 			ycoord = (int)(Math.random() * maze[0].length);
-			while(!maze[xcoord][ycoord].getContents().equals(" ")) {
+			while(!maze[xcoord][ycoord].getContents().equals("   ") | (xcoord == 0 && ycoord < 3)) {
 				xcoord = (int)(Math.random() * maze.length);
 				ycoord = (int)(Math.random() * 3) + 3;
 			}
