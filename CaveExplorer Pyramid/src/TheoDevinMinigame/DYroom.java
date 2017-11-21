@@ -4,7 +4,7 @@ import caveExplorer.CaveExplorer;
 import caveExplorer.NPC;
 import caveExplorer.NPCRoom;
 
-public class DYroom extends NPCRoom {
+public class DYroom extends NPC {
 	
 	private boolean active;
 
