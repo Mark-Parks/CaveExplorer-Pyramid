@@ -31,7 +31,11 @@ public class TristanFrontEnd implements WeixiongSupport{
 	}
 	
 	public void printIntro() {
-		System.out.println("Your nosy")
+		System.out.println("You stupidly walk into the weird room as the door shuts behind you.");
+		System.out.println("GUAHHHHHHHHHH");
+		System.out.println("Oh good lord, get to the other side quickly!");
+		System.out.println("(If a mummy is two spaces away from you, you will DIE)");
+		System.out.println("Good luck solider!");
 	}
 
 	public void drawMaze(Block[][] maze) {
@@ -44,7 +48,7 @@ public class TristanFrontEnd implements WeixiongSupport{
 	}
 
 	public void printEndgameMsg() {
-		System.out.println("Congratulations! You've escaped from the mummies! You proceed further on into the pyramid.");
+		System.out.println("And that's a WRAP. You've escaped from the mummies and proceed further on into the pyramid.");
 	}
 
 
