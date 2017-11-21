@@ -40,18 +40,6 @@ public class WeixiongBackEnd implements TristanSupport{
 		this.playerPosition = new int[2];
 	}
 	
-	public String toString(int[][] psns) {
-		String result = "";
-		for(int i = 0; i < psns.length; i++) {
-			result += "(";
-			for(int j = 0; j < psns[i].length; j++) {
-				result += j;
-			}
-			result += "), ";
-		}
-		return result;
-	}
-	
 	public void clearGame() {
 		gameCleared = true;
 		frontend.printEndgameMsg();
