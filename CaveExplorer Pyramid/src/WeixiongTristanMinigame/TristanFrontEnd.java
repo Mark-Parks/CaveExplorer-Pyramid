@@ -10,8 +10,10 @@ public class TristanFrontEnd implements WeixiongSupport{
 
 	public static void main(String[] args) {
 		TristanFrontEnd demo = new TristanFrontEnd();
-		demo.startPlaying();
-		demo.play();
+		demo.backend.createMaze();
+		demo.drawMaze(demo.backend.getMaze());
+		//demo.startPlaying();
+		//demo.play();
 	}
 
 	public void play() {
@@ -34,7 +36,7 @@ public class TristanFrontEnd implements WeixiongSupport{
 
 	public void drawMaze(Block[][] maze) {
 		for(Block[] row: maze) {
-			for(Block block : row) {
+			for(Block block: row) {
 				System.out.print(block.getContents());
 			}
 			System.out.println("");
