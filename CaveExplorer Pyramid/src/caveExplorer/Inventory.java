@@ -1,6 +1,7 @@
 package caveExplorer;
 
 public class Inventory {
+	private int[] artifactCount;
 	private String map;
 	private int hp;
 	private CaveRoom[][] level;
@@ -51,5 +52,8 @@ public class Inventory {
 	}
 	public void setHp(int x) {
 		hp = x;
+	}
+	public int[] getArtifactCount(){
+		return artifactCount;
 	}
 }
