@@ -2,7 +2,6 @@ package caveExplorer;
 
 import WeixiongTristanMinigame.*;
 import TheoDevinMinigame.*;
-import MarkWillFloor1.*;
 
 public class CaveRoom {
 
@@ -137,15 +136,20 @@ public class CaveRoom {
 				}
 			}
 		}
+
+		//custom
+		Mummy mummy1 = new Mummy();
+		mummy1.setPosition(0,2,2);
+		CaveExplorer.npcs = new NPC[1];
+		CaveExplorer.npcs[0] = mummy1;
+		c[0][0][2] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the second floor.");
+		c[1][0][0] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the third floor or 'i' to go down to the first floor.");
+		c[0][2][0] = new MarkWilliamMinigameRoom("There seems to be carvings upon a wall of this room. Press 'f' to come closer.");
+
 		
 		//
 		//CUSTOM NPCS
 		//
-		CaveExplorer.npcs = new NPC[1];
-		
-		Mummy mummy1 = new Mummy();
-		mummy1.setPosition(0,1,3);
-		CaveExplorer.npcs[0] = mummy1;
 		
 		//
 		//CUSTOM ROOMS
@@ -167,7 +171,6 @@ public class CaveRoom {
 		//ALL THE HALLWAYS AND CONNECTIONS TO EACH ROOM
 		//
 		c[0][0][0].setConnection(EAST, c[0][0][1], new Door());
-		c[0][0][1].setConnection(EAST, c[0][0][2], new Door());
 		c[0][0][2].setConnection(SOUTH, c[0][1][2], new Door());
 		c[0][0][3].setConnection(SOUTH, c[0][1][3], new Door());
 		c[0][0][3].doors[SOUTH].setOpen(false);
