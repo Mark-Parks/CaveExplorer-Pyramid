@@ -55,11 +55,13 @@ public class DevinFrontEnd implements TheoSupport {
 		while(!backend.isGameOver()) {//when game is still playing or : while(moves > 0)
 			displayBoard(plots);
 			showMatchNum();
+			showMoveNum();
 			System.out.println("Where would you like to press?");
 			TheoDevinPlot move1 = backend.getUserMove();
 			TheoDevinPlot move2 = backend.getUserMove();
 			backend.isMatch(move1,move2);
-			//moves--;
+			moves--;
+			
 		}
 			printMsg(backend.GameoverMsg());	
 	}	
@@ -72,6 +74,9 @@ public class DevinFrontEnd implements TheoSupport {
 	}
 	public void showMatchNum() {
 		System.out.println(matches + " matches so far.");
+	}
+	public void showMoveNum() {
+		System.out.println(moves + " moves left.");
 	}
 	public void displayBoard(TheoDevinPlot[][]plots) {
 		String rows = "0123";
