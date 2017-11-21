@@ -31,7 +31,7 @@ public class TristanFrontEnd implements WeixiongSupport{
 	}
 	
 	public void printIntro() {
-		
+		System.out.println("Your nosy")
 	}
 
 	public void drawMaze(Block[][] maze) {
