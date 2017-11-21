@@ -139,7 +139,8 @@ public class WilliamFrontEnd implements MarkSupporter{
 				}
 				
 				System.out.println("");
-				System.out.print("The tiles slowly separate to reveal an artifact hidden in the wall.");
+				System.out.print("The tiles slowly separate to reveal a golden statuette hidden behind the puzzle.");
+				System.out.print("Your expertise in treasure hunting allows you to immediately appraise its value to be around " + sum + "thousand dollars.");
 			}else {
 				System.out.println("You try touching the tiles at the coordinates, but they are not a part of the puzzle. Nothing happens.");
 			}
