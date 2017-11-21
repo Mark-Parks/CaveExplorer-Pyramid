@@ -4,14 +4,16 @@ public class Block {
 	
 	private String contents;
 	public boolean containsPlayer;
+	public boolean containsMummy;
 	
 	public Block(String contents) {
 		containsPlayer = false;
 		this.contents = contents;
+		containsMummy =  false;
 	}
 	
 	public Block() {
-		this.contents = " ";
+		this.contents = "   ";
 		containsPlayer = false;;
 	}
 	
@@ -33,5 +35,25 @@ public class Block {
 
 	public boolean containsMummy() {
 		return this.contents.equals("M");
+	}
+	
+	public void enterMummy() {
+		contents = "M";
+		containsMummy = true;
+	}
+	
+	public void leaveMummy() {
+		contents = " ";
+		containsMummy = false;
+	}
+
+	public void enter() {
+		contents = "X";
+		containsPlayer = true;
+	}
+	
+	public void leave() {
+		contents = "X";
+		containsPlayer = true;
 	}
 }

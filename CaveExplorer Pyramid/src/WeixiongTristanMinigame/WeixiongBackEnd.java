@@ -22,13 +22,35 @@ public class WeixiongBackEnd implements TristanSupport{
 		WeixiongBackEnd test1 = new WeixiongBackEnd(null);
 		test1.maze = new Block[6][6];
 		test1.createMaze();
+		test1.printMaze(test1.maze);
 	}
 
 	public WeixiongBackEnd(WeixiongSupport frontend) {
 		this.frontend = frontend;
 		this.gameCleared = false;
+		mummies = new int[2][2];
+		mummy1Position = new int[2];
+		mummy2Position = new int[2];
+		mummy1Position[0] = -1;
+		mummy1Position[1] = -1;
+		mummy2Position[0] = -1;
+		mummy2Position[1] = -1;
+		mummies[0] = mummy1Position;
+		mummies[1] = mummy2Position;
 		this.maze = new Block[6][6];
 		this.playerPosition = new int[2];
+	}
+	
+	public String toString(int[][] psns) {
+		String result = "";
+		for(int i = 0; i < psns.length; i++) {
+			result += "(";
+			for(int j = 0; j < psns[i].length; j++) {
+				result += j;
+			}
+			result += "), ";
+		}
+		return result;
 	}
 	
 	public void clearGame() {
@@ -37,26 +59,28 @@ public class WeixiongBackEnd implements TristanSupport{
 	}
 	
 	public void move(int[] psn) {
-		maze[playerPosition[0]][playerPosition[1]].setOccupied(true);
-		maze[playerPosition[0]][playerPosition[1]].setContents(" ");
+		maze[playerPosition[0]][playerPosition[1]].leave();
 		playerPosition[0] = psn[0];
 		playerPosition[1] = psn[1];
-		maze[psn[0]][psn[1]].setOccupied(true);
-		maze[psn[0]][psn[1]].setContents("X");
+		maze[psn[0]][psn[1]].enter();
 	}
 
 	public void createMaze() {
+		//populates maze with Blocks, then replaces certain elements with Walls
+		//n.b. not sure why it doesn't work with the for each loop will lab it later
 		for(int i = 0; i < maze.length; i++) {
 			for(int j = 0; j < maze[i].length; j++) {
 				maze[i][j] = new Block();
 			}
-		}
+		}	
 		maze[0][2] = new VerticalWall();
 		maze[1][2] = new VerticalWall();
-		maze[1][3] = new HorizontalWall();
-		maze[1][4] = new HorizontalWall();
-		maze[1][5] = new HorizontalWall();
-		printMaze(maze);
+		maze[2][0] = new HorizontalWall();
+		maze[2][3] = new HorizontalWall();
+		maze[3][4] = new HorizontalWall();
+		maze[4][5] = new HorizontalWall();	
+		setStartingPosition();
+		placeMummies();
 	}
 
 	public void createMaze(Block[][] maze) {
@@ -87,7 +111,7 @@ public class WeixiongBackEnd implements TristanSupport{
 	public void setStartingPosition() {
 		playerPosition[0] = 0;
 		playerPosition[1] = 0;
-		maze[0][0].setContents("X");
+		maze[0][0].enter();
 	}
 	
 	public void placeMummies() {
@@ -103,6 +127,7 @@ public class WeixiongBackEnd implements TristanSupport{
 			}
 			mummy[0] = xcoord;
 			mummy[1] = ycoord;
+			maze[mummy[0]][mummy[1]].enterMummy();
 		}
 	}
 	
@@ -224,6 +249,10 @@ public class WeixiongBackEnd implements TristanSupport{
 		}
 		else {
 			possiblePositions[3] = null;
+		}
+		
+		for(int i = 0; i < possiblePositions.length; i++) {
+			System.out.println(toCoords(possiblePositions[i]));
 		}
 		//still need to figure out what to do if the player and mummy both walk onto the same space
 		return possiblePositions;
