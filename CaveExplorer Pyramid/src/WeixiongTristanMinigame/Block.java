@@ -53,7 +53,7 @@ public class Block {
 	}
 	
 	public void leave() {
-		contents = "X";
-		containsPlayer = true;
+		contents = "   ";
+		containsPlayer = false;
 	}
 }
