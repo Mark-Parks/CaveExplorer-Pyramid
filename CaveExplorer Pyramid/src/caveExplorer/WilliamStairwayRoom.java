@@ -7,11 +7,12 @@ public class WilliamStairwayRoom extends NPCRoom {
 		
 	}
 	public void printValidMoves() {
-		CaveExplorer.print("You can only enter 'w','d','s', 'a', or 'e' to perform an action,"
-				+ " or 'u' to go up the stairs.");
+		CaveExplorer.print("You can only enter 'w','d','s', 'a', 'e' to perform an action, "
+				+ "'u' to go up the stairs, or "
+				+ "'i' to go down the stairs.");
 	}
 	public String validMoves() {
-		return "wdsaeu";
+		return "wdsaeui";
 	}
 	private boolean isValid(String input) {
 		return validMoves().indexOf(input) != -1 && input.length() == 1;
@@ -29,13 +30,28 @@ public class WilliamStairwayRoom extends NPCRoom {
 		}
 	}
 	public void performAction(int direction) {
-		if(direction == 5) {
+		if(direction == 4) {
+			if(getNpc() != null && getNpc().isActive()) {
+				getNpc().interact();
+			}else {
+				CaveExplorer.print("There is nothing to interact with.");
+			}
+		}
+		else if(direction == 5 && getFloor() < 2) {
 			setFloor(getFloor()+1);
 			CaveExplorer.currentRoom.leave();
 			CaveExplorer.currentRoom = CaveExplorer.caves[getFloor()][0][0];
 			CaveExplorer.currentRoom.enter();
 			CaveExplorer.inventory.updateMap();
-			System.out.println("The stairway closes behind you as you exit.");
+			System.out.println("The climb up the stairs leaves you winded.");
+		}
+		else if(direction == 6 && getFloor() > 0) {
+			setFloor(getFloor()-1);
+			CaveExplorer.currentRoom.leave();
+			CaveExplorer.currentRoom = CaveExplorer.caves[getFloor()][0][0];
+			CaveExplorer.currentRoom.enter();
+			CaveExplorer.inventory.updateMap();
+			System.out.println("You head down.");
 		}
 		else {
 			CaveExplorer.print("Invalid input");

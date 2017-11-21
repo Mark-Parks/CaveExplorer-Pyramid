@@ -125,7 +125,8 @@ public class CaveRoom {
 		mummy1.setPosition(0,2,2);
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = mummy1;
-		c[0][0][2] = new WilliamStairwayRoom("There is a staircase leading to the second floor. Press 'u' to go up to the second floor.");
+		c[0][0][2] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the second floor.");
+		c[1][0][0] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the third floor or 'i' to go down to the first floor.");
 		c[0][2][0] = new MarkWilliamMinigameRoom("There seems to be carvings upon a wall of this room. Press 'f' to come closer.");
 		
 		//start room
@@ -133,6 +134,7 @@ public class CaveRoom {
 		CaveExplorer.currentRoom.enter();
 		//doors
 		c[0][0][0].setConnection(EAST, c[0][0][1], new Door());
+		c[1][0][0].setConnection(SOUTH, c[1][1][0], new Door());
 		c[0][0][1].setConnection(SOUTH, c[0][1][1], new Door());
 		c[0][0][2].setConnection(SOUTH, c[0][1][2], new Door());
 		c[0][0][3].setConnection(EAST, c[0][0][4], new Door());
