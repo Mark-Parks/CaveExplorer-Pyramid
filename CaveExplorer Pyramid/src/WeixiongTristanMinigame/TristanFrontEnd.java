@@ -1,33 +1,39 @@
 package WeixiongTristanMinigame;
 
+import java.util.Scanner;
+
+import caveExplorer.CaveExplorer;
+
 public class TristanFrontEnd implements WeixiongSupport{
 	
 	private TristanSupport backend;
-
+	private Scanner in;
+	
 	public TristanFrontEnd() {
 		backend = new WeixiongBackEnd(this);
+		in = CaveExplorer.in;
 	}
 
 	public static void main(String[] args) {
 		TristanFrontEnd demo = new TristanFrontEnd();
 		demo.backend.createMaze();
-		demo.drawMaze(demo.backend.getMaze());
-		//demo.startPlaying();
-		//demo.play();
+		demo.startPlaying();
+		demo.play();
 	}
 
 	public void play() {
+		String input;
 		while(!backend.getGameCleared()) {
-			
+			System.out.println("What's your next move?");
+			input = in.nextLine();
+			checkUserInput(input);
 		}
 		
 	}
-
+	
 	public void startPlaying() {
 		printIntro();
-		Block[][] maze = backend.getMaze();
-		System.out.println(maze);
-		drawMaze(maze);
+		drawMaze(this.backend.getMaze());
 	}
 	
 	public void printIntro() {
@@ -36,6 +42,7 @@ public class TristanFrontEnd implements WeixiongSupport{
 		System.out.println("Oh good lord, get to the other side quickly!");
 		System.out.println("(If a mummy is two spaces away from you, you will DIE)");
 		System.out.println("Good luck solider!");
+		System.out.println(" ");
 	}
 
 	public void drawMaze(Block[][] maze) {
@@ -43,7 +50,7 @@ public class TristanFrontEnd implements WeixiongSupport{
 			for(Block block: row) {
 				System.out.print(block.getContents());
 			}
-			System.out.println("");
+			System.out.println(" ");
 		}
 	}
 
@@ -53,16 +60,14 @@ public class TristanFrontEnd implements WeixiongSupport{
 
 
 	public void checkUserInput(String input) {
-		if(input.length() == 3) {
-			try {
-				
-			}
-			catch(Exception ex) {
-				
-			}
+		while(!isValid(input)) {
+			System.out.println("Please input w, a, s, d, or the cheat code.");
+			input = in.nextLine();
 		}
-		else {
-			
-		}
+	}
+
+	private boolean isValid(String input) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
