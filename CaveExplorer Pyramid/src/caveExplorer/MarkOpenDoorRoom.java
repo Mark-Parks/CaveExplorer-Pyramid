@@ -56,7 +56,8 @@ public class MarkOpenDoorRoom extends NPCRoom{
 			if(CaveExplorer.inventory.getKeys() > 0) {
 				System.out.println("You use the key and with a satifying *KACHUNK* the to door slides open.");
 				lockRoom.getDoor(doorDirection).setLocked(false);
-				lockRoom.getDoor(doorDirection).setOpen(true);			
+				lockRoom.getDoor(doorDirection).setOpen(true);	
+				CaveExplorer.caves[0][5][3].setConnection(2, CaveExplorer.caves[0][6][3], new Door());
 				CaveExplorer.inventory.useKey();
 				this.doorIsLocked = false;
 			}else {

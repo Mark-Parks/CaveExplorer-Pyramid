@@ -229,9 +229,35 @@ public class CaveRoom {
 		//
 		//FLOOR 2
 		//
-		/**
-		 * TO BE ADDED
-		 */
+		c[1][0][0].setConnection(SOUTH, c[1][1][0], new Door());
+		c[1][0][1].setConnection(SOUTH, c[1][1][1], new Door());
+		c[1][0][1].setConnection(EAST, c[1][0][2], new Door());
+		c[1][0][2].setConnection(EAST, c[1][0][3], new Door());
+		c[1][0][3].setConnection(EAST, c[1][0][4], new Door());
+		c[1][0][4].setConnection(SOUTH, c[1][1][4], new Door());
+		c[1][1][0].setConnection(SOUTH, c[1][2][0], new Door());
+		c[1][1][1].setConnection(SOUTH, c[1][2][1], new Door());
+		c[1][1][2].setConnection(EAST, c[1][1][3], new Door());
+		c[1][1][2].doors[EAST].setOpen(false);
+		c[1][1][2].doors[EAST].setLocked(true);
+		c[1][1][3] = new MarkOpenDoorRoom("You see a door to the West.",c[1][1][3]);
+		c[1][1][3].setConnection(SOUTH, c[1][2][3], new Door());
+		c[1][1][4].setConnection(SOUTH, c[1][2][4], new Door());
+		c[1][2][0].setConnection(SOUTH, c[1][3][0], new Door());
+		c[1][2][1].setConnection(EAST, c[1][2][2], new Door());
+		c[1][2][2].setConnection(EAST, c[1][2][3], new Door());
+		c[1][2][4].setConnection(SOUTH, c[1][3][4], new Door());
+		c[1][3][0].setConnection(SOUTH, c[1][4][0], new Door());
+		c[1][3][1].setConnection(SOUTH, c[1][4][1], new Door());
+		c[1][3][1].setConnection(EAST, c[1][3][2], new Door());
+		c[1][3][2].setConnection(EAST, c[1][3][3], new Door());
+		c[1][3][2].setConnection(SOUTH, c[1][4][2], new Door());
+		c[1][3][3].setConnection(SOUTH, c[1][4][3], new Door());
+		c[1][3][4].setConnection(SOUTH, c[1][4][4], new Door());
+		c[1][4][0].setConnection(EAST, c[1][4][1], new Door());
+		c[1][4][1].setConnection(EAST, c[1][4][2], new Door());
+		c[1][4][2].setConnection(EAST, c[1][4][3], new Door());
+		c[1][4][3].setConnection(EAST, c[1][4][4], new Door());
 		//
 		//FLOOR 3
 		//
