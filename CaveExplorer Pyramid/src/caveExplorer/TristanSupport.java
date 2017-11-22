@@ -1,4 +1,4 @@
-package WeixiongTristanMinigame;
+package caveExplorer;
 
 public interface TristanSupport {
 	//makes the backend interpretation of the maze

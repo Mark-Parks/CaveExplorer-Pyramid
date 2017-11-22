@@ -1,8 +1,5 @@
 package caveExplorer;
 
-import WeixiongTristanMinigame.*;
-import TheoDevinMinigame.*;
-
 public class CaveRoom {
 
 	private String description;
@@ -43,7 +40,7 @@ public class CaveRoom {
 		for(int i = 0; i < doors.length; i++) {
 			if(doors[i] != null) {
 				doorFound = true;
-				directions += "There is a "+doors[i].getDescription()+" to the "+toDirection(i)+". "+doors[i].getDetails()+"\n";			
+				directions += "\nThere is a "+doors[i].getDescription()+" to "+toDirection(i)+". "+doors[i].getDetails();			
 			}
 		}
 		if(!doorFound) {
@@ -95,7 +92,7 @@ public class CaveRoom {
 	}
 	
 	private void performAction(int direction) {
-		CaveExplorer.print("That key does nothing");
+		CaveExplorer.print("Nothing but ancient dust and sand.");
 	}
 
 	//
@@ -136,29 +133,29 @@ public class CaveRoom {
 				}
 			}
 		}
-
-		//custom
-		Mummy mummy1 = new Mummy();
-		mummy1.setPosition(0,2,2);
-		CaveExplorer.npcs = new NPC[1];
-		CaveExplorer.npcs[0] = mummy1;
-		c[0][0][2] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the second floor.");
-		c[1][0][0] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the third floor or 'i' to go down to the first floor.");
-		c[0][2][0] = new MarkWilliamMinigameRoom("There seems to be carvings upon a wall of this room. Press 'f' to come closer.");
-
+		
+		
 		
 		//
 		//CUSTOM NPCS
 		//
-		
+		MarkNPC mummy1 = new MarkNPC();
+		mummy1.setPosition(0,2,2);
+		CaveExplorer.npcs = new NPC[1];
+		CaveExplorer.npcs[0] = mummy1;
 		//
 		//CUSTOM ROOMS
 		//
+		c[0][0][2] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the second floor.");
 		c[0][0][3] = new WilliamStairwayRoom("There is a staircase leading to the second floor.");
+		c[1][0][0] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the third floor or 'i' to go down to the first floor.");
+		c[0][3][0] = new MarkWilliamMinigameRoom("There seems to be carvings upon a wall of this room. Press 'f' to come closer.");
 		c[0][3][3] = new TristanRoom("Text");
-		c[0][3][0] = new WeiCustomRoom("A Moogle appears in front of you as you enter the room");
+		c[0][3][6] = new WeiCustomRoom("A Moogle appears in front of you as you enter the room");
 		c[0][0][0] = new TheoRoom("asdf");
-		c[0][0][6] = new DYroom("mhm");
+		c[0][0][6] = new DevinRoom("mhm");
+		c[0][6][0] = new MarkRoom("You notice a key.");
+		c[0][6][3] = new MarkOpenDoorRoom("You see a door.");
 		
 		
 		//
@@ -171,33 +168,40 @@ public class CaveRoom {
 		//ALL THE HALLWAYS AND CONNECTIONS TO EACH ROOM
 		//
 		c[0][0][0].setConnection(EAST, c[0][0][1], new Door());
+		c[0][0][0].setConnection(SOUTH, c[0][1][0], new Door());		
+		c[0][0][1].setConnection(EAST, c[0][0][2], new Door());
+		c[0][0][1].setConnection(SOUTH, c[0][1][1], new Door());
 		c[0][0][2].setConnection(SOUTH, c[0][1][2], new Door());
 		c[0][0][3].setConnection(SOUTH, c[0][1][3], new Door());
-		c[0][0][3].doors[SOUTH].setOpen(false);
-		c[0][0][3].doors[SOUTH].setLocked(true);
 		c[0][0][4].setConnection(EAST, c[0][0][5], new Door());
 		c[0][0][4].setConnection(SOUTH, c[0][1][4], new Door());
 		c[0][0][5].setConnection(EAST, c[0][0][6], new Door());
-		c[0][0][6].setConnection(EAST, c[0][1][6], new Door());
+		c[0][0][5].setConnection(SOUTH, c[0][1][5], new Door());
+		c[0][0][6].setConnection(SOUTH, c[0][1][6], new Door());
 		c[0][1][0].setConnection(EAST, c[0][1][1], new Door());
 		c[0][1][1].setConnection(EAST, c[0][1][2], new Door());
-		c[0][1][2].setConnection(EAST, c[0][1][3], new Door());
 		c[0][1][2].setConnection(SOUTH, c[0][2][2], new Door());
-		c[0][1][3].setConnection(EAST, c[0][1][4], new Door());
 		c[0][1][3].setConnection(SOUTH, c[0][2][3], new Door());
+		c[0][1][3].doors[SOUTH].setOpen(false);
+		c[0][1][3].doors[SOUTH].setLocked(true);
 		c[0][1][4].setConnection(EAST, c[0][1][5], new Door());
 		c[0][1][4].setConnection(SOUTH, c[0][2][4], new Door());
 		c[0][1][5].setConnection(EAST, c[0][1][6], new Door());
 		c[0][2][0].setConnection(SOUTH, c[0][3][0], new Door());
 		c[0][2][2].setConnection(EAST, c[0][2][3], new Door());
+		c[0][2][0].setConnection(EAST, c[0][2][1], new Door());
+		c[0][2][1].setConnection(SOUTH, c[0][3][1], new Door());
 		c[0][2][2].setConnection(SOUTH, c[0][3][2], new Door());
-		c[0][2][3].setConnection(EAST, c[0][2][4], new Door());
 		c[0][2][3].setConnection(SOUTH, c[0][3][3], new Door());
+		c[0][2][3].setConnection(EAST, c[0][2][4], new Door());
 		c[0][2][4].setConnection(SOUTH, c[0][3][4], new Door());
+		c[0][2][5].setConnection(SOUTH, c[0][3][5], new Door());
+		c[0][2][5].setConnection(EAST, c[0][2][6], new Door());
 		c[0][2][6].setConnection(SOUTH, c[0][3][6], new Door());
 		c[0][3][0].setConnection(EAST, c[0][3][1], new Door());
 		c[0][3][0].setConnection(SOUTH, c[0][4][0], new Door());
 		c[0][3][1].setConnection(EAST, c[0][3][2], new Door());
+		c[0][3][1].setConnection(SOUTH, c[0][4][1], new Door());
 		c[0][3][2].setConnection(EAST, c[0][3][3], new Door());
 		c[0][3][2].setConnection(SOUTH, c[0][4][2], new Door());
 		c[0][3][3].setConnection(EAST, c[0][3][4], new Door());
@@ -205,12 +209,15 @@ public class CaveRoom {
 		c[0][3][4].setConnection(EAST, c[0][3][5], new Door());
 		c[0][3][4].setConnection(SOUTH, c[0][4][4], new Door());
 		c[0][3][5].setConnection(EAST, c[0][3][6], new Door());
+		c[0][3][5].setConnection(SOUTH, c[0][4][5], new Door());
 		c[0][3][6].setConnection(SOUTH, c[0][4][6], new Door());
 		c[0][4][2].setConnection(EAST, c[0][4][3], new Door());
+		c[0][4][0].setConnection(EAST, c[0][4][1], new Door());
 		c[0][4][2].setConnection(SOUTH, c[0][5][2], new Door());
 		c[0][4][3].setConnection(EAST, c[0][4][4], new Door());
 		c[0][4][3].setConnection(SOUTH, c[0][5][3], new Door());
 		c[0][4][4].setConnection(SOUTH, c[0][5][4], new Door());
+		c[0][4][5].setConnection(EAST, c[0][4][6], new Door());
 		c[0][5][0].setConnection(EAST, c[0][5][1], new Door());
 		c[0][5][1].setConnection(EAST, c[0][5][2], new Door());
 		c[0][5][2].setConnection(EAST, c[0][5][3], new Door());

@@ -10,7 +10,7 @@ public class MarkWilliamMinigameRoom extends NPCRoom {
 		
 	}
 	public void printValidMoves() {
-		CaveExplorer.print("You can only enter 'w','d','s', 'a', or 'e' to perform an action,"
+		CaveExplorer.print("You can only enter 'w','d','s', 'a', or 'e' to inspect your surroundings,"
 				+ " or 'f' to approach the.");
 	}
 	public String validMoves() {

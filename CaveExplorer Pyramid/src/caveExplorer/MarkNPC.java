@@ -1,6 +1,6 @@
 package caveExplorer;
 
-public class Mummy extends NPC {
+public class MarkNPC extends NPC {
 
 	private CaveRoom[][][] pyramid = CaveExplorer.caves;
 	private int currentFlr;
@@ -12,7 +12,7 @@ public class Mummy extends NPC {
 	private String inactiveDescription;
 	
 	
-	public Mummy() {
+	public MarkNPC() {
 		this.activeDescription = "Spooky Mummy is after you!"; 
 		this.inactiveDescription = "There is that Spoopy Mummy!";
 		this.currentFlr = -1;

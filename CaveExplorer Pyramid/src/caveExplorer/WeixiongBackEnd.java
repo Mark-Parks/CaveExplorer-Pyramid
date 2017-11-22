@@ -1,4 +1,4 @@
-package WeixiongTristanMinigame;
+package caveExplorer;
 
 public class WeixiongBackEnd implements TristanSupport{
 	//constants

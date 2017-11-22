@@ -1,12 +1,9 @@
 /**
  * 
  */
-package TheoDevinMinigame;
+package caveExplorer;
 
 import java.util.Scanner;
-
-import caveExplorer.CaveExplorer;
-import caveExplorer.NPCRoom;
 
 /**
  * @author BT_1N3_13

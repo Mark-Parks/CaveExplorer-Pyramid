@@ -1,4 +1,4 @@
-package WeixiongTristanMinigame;
+package caveExplorer;
 
 public interface WeixiongSupport {
 	void startPlaying();

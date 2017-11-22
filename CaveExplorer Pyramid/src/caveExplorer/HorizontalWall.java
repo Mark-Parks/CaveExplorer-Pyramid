@@ -1,4 +1,4 @@
-package WeixiongTristanMinigame;
+package caveExplorer;
 
 public class HorizontalWall extends Block {
 	

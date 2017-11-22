@@ -1,8 +1,6 @@
-package WeixiongTristanMinigame;
+package caveExplorer;
 
 import java.util.Scanner;
-
-import caveExplorer.CaveExplorer;
 
 public class TristanFrontEnd implements WeixiongSupport{
 	

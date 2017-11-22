@@ -27,7 +27,7 @@ public class NPCRoom extends CaveRoom {
 	}
 	
 	public void printValidMoves() {
-		System.out.println("You can only enter 'w','d','s', or 'a' or press 'e' to perform an action.");
+		System.out.println("You can only enter 'w','d','s', or 'a' or press 'e' to inspect your surroundings.");
 	}
 
 	public String validMoves() {
@@ -39,10 +39,10 @@ public class NPCRoom extends CaveRoom {
 			if(getNpc() != null && getNpc().isActive()) {
 				getNpc().interact();
 			}else {
-				CaveExplorer.print("There is nothing to interact with.");
+				CaveExplorer.print("Nothing but ancient dust and sand.");
 			}
 		}else {
-			CaveExplorer.print("That key does nothing.");
+			CaveExplorer.print("There is nothing to interact with.");
 		}
 	}
 	

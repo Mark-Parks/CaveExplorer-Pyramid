@@ -29,10 +29,11 @@ public class CaveExplorer {
 		while(playing) {
 			moveNPCs();
 			print(inventory.getDescription());
-			print(currentRoom.getDescription());
 			print(currentRoom.getDirections());
+			print(currentRoom.getDescription());
 			print("HP : "+inventory.getHp());
 			print("KEYS : "+inventory.getKeys());
+			currentRoom.printValidMoves();
 			print("What would you like to do?");
 			currentRoom.interpretInput(in.nextLine());
 		}

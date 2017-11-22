@@ -1,6 +1,5 @@
 package caveExplorer;
 
-import WeixiongTristanMinigame.*;
 
 public class Inventory {
 
@@ -64,6 +63,9 @@ public class Inventory {
 	}
 	public void addKey() {
 		keys = keys + 1;
+	}
+	public void useKey() {
+		keys = keys - 1;
 	}
 	public int[] getArtifactCount(){
 		return artifactCount;

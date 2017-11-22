@@ -34,7 +34,7 @@ public class WilliamStairwayRoom extends NPCRoom {
 			if(getNpc() != null && getNpc().isActive()) {
 				getNpc().interact();
 			}else {
-				CaveExplorer.print("There is nothing to interact with.");
+				CaveExplorer.print("You look at the stairs and see that this tempe has multiple floors.");
 			}
 		}
 		else if(direction == 5 && getFloor() < 2) {

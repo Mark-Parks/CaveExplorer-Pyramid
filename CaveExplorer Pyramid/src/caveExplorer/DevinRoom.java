@@ -1,14 +1,10 @@
-package TheoDevinMinigame;
+package caveExplorer;
 
-import caveExplorer.CaveExplorer;
-import caveExplorer.NPC;
-import caveExplorer.NPCRoom;
-
-public class DYroom extends NPC {
+public class DevinRoom extends NPCRoom {
 	
 	private boolean active;
 
-	public DYroom(String description) {
+	public DevinRoom(String description) {
 		super(description);
 		active = true;
 		// TODO Auto-generated constructor stub
@@ -30,7 +26,7 @@ public class DYroom extends NPC {
 	}	
 		public void performAction(int direction) {
 		if(direction == 5) {
-			getNpc().chance();
+			
 			CaveExplorer.print("hi im devin and I dab on haters");
 		}else {
 				CaveExplorer.print("no");
