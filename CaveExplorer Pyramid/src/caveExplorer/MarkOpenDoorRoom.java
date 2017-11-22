@@ -22,7 +22,7 @@ public class MarkOpenDoorRoom extends NPCRoom{
 	}
 	
 	public void printValidMoves() {
-		if(doorIsLocked) CaveExplorer.print("You can only enter 'w','d','s', 'a', or press 'e' to inspect your surroundings, or 'o' to open the locked door but use a key.");
+		if(doorIsLocked) CaveExplorer.print("You can only enter 'w','d','s', 'a', or press 'e' to inspect your surroundings, or 'o' to open the door for a key.");
 		else CaveExplorer.print("You can only enter 'w','d','s', 'a', or press 'e' to inspect your surroundings");
 	}
 	public String validMoves() {
@@ -49,24 +49,24 @@ public class MarkOpenDoorRoom extends NPCRoom{
 			if(getNpc() != null && getNpc().isActive()) {
 				getNpc().interact();
 			}else if (doorIsLocked){
-				CaveExplorer.print("You see that this giant door has a slot for a key. Maybe it's somewhere else in the temple.");
+				CaveExplorer.print("You see that this seemingly seamless limestone wall has a key hole.");
+				CaveExplorer.print("Maybe you'll find the key to open it somewhere else in the pyramid.");
 			}else CaveExplorer.print("The door has been opened.");
 		}
 		else if(direction == 5) {
 			if(CaveExplorer.inventory.getKeys() > 0) {
-				System.out.println("You use the key and with a satifying *KACHUNK* the to door slides open.");
+				CaveExplorer.print("You use the key and with a satifying *KACHUNK*, the door slides open.");
 				lockRoom.getDoor(doorDirection).setLocked(false);
-				lockRoom.getDoor(doorDirection).setOpen(true);	
-				CaveExplorer.caves[0][5][3].setConnection(2, CaveExplorer.caves[0][6][3], new Door());
+				lockRoom.getDoor(doorDirection).setOpen(true);			
+				CaveExplorer.caves[0][5][3].setConnection(SOUTH, CaveExplorer.caves[0][6][3], new Door());
 				CaveExplorer.inventory.useKey();
 				this.doorIsLocked = false;
 			}else {
-				System.out.println("You don't have any keys.");
+				CaveExplorer.print("You don't have any keys.");
 			}
 		}
-
 		else {
-			CaveExplorer.print("Invalid input");
+			CaveExplorer.print("Error, please report.");
 		}
 	}
 	
