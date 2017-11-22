@@ -17,7 +17,7 @@ public class Inventory {
 	public void updateMap() {
 		level = CaveExplorer.caves[CaveExplorer.currentRoom.getFloor()];
 		map = " ";
-		for(int i = 0; i < CaveExplorer.caves[0].length - 1; i++){
+		for(int i = CaveExplorer.currentRoom.getFloor()*2; i < CaveExplorer.caves[0].length - 1; i++){
 			map+= "____";
 		}
 		map +="___\n";
@@ -65,7 +65,7 @@ public class Inventory {
 		keys = keys + 1;
 	}
 	public void useKey() {
-		keys = keys - 1;
+		keys = keysss - 1;
 	}
 	public int[] getArtifactCount(){
 		return artifactCount;
