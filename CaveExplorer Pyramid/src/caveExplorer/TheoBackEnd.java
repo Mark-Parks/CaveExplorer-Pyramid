@@ -38,8 +38,7 @@ public class TheoBackEnd implements DevinSupport{
 		return true;
 	}
 	public boolean isGameOver() {
-		String input = CaveExplorer.in.nextLine();
-		if(frontend.getMatches() >=8 || frontend.getMoves()<=0 || input.equals("asdf")) {
+		if(frontend.getMatches() >=8 || frontend.getMoves()<=0) {
 			return true;
 		}
 		return false;

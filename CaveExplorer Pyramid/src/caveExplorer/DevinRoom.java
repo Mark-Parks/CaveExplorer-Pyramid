@@ -27,7 +27,7 @@ public class DevinRoom extends NPCRoom {
 		public void performAction(int direction) {
 		if(direction == 5) {
 			
-			CaveExplorer.print("hi im devin and I dab on haters");
+			CaveExplorer.print("zzzzzz");
 		}else {
 				CaveExplorer.print("no");
 			}
