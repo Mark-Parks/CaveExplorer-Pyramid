@@ -21,7 +21,15 @@ public class WeixiongBackEnd implements TristanSupport{
 		int[] test = {1,1};
 		WeixiongBackEnd test1 = new WeixiongBackEnd(null);
 		test1.createMaze();
+		test1.move(test);
 		test1.printMaze(test1.maze);
+		/*int[][] test3 = test1.checkValidMoves(test);
+		for(int[] psn: test3) {
+			System.out.println(test1.toCoords(psn));
+		}*/
+		//test1.resetBoard();
+		test1.printMaze(test1.maze);
+		test1.lookForPlayer(test, WEST);
 	}
 
 	public WeixiongBackEnd(WeixiongSupport frontend) {
@@ -68,24 +76,11 @@ public class WeixiongBackEnd implements TristanSupport{
 		maze[4][5] = new HorizontalWall();
 		setStartingPosition();
 		placeMummies();
-	}
-
-	public void createMaze(Block[][] maze) {
-		//populates the maze with roads
-		for(Block[] row: maze) {
-			for(Block col: row) {
-				col = new Block();
-			}
-		}
-		//adds walls; will decide layout later
-		maze[0][2] = new VerticalWall();
-		maze[1][2] = new VerticalWall();
-		maze[3][3] = new HorizontalWall();
-		maze[5][4] = new HorizontalWall();
-		maze[1][5] = new HorizontalWall();
-		//for resetting the game later, we set initMaze equal to maze
+		
+		this.initMaze = this.maze;
 	}
 	
+	//test code
 	public void printMaze(Block[][] maze) {
 		for(Block[] row: maze) {
 			for(Block block: row) {
@@ -95,6 +90,20 @@ public class WeixiongBackEnd implements TristanSupport{
 		}
 	}
 	
+	public void resetBoard() {
+		//resets the board with the mummies and player to their original starting positions
+		for(int i = 0; i < initMaze.length; i++) {
+			for(int j = 0; j < initMaze[i].length; j++) {
+				maze[i][j] = initMaze[i][j];
+				if(!(maze[i][j] instanceof VerticalWall) && !(maze[i][j] instanceof HorizontalWall)) {
+					maze[i][j].leave();
+				}
+			}
+		}
+		setStartingPosition();
+		placeMummies();
+	}
+
 	public void setStartingPosition() {
 		playerPosition[0] = 0;
 		playerPosition[1] = 0;
@@ -138,20 +147,13 @@ public class WeixiongBackEnd implements TristanSupport{
 		}
 	}
 	
-	public void resetBoard() {
-		//resets the board with the mummies and player to their original starting positions
-		this.maze = this.initMaze;
-		setStartingPosition();
-		placeMummies();
-	}
-	
 	public boolean containsPlayer(int[] mummypsn, int direction) {
 		int range = 1;
 		int xcoord = mummypsn[0];
 		int ycoord = mummypsn[1];
 		if(direction % 2 == 0) {
-			if(direction == NORTH && range > 0 && xcoord > 0) {
-				while(range <=2 && xcoord > 0) {
+			if(direction == NORTH && xcoord - 1 > 0) {
+				while(range <= 1 && xcoord > 0) {
 					if(maze[xcoord - range][ycoord] instanceof VerticalWall || maze[xcoord - 1][ycoord] instanceof HorizontalWall) {
 						return false;
 					}
@@ -162,7 +164,7 @@ public class WeixiongBackEnd implements TristanSupport{
 				}
 			}
 			else{
-				while(range <= 2 && xcoord < maze.length - range) {
+				while(range <= 1 && xcoord < maze.length - range) {
 					if(maze[xcoord + range][ycoord] instanceof VerticalWall || maze[xcoord + 1][ycoord] instanceof HorizontalWall) {
 						return false;
 					}
@@ -176,7 +178,7 @@ public class WeixiongBackEnd implements TristanSupport{
 		else 
 		{
 			if(direction == EAST) {
-				while(range <= 2 && ycoord > maze.length - 1) {
+				while(range <= 1 && ycoord > maze.length - 1) {
 					if(maze[xcoord][ycoord + range] instanceof VerticalWall || maze[xcoord - 1][ycoord] instanceof HorizontalWall) {
 						return false;
 					}
@@ -187,7 +189,7 @@ public class WeixiongBackEnd implements TristanSupport{
 				}
 			}
 			if(direction == WEST) {
-				while(range <= 2 && ycoord > 0) {
+				while(range <= 1 && ycoord - 1 > 0) {
 					if(maze[xcoord][ycoord - range] instanceof VerticalWall || maze[xcoord - 1][ycoord] instanceof HorizontalWall) {
 						return false;
 					}
@@ -202,17 +204,19 @@ public class WeixiongBackEnd implements TristanSupport{
 	}
 
 	public int[][] checkValidMoves(int[] psn) {
-		int[][] possiblePositions  = new int[4][2];
+		int[][] possiblePositions = new int[4][2];
 		int xcoord = psn[0];
 		int ycoord = psn[1];
 		//if a coordinate is an instance of a block but not a wall, then the mummy and player can move to it
-		if(xcoord - 1 != 0) {
+		if(xcoord - 1 >= 0) {
 			possiblePositions[0][0] = xcoord - 1;
 			possiblePositions[0][1] = ycoord;
 		}
 		else {
 			possiblePositions[0] = null;
 		}
+		//ignore the debug statements
+		//System.out.println(possiblePositions[0][0]+","+possiblePositions[0][1]);
 		 
 		if(xcoord + 1 < maze.length - 1) {
 			possiblePositions[1][0] = xcoord + 1;
@@ -222,13 +226,17 @@ public class WeixiongBackEnd implements TristanSupport{
 			possiblePositions[1] = null;
 		}
 		
-		if(ycoord - 1 != 0) {
+		//System.out.println(possiblePositions[1][0]+","+possiblePositions[1][1]);
+		
+		if(ycoord - 1 >= 0) {
 			possiblePositions[2][0] = xcoord;
 			possiblePositions[2][1] = ycoord - 1;
 		}
 		else {
 			possiblePositions[2] = null;
 		}
+		
+		//System.out.println(possiblePositions[2][0]+","+possiblePositions[2][1]);
 		 
 		if(ycoord + 1 < maze.length - 1) {
 			possiblePositions[3][0] = xcoord;
@@ -238,9 +246,8 @@ public class WeixiongBackEnd implements TristanSupport{
 			possiblePositions[3] = null;
 		}
 		
-		for(int i = 0; i < possiblePositions.length; i++) {
-			System.out.println(toCoords(possiblePositions[i]));
-		}
+		//System.out.println(possiblePositions[3][0]+","+possiblePositions[3][1]);
+
 		//still need to figure out what to do if the player and mummy both walk onto the same space
 		return possiblePositions;
 	}
