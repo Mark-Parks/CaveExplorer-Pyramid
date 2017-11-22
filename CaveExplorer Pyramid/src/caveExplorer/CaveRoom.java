@@ -121,7 +121,6 @@ public class CaveRoom {
 		c[0] = new NPCRoom[7][7];
 		c[1] = new NPCRoom[5][5];
 		c[2] = new NPCRoom[3][3];
-		
 		//
 		//GENERATES PYRAMID
 		//
@@ -133,9 +132,6 @@ public class CaveRoom {
 				}
 			}
 		}
-		
-		
-		
 		//
 		//CUSTOM NPCS
 		//
@@ -155,15 +151,11 @@ public class CaveRoom {
 		c[0][0][0] = new TheoRoom("asdf");
 		c[0][0][6] = new DevinRoom("mhm");
 		c[0][6][0] = new MarkRoom("You notice a key.");
-		c[0][6][3] = new MarkOpenDoorRoom("You see a door.");
-		
-		
 		//
 		//STARTING PLAYER POSITION
 		//
-		CaveExplorer.currentRoom = c[0][6][3];	
+		CaveExplorer.currentRoom = c[0][6][6];	
 		CaveExplorer.currentRoom.enter();
-		
 		//
 		//ALL THE HALLWAYS AND CONNECTIONS TO EACH ROOM
 		//
@@ -223,8 +215,9 @@ public class CaveRoom {
 		c[0][5][2].setConnection(EAST, c[0][5][3], new Door());
 		c[0][5][3].setConnection(EAST, c[0][5][4], new Door());
 		c[0][5][3].setConnection(SOUTH, c[0][6][3], new Door());
-		//c[0][5][3].doors[SOUTH].setOpen(false);
-		//c[0][5][3].doors[SOUTH].setLocked(true);
+		c[0][5][3].doors[SOUTH].setOpen(false);
+		c[0][5][3].doors[SOUTH].setLocked(true);
+		c[0][6][3] = new MarkOpenDoorRoom("You see a door to the North.",c[0][6][3]);
 		c[0][5][4].setConnection(EAST, c[0][5][5], new Door());
 		c[0][5][5].setConnection(EAST, c[0][5][6], new Door());
 		c[0][6][0].setConnection(EAST, c[0][6][1], new Door());
@@ -233,6 +226,22 @@ public class CaveRoom {
 		c[0][6][3].setConnection(EAST, c[0][6][4], new Door());
 		c[0][6][4].setConnection(EAST, c[0][6][5], new Door());
 		c[0][6][5].setConnection(EAST, c[0][6][6], new Door());
+		//
+		//FLOOR 2
+		//
+		/**
+		 * TO BE ADDED
+		 */
+		//
+		//FLOOR 3
+		//
+		/**
+		 * TO BE ADDED
+		 */
+		//
+		//SPECIAL ROOMS
+		//
+		
 	}
 	
 	public void goToRoom(int direction) {

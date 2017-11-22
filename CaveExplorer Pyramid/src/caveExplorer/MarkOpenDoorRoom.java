@@ -3,14 +3,27 @@ package caveExplorer;
 public class MarkOpenDoorRoom extends NPCRoom{
 	
 	private boolean doorIsLocked;
+	private int doorDirection;
+	private CaveRoom lockRoom;
 	
-	public MarkOpenDoorRoom(String description) {
+	public MarkOpenDoorRoom(String description, CaveRoom room) {
 		super(description);
-		this.doorIsLocked = true;
+		this.lockRoom = room;
+		this.doorIsLocked = doesRoomHaveLockedDoor(room);
 	}
+	private boolean doesRoomHaveLockedDoor(CaveRoom room) {
+		for(int i = 0; i < 4; i++) {
+			if(room.getDoor(i) != null && room.getDoor(i).isLocked()) {
+				doorDirection = i;
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public void printValidMoves() {
-		if(doorIsLocked) CaveExplorer.print("You can only enter 'w','d','s', 'a', 'e' to inspect your surroundings, or 'o' to open the locked door but use a key.");
-		else CaveExplorer.print("You can only enter 'w','d','s', 'a', 'e' to inspect your surroundings");
+		if(doorIsLocked) CaveExplorer.print("You can only enter 'w','d','s', 'a', or press 'e' to inspect your surroundings, or 'o' to open the locked door but use a key.");
+		else CaveExplorer.print("You can only enter 'w','d','s', 'a', or press 'e' to inspect your surroundings");
 	}
 	public String validMoves() {
 		if(doorIsLocked) return "wdsaeo";
@@ -40,9 +53,15 @@ public class MarkOpenDoorRoom extends NPCRoom{
 			}else CaveExplorer.print("The door has been opened.");
 		}
 		else if(direction == 5) {
-			System.out.println("You use the key and with a satifying *KACHUNK* the to door slides open.");
-			CaveExplorer.inventory.useKey();
-			this.doorIsLocked = false;
+			if(CaveExplorer.inventory.getKeys() > 0) {
+				System.out.println("You use the key and with a satifying *KACHUNK* the to door slides open.");
+				lockRoom.getDoor(doorDirection).setLocked(false);
+				lockRoom.getDoor(doorDirection).setOpen(true);			
+				CaveExplorer.inventory.useKey();
+				this.doorIsLocked = false;
+			}else {
+				System.out.println("You don't have any keys.");
+			}
 		}
 
 		else {
