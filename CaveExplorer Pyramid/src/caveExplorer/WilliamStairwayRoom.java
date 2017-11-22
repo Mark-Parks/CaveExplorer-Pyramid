@@ -2,10 +2,19 @@ package caveExplorer;
 
 public class WilliamStairwayRoom extends NPCRoom {
 
-	public WilliamStairwayRoom(String description) {
+	private int upR;
+	private int upC;
+	private int downR;
+	private int downC;
+	
+	public WilliamStairwayRoom(String description, int upRow, int upCol, int downRow, int downCol) {
 		super(description);
-		
+		this.upR = upRow;
+		this.upC = upCol;
+		this.downR = downRow;
+		this.downC = downCol;
 	}
+	
 	public void printValidMoves() {
 		CaveExplorer.print("You can only enter 'w','d','s', 'a', 'e' to perform an action, "
 				+ "'u' to go up the stairs, or "
@@ -27,6 +36,7 @@ public class WilliamStairwayRoom extends NPCRoom {
 			goToRoom(direction);
 		}else {
 			performAction(direction);
+			CaveExplorer.inventory.updateMap();
 		}
 	}
 	public void performAction(int direction) {
@@ -34,13 +44,13 @@ public class WilliamStairwayRoom extends NPCRoom {
 			if(getNpc() != null && getNpc().isActive()) {
 				getNpc().interact();
 			}else {
-				CaveExplorer.print("You look at the stairs and see that this tempe has multiple floors.");
+				CaveExplorer.print("You look at the stairs and see that this temple has multiple floors.");
 			}
 		}
 		else if(direction == 5 && getFloor() < 2) {
 			setFloor(getFloor()+1);
 			CaveExplorer.currentRoom.leave();
-			CaveExplorer.currentRoom = CaveExplorer.caves[getFloor()][0][0];
+			CaveExplorer.currentRoom = CaveExplorer.caves[getFloor()][upR][upC];
 			CaveExplorer.currentRoom.enter();
 			CaveExplorer.inventory.updateMap();
 			System.out.println("The climb up the stairs leaves you winded.");
@@ -48,7 +58,7 @@ public class WilliamStairwayRoom extends NPCRoom {
 		else if(direction == 6 && getFloor() > 0) {
 			setFloor(getFloor()-1);
 			CaveExplorer.currentRoom.leave();
-			CaveExplorer.currentRoom = CaveExplorer.caves[getFloor()][0][0];
+			CaveExplorer.currentRoom = CaveExplorer.caves[getFloor()][downR][downC];
 			CaveExplorer.currentRoom.enter();
 			CaveExplorer.inventory.updateMap();
 			System.out.println("You head down.");
