@@ -6,6 +6,12 @@ public class TristanFrontEnd implements WeixiongSupport{
 	
 	private TristanSupport backend;
 	private Scanner in;
+	//private static final int NORTH = 0;
+	//private static final int EAST = 1;
+	//private static final int SOUTH = 2;
+	//private static final int WEST = 3;
+	//private static final int[] DIRECTIONS = {NORTH, EAST, SOUTH, WEST};
+	private static final String validInputs = "wdsac";
 	
 	public TristanFrontEnd() {
 		backend = new WeixiongBackEnd(this);
@@ -20,13 +26,13 @@ public class TristanFrontEnd implements WeixiongSupport{
 	}
 
 	public void play() {
-		String input;
+		String input = "";
 		while(!backend.getGameCleared()) {
+			drawMaze(backend.getMaze());
 			System.out.println("What's your next move?");
 			input = in.nextLine();
 			checkUserInput(input);
 		}
-		
 	}
 	
 	public void startPlaying() {
@@ -62,10 +68,61 @@ public class TristanFrontEnd implements WeixiongSupport{
 			System.out.println("Please input w, a, s, d, or the cheat code.");
 			input = in.nextLine();
 		}
+		move(toDirection(input));
 	}
 
+	
 	private boolean isValid(String input) {
-		// TODO Auto-generated method stub
+		if(input.length() == 1) {
+			for(int i = 0; i < validInputs.length(); i++) {
+				if(validInputs.indexOf(input) > -1) {
+					return true;
+				}
+			}
+		}
 		return false;
 	}
+	
+	public int toDirection(String input) {
+		return validInputs.indexOf(input);
+	}
+	
+	public void move(int num) {
+		int[] currentPosition = backend.getPlayerPosition();
+		int xcoord = currentPosition[0];
+		int ycoord = currentPosition[1];
+		backend.getMaze()[xcoord][ycoord].leave();
+		int[] offset = {-1, 1, 1, -1};
+		if(num <= offset.length) {
+			if(num % 2 == 0) {
+				xcoord += offset[num];
+			}
+			else {
+				ycoord += offset[num];
+			}
+			currentPosition[0] = xcoord;
+			currentPosition[1] = ycoord;
+			backend.move(currentPosition);
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

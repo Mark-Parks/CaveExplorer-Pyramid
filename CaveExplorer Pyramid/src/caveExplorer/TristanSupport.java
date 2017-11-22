@@ -6,4 +6,9 @@ public interface TristanSupport {
 	//gets maze from backend
 	Block[][] getMaze();
 	boolean getGameCleared();
+	
+	int[] getPlayerPosition();
+	
+	void move(int[] currentPosition);
+	
 }
