@@ -142,9 +142,11 @@ public class CaveRoom {
 		//
 		//CUSTOM ROOMS
 		//
-		c[0][0][2] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the second floor.");
-		c[0][0][3] = new WilliamStairwayRoom("There is a staircase leading to the second floor.");
-		c[1][0][0] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the third floor or 'i' to go down to the first floor.");
+		c[0][0][2] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the second floor.", 0, 0, 0, 0);
+		c[0][0][3] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the second floor.", 0, 0, 0, 0);
+		c[0][0][2].setFloor(0);
+		c[1][0][0] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the third floor or 'i' to go down to the first floor.", 0, 0, 0, 0);
+		c[1][0][0].setFloor(1);
 		c[0][3][0] = new MarkWilliamMinigameRoom("There seems to be carvings upon a wall of this room. Press 'f' to come closer.");
 		c[0][3][3] = new TristanRoom("Text");
 		c[0][3][6] = new WeiCustomRoom("A Moogle appears in front of you as you enter the room");
