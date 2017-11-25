@@ -60,6 +60,12 @@ public class WeixiongBackEnd implements TristanSupport{
 		maze[psn[0]][psn[1]].enter();
 	}
 
+	public void moveMummies() {
+		for(int[] mummy: mummies) {
+			moveMummy(mummy);
+		}
+	}
+
 	public void createMaze() {
 		//populates maze with Blocks, then replaces certain elements with Walls
 		//n.b. not sure why it doesn't work with the for each loop will lab it later
@@ -102,6 +108,7 @@ public class WeixiongBackEnd implements TristanSupport{
 		}
 		setStartingPosition();
 		placeMummies();
+		System.out.println("Oh no! A mummy spotted you and hit your head! \nEverything goes black... \nYou wake up back at the start of the cave...\n");
 	}
 
 	public void setStartingPosition() {
@@ -134,7 +141,9 @@ public class WeixiongBackEnd implements TristanSupport{
 		while(validPositions[idx] == null) {
 			idx = (int)(Math.random() * validPositions.length);
 		}
+		maze[mummypsn[0]][mummypsn[1]].leaveMummy();
 		mummypsn = validPositions[idx];
+		maze[mummypsn[0]][mummypsn[1]].enterMummy();
 		for(int i = 0;  i < DIRECTIONS.length; i++) {
 			//looks in every direction for the player, will reset the game if player is found
 			lookForPlayer(mummypsn, DIRECTIONS[i]);
@@ -178,28 +187,37 @@ public class WeixiongBackEnd implements TristanSupport{
 		else 
 		{
 			if(direction == EAST) {
-				while(range <= 1 && ycoord > maze.length - 1) {
-					if(maze[xcoord][ycoord + range] instanceof VerticalWall || maze[xcoord - 1][ycoord] instanceof HorizontalWall) {
-						return false;
+				while(range <= 1 && ycoord > maze.length - 1)
+					try {
+						if(maze[xcoord][ycoord + range] instanceof VerticalWall || maze[xcoord - 1][ycoord] instanceof HorizontalWall) {
+							return false;
+						}
+						else if(maze[xcoord][ycoord + range].containsPlayer){
+							return true;
+						}
+						range++;
 					}
-					else if(maze[xcoord][ycoord + range].containsPlayer){
-						return true;
+					catch(Exception ex) {
+						
 					}
-					range++;
 				}
 			}
 			if(direction == WEST) {
 				while(range <= 1 && ycoord - 1 > 0) {
-					if(maze[xcoord][ycoord - range] instanceof VerticalWall || maze[xcoord - 1][ycoord] instanceof HorizontalWall) {
+					try {
+						if(maze[xcoord][ycoord - range] instanceof VerticalWall || maze[xcoord - 1][ycoord] instanceof HorizontalWall) {
+							return false;
+						}
+						else if(maze[xcoord][ycoord - range].containsPlayer){
+							return true;
+						}
+						range++;
+					}
+					catch(Exception ex) {
 						return false;
 					}
-					else if(maze[xcoord][ycoord - range].containsPlayer){
-						return true;
-					}
-					range++;
 				}
 			}
-		}
 		return false;
 	}
 

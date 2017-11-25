@@ -10,5 +10,6 @@ public interface TristanSupport {
 	int[] getPlayerPosition();
 	
 	void move(int[] currentPosition);
+	void moveMummies();
 	
 }

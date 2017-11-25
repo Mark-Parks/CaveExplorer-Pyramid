@@ -37,7 +37,7 @@ public class TristanFrontEnd implements WeixiongSupport{
 	
 	public void startPlaying() {
 		printIntro();
-		drawMaze(this.backend.getMaze());
+		//drawMaze(this.backend.getMaze());
 	}
 	
 	public void printIntro() {
@@ -104,25 +104,6 @@ public class TristanFrontEnd implements WeixiongSupport{
 			currentPosition[1] = ycoord;
 			backend.move(currentPosition);
 		}
+		backend.moveMummies();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
