@@ -39,8 +39,7 @@ public class CaveRoom {
 		//doors[0] == null
 		for(int i = 0; i < doors.length; i++) {
 			if(doors[i] != null) {
-				doorFound = true;
-				directions += "\nThere is a "+doors[i].getDescription()+" to "+toDirection(i)+". "+doors[i].getDetails();			
+				doorFound = true;		
 			}
 		}
 		if(!doorFound) {
@@ -127,7 +126,7 @@ public class CaveRoom {
 		for(int flr = 0; flr < c.length; flr++) {
 			for(int row = 0; row < c[flr].length; row++) {
 				for(int col = 0; col < c[flr][row].length; col ++) {
-					c[flr][row][col] = new NPCRoom("This cave has coordinates "+flr+","+row+","+col);
+					c[flr][row][col] = new NPCRoom(" ");
 					c[flr][row][col].setFloor(flr);
 				}
 			}
@@ -143,11 +142,13 @@ public class CaveRoom {
 		//CUSTOM ROOMS
 		//
 		c[0][0][2] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the second floor.", 0, 0, 0, 0);
-		c[0][0][3] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the second floor.", 0, 0, 0, 0);
 		c[0][0][2].setFloor(0);
+		c[0][0][3] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the second floor.", 0, 0, 0, 0);
+		c[0][0][3].setFloor(0);
 		c[1][0][0] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the third floor or 'i' to go down to the first floor.", 0, 0, 0, 0);
 		c[1][0][0].setFloor(1);
-		c[0][3][0] = new MarkWilliamMinigameRoom("There seems to be carvings upon a wall of this room. Press 'f' to come closer.");
+		
+		c[0][3][0] = new MarkWilliamMinigameRoom("There seems to be carvings upon a wall of this room. Press 'f' to get a closer look.");
 		c[0][3][3] = new TristanRoom("Text");
 		c[0][3][6] = new WeiCustomRoom("A Moogle appears in front of you as you enter the room");
 		c[0][0][0] = new TheoRoom("asdf");
@@ -219,7 +220,7 @@ public class CaveRoom {
 		c[0][5][3].setConnection(SOUTH, c[0][6][3], new Door());
 		c[0][5][3].doors[SOUTH].setOpen(false);
 		c[0][5][3].doors[SOUTH].setLocked(true);
-		c[0][6][3] = new MarkOpenDoorRoom("You see a door to the North.",c[0][6][3]);
+		c[0][6][3] = new MarkOpenDoorRoom("You see a door to the North.",c[0][6][3], 0, 6, 3, NORTH);
 		c[0][5][4].setConnection(EAST, c[0][5][5], new Door());
 		c[0][5][5].setConnection(EAST, c[0][5][6], new Door());
 		c[0][6][0].setConnection(EAST, c[0][6][1], new Door());
@@ -242,7 +243,7 @@ public class CaveRoom {
 		c[1][1][2].setConnection(EAST, c[1][1][3], new Door());
 		c[1][1][2].doors[EAST].setOpen(false);
 		c[1][1][2].doors[EAST].setLocked(true);
-		c[1][1][3] = new MarkOpenDoorRoom("You see a door to the West.",c[1][1][3]);
+		c[1][1][3] = new MarkOpenDoorRoom("You see a door to the West.",c[1][1][3], 1, 1, 3, WEST);
 		c[1][1][3].setConnection(SOUTH, c[1][2][3], new Door());
 		c[1][1][4].setConnection(SOUTH, c[1][2][4], new Door());
 		c[1][2][0].setConnection(SOUTH, c[1][3][0], new Door());
@@ -308,6 +309,9 @@ public class CaveRoom {
 	}
 
 	public String getContents() {
+		if(CaveExplorer.currentRoom == this) {
+			return "X";
+		}
 		return contents;
 	}
 

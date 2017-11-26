@@ -19,7 +19,7 @@ public class WeiCustomRoom extends NPCRoom {
 		if(super.getContents() == " ") {
 			return "A";
 		}else {
-			return "A";
+			return super.getContents();
 		}
 	}
 	public String getDescription() {

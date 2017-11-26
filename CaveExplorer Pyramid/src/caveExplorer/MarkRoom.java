@@ -44,6 +44,7 @@ public class MarkRoom extends NPCRoom{
 			System.out.println("You grab the key. Maybe it will unlock a door.");
 			this.containKey = false;
 			CaveExplorer.inventory.addKey();
+			this.setDescription("There is an imprint of the key you picked up earlier in the ground.");
 		}
 
 		else {
@@ -53,10 +54,10 @@ public class MarkRoom extends NPCRoom{
 	
 	
 	public String getContents() {
-		if(super.getContents() == " ") {
+		if(super.getContents() == " " && containKey) {
 			return "K";
 		}else {
-			return "K";
+			return super.getContents();
 		}
 	}
 }

@@ -20,18 +20,28 @@ public class WilliamFrontEnd implements MarkSupporter{
 	}
 
 	public void play(){
+		System.out.println("");
 		System.out.println("The carvings are, in truth, a strange sequence of symbols etched onto individual tiles on the sandstone walls.");
 		System.out.println("You recognize them to be hieroglyphics. Fortunately, you can read them.");
 		System.out.println("");
 		board = backend.getBoard();
 		backend.updateSums(board);
 		displayBoard(board);
+		System.out.println("");
+        System.out.println("(The minigame is Magic Squares.");
+        System.out.println("The four-by-four square of numbers to the top left is the board.");
+        System.out.println("The numbers underneath / to the side of the lines are the sums of the numbers in that row, column, or diagonal.");
+        System.out.println("The goal is to make all of the sums equal to each other.");
+        System.out.println("Enter coordinates in the form [row],[col] [row],[col] (eg; 0,0 0,1) to swap the numbers at those coordinates.)");
+        
         String input = CaveExplorer.in.nextLine();
+        respondToInput(input);
+        backend.updateSums(board);
         
 	    while(backend.stillPlaying() && !input.equals("dab")){
 	    	System.out.println("");
 	    	displayBoard(board);
-	        input = CaveExplorer.in.nextLine();
+	    	input = CaveExplorer.in.nextLine();
 	        respondToInput(input);
 	        backend.updateSums(board);
 	    }
@@ -139,8 +149,8 @@ public class WilliamFrontEnd implements MarkSupporter{
 				}
 				
 				System.out.println("");
-				System.out.println("The tiles slowly separate to reveal a golden statuette hidden behind the puzzle.");
-				System.out.println("Your expertise in treasure hunting allows you to immediately appraise its value to be around " + sum + "thousand dollars.");
+				System.out.println("The tiles slowly separate to reveal a golden statuette hidden behind the puzzle wall.");
+				System.out.println("Your expertise in treasure hunting allows you to immediately appraise its value to be around " + sum + " thousand dollars.");
 			}else {
 				System.out.println("You try touching the tiles at the coordinates, but they are not a part of the puzzle. Nothing happens.");
 			}
@@ -149,9 +159,5 @@ public class WilliamFrontEnd implements MarkSupporter{
 			System.out.println("Invalid input.");
 		}
 	}
-
-
-
-
 }
 

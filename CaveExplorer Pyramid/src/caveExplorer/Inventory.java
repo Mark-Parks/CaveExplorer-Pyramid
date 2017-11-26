@@ -65,7 +65,7 @@ public class Inventory {
 		keys = keys + 1;
 	}
 	public void useKey() {
-		keys = keysss - 1;
+		keys = keys - 1;
 	}
 	public int[] getArtifactCount(){
 		return artifactCount;

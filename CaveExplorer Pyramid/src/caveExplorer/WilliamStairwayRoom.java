@@ -73,7 +73,7 @@ public class WilliamStairwayRoom extends NPCRoom {
 		if(super.getContents() == " ") {
 			return "S";
 		}else {
-			return "S";
+			return super.getContents();
 		}
 	}
 }

@@ -41,7 +41,7 @@ public class TheoDevinMinigameRoom extends NPCRoom{
 		if(super.getContents() == " ") {
 			return "T";
 		}else {
-			return "T";
+			return super.getContents();
 		}
 	}
 

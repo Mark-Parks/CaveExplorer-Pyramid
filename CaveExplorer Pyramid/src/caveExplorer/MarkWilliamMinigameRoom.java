@@ -11,7 +11,7 @@ public class MarkWilliamMinigameRoom extends NPCRoom {
 	}
 	public void printValidMoves() {
 		CaveExplorer.print("You can only enter 'w','d','s', 'a', or 'e' to inspect your surroundings,"
-				+ " or 'f' to approach the.");
+				+ " or 'f' to approach the wall.");
 	}
 	public String validMoves() {
 		return "wdsaef";
@@ -45,7 +45,7 @@ public class MarkWilliamMinigameRoom extends NPCRoom {
 		if(super.getContents() == " ") {
 			return "G";
 		}else {
-			return "G";
+			return super.getContents();
 		}
 	}
 }

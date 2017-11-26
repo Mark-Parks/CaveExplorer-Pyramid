@@ -94,8 +94,6 @@ public class MarkOpenDoorRoom extends NPCRoom{
 	
 	
 	public String getContents() {
-		if(super.getContents() == " ") {
-			return " ";
-		}else return super.getContents();
+		return super.getContents();
 	}
 }
