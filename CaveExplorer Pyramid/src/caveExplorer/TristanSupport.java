@@ -13,5 +13,8 @@ public interface TristanSupport {
 	void moveMummies();
 	boolean checkWin();
 	void setGameCleared(boolean b);
+	int[] getMummy1Position();
+	void moveMummy(int[] mummy);
+	int[] getMummy2Position();
 	
 }

@@ -44,7 +44,7 @@ public class TristanFrontEnd implements WeixiongSupport{
 		System.out.println("You stupidly walk into the weird room as the door shuts behind you.");
 		System.out.println("GUAHHHHHHHHHH");
 		System.out.println("Oh good lord, get to the other side quickly!");
-		System.out.println("(If a mummy is two spaces away from you, you will DIE)");
+		System.out.println("(If a mummy is a space away from you, you will DIE)");
 		System.out.println("Good luck solider!");
 		System.out.println(" ");
 	}
@@ -64,11 +64,17 @@ public class TristanFrontEnd implements WeixiongSupport{
 
 
 	public void checkUserInput(String input) {
-		while(!isValid(input)) {
+		while(!isValid(input.toLowerCase())) {
 			System.out.println("Please input w, a, s, d, or the cheat code.");
 			input = in.nextLine();
 		}
-		move(toDirection(input));
+		if(input.toLowerCase().equals("c")) {
+			printEndgameMsg();
+			backend.setGameCleared(true);
+		}
+		else {
+			move(toDirection(input));
+		}
 	}
 
 	
@@ -106,8 +112,9 @@ public class TristanFrontEnd implements WeixiongSupport{
 		}
 		if(backend.checkWin()) {
 			printEndgameMsg();
-			backend.setGameCleared(false);
+			backend.setGameCleared(true);
 		}
-		backend.moveMummies();
+		backend.moveMummy((int[]) backend.getMummy1Position());
+		backend.moveMummy((int[]) backend.getMummy2Position());
 	}
 }
