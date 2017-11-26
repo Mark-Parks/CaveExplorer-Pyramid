@@ -5,16 +5,24 @@ public class MarkOpenDoorRoom extends NPCRoom{
 	private boolean doorIsLocked;
 	private int doorDirection;
 	private CaveRoom lockRoom;
+	private int floor;
+	private int row;
+	private int col;
+	private int dir;
 	
-	public MarkOpenDoorRoom(String description, CaveRoom room) {
+	public MarkOpenDoorRoom(String description, CaveRoom room, int floor, int row, int col, int dir) {
 		super(description);
 		this.lockRoom = room;
 		this.doorIsLocked = doesRoomHaveLockedDoor(room);
+		this.floor = floor;
+		this.row = row;
+		this.col = col;
+		this.dir = dir;
 	}
+	
 	private boolean doesRoomHaveLockedDoor(CaveRoom room) {
 		for(int i = 0; i < 4; i++) {
 			if(room.getDoor(i) != null && room.getDoor(i).isLocked()) {
-				doorDirection = i;
 				return true;
 			}
 		}
@@ -55,10 +63,24 @@ public class MarkOpenDoorRoom extends NPCRoom{
 		}
 		else if(direction == 5) {
 			if(CaveExplorer.inventory.getKeys() > 0) {
-				CaveExplorer.print("You use the key and with a satifying *KACHUNK*, the door slides open.");
+				CaveExplorer.print("You use the key, and with a satifying *KACHUNK*, the door slides open.");
 				lockRoom.getDoor(doorDirection).setLocked(false);
-				lockRoom.getDoor(doorDirection).setOpen(true);			
-				CaveExplorer.caves[0][5][3].setConnection(SOUTH, CaveExplorer.caves[0][6][3], new Door());
+				lockRoom.getDoor(doorDirection).setOpen(true);
+				int rowToOpen = row;
+				int colToOpen = col;
+				if(dir == NORTH) {
+					rowToOpen--;
+				}
+				if(dir == EAST) {
+					colToOpen++;
+				}
+				if(dir == SOUTH) {
+					rowToOpen++;
+				}
+				if(dir == WEST) {
+					colToOpen--;
+				}
+				CaveExplorer.caves[floor][row][col].setConnection(dir, CaveExplorer.caves[floor][rowToOpen][colToOpen], new Door());
 				CaveExplorer.inventory.useKey();
 				this.doorIsLocked = false;
 			}else {
