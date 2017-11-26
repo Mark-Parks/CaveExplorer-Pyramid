@@ -55,15 +55,26 @@ public class WeixiongBackEnd implements TristanSupport{
 	
 	public void move(int[] psn) {
 		maze[playerPosition[0]][playerPosition[1]].leave();
-		playerPosition[0] = psn[0];
-		playerPosition[1] = psn[1];
-		maze[psn[0]][psn[1]].enter();
+		if(getMaze()[psn[0]][psn[1]] instanceof HorizontalWall || getMaze()[psn[0]][psn[1]] instanceof VerticalWall || getMaze()[psn[0]][psn[1]] == null) {
+			System.out.println("Oh no, you ran right into a wall! The mummies are sure\nto come after you now.");
+			resetBoard();
+			
+		}
+		else {
+			playerPosition[0] = psn[0];
+			playerPosition[1] = psn[1];
+			maze[psn[0]][psn[1]].enter();
+		}
 	}
 
 	public void moveMummies() {
 		for(int[] mummy: mummies) {
 			moveMummy(mummy);
 		}
+	}
+	
+	public boolean checkWin() {
+		return playerPosition[0] == maze.length - 1 && playerPosition[1] == maze.length - 1;
 	}
 
 	public void createMaze() {
@@ -276,6 +287,10 @@ public class WeixiongBackEnd implements TristanSupport{
 
 	public Block[][] getMaze(){
 		return maze;
+	}
+	
+	public void setGameCleared(boolean x) {
+		gameCleared = x;
 	}
 	
 	public int[] getPlayerPosition() {

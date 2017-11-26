@@ -104,6 +104,10 @@ public class TristanFrontEnd implements WeixiongSupport{
 			currentPosition[1] = ycoord;
 			backend.move(currentPosition);
 		}
+		if(backend.checkWin()) {
+			printEndgameMsg();
+			backend.setGameCleared(false);
+		}
 		backend.moveMummies();
 	}
 }
