@@ -20,7 +20,7 @@ public class TristanRoom extends NPCRoom {
 		if(super.getContents() == " ") {
 			return "F";
 		}else {
-			return "F";
+			return super.getContents();
 		}
 	}
 	
