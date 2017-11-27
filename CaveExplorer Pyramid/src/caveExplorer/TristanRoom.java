@@ -11,7 +11,7 @@ public class TristanRoom extends NPCRoom {
 	}
 	
 	public void enter() {
-		super.setDescription("There is an ominous obelisk in the room.);
+		super.setDescription("There is an ominous obelisk in the room.");
 	}
 	
 	public void printValidMoves() {
