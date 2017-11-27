@@ -4,8 +4,8 @@ public class MarkNPC extends NPC {
 
 	private CaveRoom[][][] pyramid = CaveExplorer.caves;
 	private int[] attackDMG = {10,20,15,25};
-	private String[] attacks = {"The Mummy's mouth spews forth a swarm of toxic locus! You take "+attackDMG[0]+" damage!",
-								"The Mummy inhales and blows a wave of fire! You take "+attackDMG[1]+" damage!",
+	private String[] attacks = {"The Mummy's spews forth a swarm of toxic locusts! You take "+attackDMG[0]+" damage!",
+								"The Mummy lunges at you with its arm! You take "+attackDMG[1]+" damage!",
 								"The Mummy's bandages unravel and start to strangle you! You take "+attackDMG[2]+" damage!",
 								"The Mummy morphs into a giant crocodile and bites you! You take "+attackDMG[3]+" damage!"};
 	private int currentFlr;
