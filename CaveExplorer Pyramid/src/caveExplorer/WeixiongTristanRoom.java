@@ -16,7 +16,7 @@ public class WeixiongTristanRoom extends NPCRoom{
 		
 		}else{
 			CaveExplorer.print("You can only enter 'w','d','s', 'a', 'e' to inspect your surroundings,"
-				+ " or 'f' to approach the final challenge.");
+				+ " or 'f' to approach the final challenge. or 'k' if the game doesn't work.");
 		}
 	}
 	public String validMoves() {
@@ -46,7 +46,7 @@ public class WeixiongTristanRoom extends NPCRoom{
 		}
 		else if(direction == 6) {
 			CaveExplorer.inventory.addKey();
-			super.setDescription("This was the final challenge room.");
+			super.setDescription("This was the final challenge room. It didn't work so you get the key anyway to complete the game.");
 		} else {
 			CaveExplorer.print("Invalid input");
 		}
