@@ -78,8 +78,8 @@ public class DevinFrontEnd implements TheoSupport {
 	
 
 	public void rules() {
-		System.out.println("You will have "+moves+" chances to find all the matches."
-				+ " To win, you must match 2 of the same cards together by inputting coordinates into the game.");
+		System.out.println("You will have "+moves+" chances to find all the hieroglyphics."
+				+ " To win, you must match all of the pairs of hieroglyphics together by inputting coordinates into the game.");
 		
 				
 	}

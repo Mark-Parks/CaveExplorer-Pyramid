@@ -97,7 +97,7 @@ public class TheoBackEnd implements DevinSupport{
 		int[] coords = toCoords(input);
 		while(coords == null){
 			System.out.println("You must enter cordinates of the form:\n          <row>,<col>"
-					+ "\n<row> and <col> should be integers. Make shure your input is inbounds.");
+					+ "\n<row> and <col> should be integers. Make sure your input is inbounds.");
 			input = CaveExplorer.in.nextLine();
 			coords = toCoords(input);
 		}
