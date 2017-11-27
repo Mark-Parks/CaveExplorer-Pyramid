@@ -3,15 +3,21 @@ package caveExplorer;
 public class MarkWilliamMinigameRoom extends NPCRoom {
 	
 	private WilliamFrontEnd game;
+	private boolean played;
 
 	public MarkWilliamMinigameRoom(String description) {
 		super(description);
 		game = new WilliamFrontEnd();
-		
+		played = false;
 	}
 	public void printValidMoves() {
-		CaveExplorer.print("You can only enter 'w','d','s', 'a', or 'e' to inspect your surroundings,"
+		if(played) {
+			CaveExplorer.print("You can only enter 'w','d','s', 'a', or 'e' to inspect your surroundings.");
+		
+		}else{
+			CaveExplorer.print("You can only enter 'w','d','s', 'a', 'e' to inspect your surroundings,"
 				+ " or 'f' to approach the wall.");
+		}
 	}
 	public String validMoves() {
 		return "wdsaef";
@@ -31,9 +37,12 @@ public class MarkWilliamMinigameRoom extends NPCRoom {
 			performAction(direction);
 		}
 	}
+	
 	public void performAction(int direction) {
-		if(direction == 5) {
+		if(direction == 5 && !played) {
 			game.play();
+			played = true;
+			super.setDescription("This is where you solved the magic square puzzle.");
 		}
 		else {
 			CaveExplorer.print("Invalid input");

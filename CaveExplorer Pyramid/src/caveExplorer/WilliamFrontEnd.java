@@ -7,6 +7,7 @@ public class WilliamFrontEnd implements MarkSupporter{
 
 	private int[][] board;
 	private WilliamSupporter backend;
+	private boolean rewarded;
 	
 	public static final void main(String[] args) {
 		WilliamFrontEnd demo = new WilliamFrontEnd();
@@ -17,6 +18,7 @@ public class WilliamFrontEnd implements MarkSupporter{
 	public WilliamFrontEnd() {
 		backend = new MarkBackEnd(this);
 		CaveExplorer.in = new Scanner(System.in);
+		rewarded = false;
 	}
 
 	public void play(){
@@ -29,16 +31,18 @@ public class WilliamFrontEnd implements MarkSupporter{
 		displayBoard(board);
 		System.out.println("");
         System.out.println("(The minigame is Magic Squares.");
-        System.out.println("The four-by-four square of numbers to the top left is the board.");
+        System.out.println("The four-by-four chunk of numbers on the top left is the 'board'.");
         System.out.println("The numbers underneath / to the side of the lines are the sums of the numbers in that row, column, or diagonal.");
         System.out.println("The goal is to make all of the sums equal to each other.");
-        System.out.println("Enter coordinates in the form [row],[col] [row],[col] (eg; 0,0 0,1) to swap the numbers at those coordinates.)");
-        
+        System.out.println("Enter coordinates in the form [row],[col] [row],[col] (eg; 0,0 1,2) to swap the numbers at those coordinates.");
+        System.out.println("The top left number (" + board[0][0] + ") would be 0,0.");
+        System.out.println("The number to the right (" + board[0][1] + ") of that would be 0,1)");
+        System.out.print("");
         String input = CaveExplorer.in.nextLine();
         respondToInput(input);
         backend.updateSums(board);
         
-	    while(backend.stillPlaying() && !input.equals("dab")){
+	    while(backend.stillPlaying() && !input.equals("alohomora")){
 	    	System.out.println("");
 	    	displayBoard(board);
 	    	input = CaveExplorer.in.nextLine();
@@ -76,7 +80,11 @@ public class WilliamFrontEnd implements MarkSupporter{
 			}
 		}
 		else {
-			System.out.println("Invalid input.");
+			if(input.equals("alohomora")) {
+				System.out.println("The puzzle falls apart beneaths your sorcery.");
+			}else {
+				System.out.println("Invalid input.");
+			}
 		}
 	}
 
@@ -112,6 +120,12 @@ public class WilliamFrontEnd implements MarkSupporter{
 	public void reward() {
 		System.out.println("As the numbers align, you hear a clicking sound as unseen mechanisms lock into place.");
 		System.out.println("Nothing else seems to happen though... You decide to try swapping two more tiles.");
+		while(!rewarded) {
+			rewardSelect();
+		}
+	}
+	
+	public void rewardSelect() {
 		String input = CaveExplorer.in.nextLine();
 		if(input.length() == 7) {
 			if(input.substring(1,2).equals(",") && input.substring(5,6).equals(",") &&
@@ -140,8 +154,8 @@ public class WilliamFrontEnd implements MarkSupporter{
 					}
 				}
 				
-				for(int i = a - 1; i < a + 2; i++) {
-					for(int j = b - 1; j < b + 2; j++) {
+				for(int i = c - 1; i < c + 2; i++) {
+					for(int j = d - 1; j < d + 2; j++) {
 						if(i > -1 && j > -1 && i < board[0].length - 1 && j < board[0].length -1) {
 							sum += board[i][j];
 						}
@@ -151,9 +165,21 @@ public class WilliamFrontEnd implements MarkSupporter{
 				System.out.println("");
 				System.out.println("The tiles slowly separate to reveal a golden statuette hidden behind the puzzle wall.");
 				System.out.println("Your expertise in treasure hunting allows you to immediately appraise its value to be around " + sum + " thousand dollars.");
-				CaveExplorer.inventory.addArtifact(2);
-				System.out.println("You also seem to have found a key. Maybe it will lead you upwards into the pyramid!");
+				if(sum > 150) {
+					CaveExplorer.inventory.addArtifact(3);
+				}
+				else if(sum > 100) {
+					CaveExplorer.inventory.addArtifact(2);
+				}
+				else if(sum > 50) {
+					CaveExplorer.inventory.addArtifact(1);
+				}
+				else {
+					CaveExplorer.inventory.addArtifact(0);
+				}
+				System.out.println("You also seem to have found a key.");
 				CaveExplorer.inventory.addKey();
+				rewarded = true;
 			}else {
 				System.out.println("You try touching the tiles at the coordinates, but they are not a part of the puzzle. Nothing happens.");
 			}
