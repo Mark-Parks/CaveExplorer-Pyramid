@@ -8,7 +8,8 @@ public class Inventory {
 	private int hp;
 	private CaveRoom[][] level;
 	private static int keys;
-
+	private static boolean spooked;
+	private String playerFear;
 
 	public Inventory() {
 		updateMap();
@@ -86,5 +87,19 @@ public class Inventory {
 		if(CaveExplorer.currentRoom.getFloor() == 2)
 			return 300000 + (artifactCount[0]*10) + (artifactCount[1]*25) + (artifactCount[2]*50)+(artifactCount[3]*100)+hp;
 		else return (artifactCount[0]*10) + (artifactCount[1]*25) + (artifactCount[2]*50)+(artifactCount[3]*100)+hp;
+	}
+
+	public boolean isNotSpooked() {
+		return !spooked;
+	}
+	public void setSpooked(boolean spook) {
+		spooked = spook;
+	}
+
+	public String getPlayerFear() {
+		return playerFear;
+	}
+	public void setPlayerFear(String fear) {
+		playerFear = fear;
 	}
 }

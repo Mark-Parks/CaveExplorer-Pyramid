@@ -18,6 +18,7 @@ public class CaveExplorer {
 		inventory = new Inventory();
 		inventory.setHp(100);
 		inventory.getArtifactCount();
+		inventory.setSpooked(false);
 		startExploring();
 	}
 

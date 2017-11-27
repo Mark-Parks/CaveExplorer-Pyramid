@@ -10,7 +10,7 @@ public class TheoDevinMinigameRoom extends NPCRoom{
 	}
 	public void printValidMoves() {
 		CaveExplorer.print("You can only enter 'w','d','s', 'a', or 'e' to perform an action,"
-				+ " or 'f' to play the");
+				+ " or 'f' to face the 2nd challange of the pyramid!");
 	}
 	public String validMoves() {
 		return "wdsaef";
@@ -39,7 +39,7 @@ public class TheoDevinMinigameRoom extends NPCRoom{
 	}
 	public String getContents() {
 		if(super.getContents() == " ") {
-			return "T";
+			return "G";
 		}else {
 			return super.getContents();
 		}
