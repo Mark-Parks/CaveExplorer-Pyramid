@@ -53,6 +53,7 @@ public class WeiCustomRoom extends NPCRoom {
 			performAction(direction);
 		}
 	}
+	//things
 	public void performAction(int direction) {
 		if(direction == 5) {
 			if(active) {
