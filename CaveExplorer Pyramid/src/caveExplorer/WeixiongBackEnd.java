@@ -18,20 +18,7 @@ public class WeixiongBackEnd implements TristanSupport{
 	private int[] mummy2Position;
 	
 	//TEST CODE
-	public static void main(String[] args) {
-		int[] test = {1,1};
-		WeixiongBackEnd test1 = new WeixiongBackEnd(null);
-		test1.createMaze();
-		test1.move(test);
-		test1.printMaze(test1.maze);
-		/*int[][] test3 = test1.checkValidMoves(test);
-		for(int[] psn: test3) {
-			System.out.println(test1.toCoords(psn));
-		}*/
-		//test1.resetBoard();
-		test1.printMaze(test1.maze);
-		test1.lookForPlayer(test, WEST);
-	}
+	
 
 	public WeixiongBackEnd(WeixiongSupport frontend) {
 		this.frontend = frontend;

@@ -14,7 +14,8 @@ public class Block {
 	
 	public Block() {
 		this.contents = "   ";
-		containsPlayer = false;;
+		containsPlayer = false;
+		containsMummy = false;
 	}
 	
 	public String getContents() {

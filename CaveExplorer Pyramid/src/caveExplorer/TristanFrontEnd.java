@@ -6,6 +6,7 @@ public class TristanFrontEnd implements WeixiongSupport{
 	
 	private TristanSupport backend;
 	private Scanner in;
+	private Block[][] maze;
 	//private static final int NORTH = 0;
 	//private static final int EAST = 1;
 	//private static final int SOUTH = 2;
@@ -26,9 +27,10 @@ public class TristanFrontEnd implements WeixiongSupport{
 	}
 
 	public void play() {
-		String input = "";
+		String input = "";	
+		this.maze = this.backend.getMaze();
 		while(!backend.getGameCleared()) {
-			drawMaze(backend.getMaze());
+			drawMaze(maze);
 			System.out.println("What's your next move?");
 			input = in.nextLine();
 			checkUserInput(input);

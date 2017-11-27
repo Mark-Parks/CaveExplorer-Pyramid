@@ -20,7 +20,7 @@ public class WeixiongTristanRoom extends NPCRoom{
 		}
 	}
 	public String validMoves() {
-		return "wdsaef";
+		return "wdsaefk";
 	}
 	private boolean isValid(String input) {
 		return validMoves().indexOf(input) != -1 && input.length() == 1;
@@ -44,7 +44,10 @@ public class WeixiongTristanRoom extends NPCRoom{
 			played = true;
 			super.setDescription("This was the final challenge room.");
 		}
-		else {
+		else if(direction == 6) {
+			CaveExplorer.inventory.addKey();
+			super.setDescription("This was the final challenge room.");
+		} else {
 			CaveExplorer.print("Invalid input");
 		}
 	}
