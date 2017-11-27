@@ -145,7 +145,7 @@ public class CaveRoom {
 		c[0][0][3].setFloor(0);
 		c[1][0][0] = new WilliamStairwayRoom("There is a staircase. Press 'i' to go down to the 1st floor.", 0, 0, 0, 3);
 		c[1][0][0].setFloor(1);
-		c[1][1][2] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the 3rd floor.", 0, 2, 0, 0);
+		c[1][1][2] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the 3rd floor.", 0, 2, 0, 2);
 		c[1][1][2].setFloor(1);
 		c[2][0][2] = new WilliamStairwayRoom("There is a staircase. Press 'i' to go down to the 2nd floor.", 0, 0, 1, 2);
 		c[2][0][2].setFloor(2);
@@ -301,12 +301,13 @@ public class CaveRoom {
 		//
 		c[2][0][0].setConnection(EAST, c[2][0][1], new Door());
 		c[2][0][0].setConnection(SOUTH, c[2][1][0], new Door());
-		c[2][1][0].setConnection(EAST, c[2][0][2], new Door());
+		c[2][0][1].setConnection(EAST, c[2][0][2], new Door());
 		c[2][1][0].setConnection(SOUTH, c[2][2][0], new Door());
 		c[2][1][1].setConnection(EAST, c[2][1][2], new Door());
 		c[2][1][2].doors[WEST].setOpen(false);
 		c[2][1][2].doors[WEST].setLocked(true);
 		c[2][1][2] = new MarkOpenDoorRoom("You see a door to the West.",c[0][6][3], 0, 6, 3, WEST);
+		c[2][1][2].setFloor(2);
 		c[2][1][2].setConnection(SOUTH, c[2][2][2], new Door());
 		c[2][2][0].setConnection(EAST, c[2][2][1], new Door());
 		c[2][2][1].setConnection(EAST, c[2][2][2], new Door());
