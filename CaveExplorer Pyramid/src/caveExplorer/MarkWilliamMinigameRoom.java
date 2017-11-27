@@ -44,8 +44,10 @@ public class MarkWilliamMinigameRoom extends NPCRoom {
 			played = true;
 			super.setDescription("This is where you solved the magic square puzzle.");
 		}
-		else {
-			CaveExplorer.print("Invalid input");
+		else if(direction == 5){
+			CaveExplorer.print("There is a bare pedestal in the recesses of the wall where you found an artifact.");
+		}else{
+			CaveExplorer.print("Invalid input.");
 		}
 	}
 	
