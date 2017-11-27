@@ -120,13 +120,9 @@ public class MarkBackEnd implements WilliamSupporter{
 		return false;
 	}
 	
-	public  boolean stillPlaying() {
-		return !victorious();
-	}
-	
 	public boolean victorious() {
 		return columnCheck(board) && rowCheck(board) && diagonalCheck(board);
-	}//checks if won
+	}
 	
 	public int[][] getBoard(){
 		return board;

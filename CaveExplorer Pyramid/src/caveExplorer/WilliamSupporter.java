@@ -11,13 +11,13 @@ public interface WilliamSupporter {
 	//returns the board
 	
 	public boolean victorious();
-	
-	public boolean stillPlaying();
-	//checks victorious
+	//checks sums
 
 	public void swap(int a, int b, int c, int d, int[][] board);
+	//swaps the numbers at a,b and c,d when i pass them on
 
 	public void updateSums(int[][] board);
-	//updates the sums only, because the create
+	//updates the sum values of the board because the front end
+	//won't automatically account for back end after swap
 	
 }

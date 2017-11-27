@@ -16,9 +16,18 @@ public class WilliamStairwayRoom extends NPCRoom {
 	}
 	
 	public void printValidMoves() {
+		if(this.getFloor() == 0) {
+			CaveExplorer.print("You can only enter 'w','d','s', 'a', 'e' to perform an action or " 
+					+ "'i' to go down the stairs.");
+		}else if(this.getFloor() == 1) {
 		CaveExplorer.print("You can only enter 'w','d','s', 'a', 'e' to perform an action, "
 				+ "'u' to go up the stairs, or "
 				+ "'i' to go down the stairs.");
+		}
+		else {
+			CaveExplorer.print("You can only enter 'w','d','s', 'a', 'e' to perform an action, or"
+					+ "'i' to go down the stairs.");
+		}
 	}
 	public String validMoves() {
 		return "wdsaeui";
@@ -64,7 +73,7 @@ public class WilliamStairwayRoom extends NPCRoom {
 			System.out.println("You head down.");
 		}
 		else {
-			CaveExplorer.print("Invalid input");
+			CaveExplorer.print("Invalid input.");
 		}
 	}
 	

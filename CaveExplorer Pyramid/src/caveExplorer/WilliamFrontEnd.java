@@ -20,15 +20,21 @@ public class WilliamFrontEnd implements MarkSupporter{
 		CaveExplorer.in = new Scanner(System.in);
 		rewarded = false;
 	}
+	
+	public boolean withinBounds(int num, int size) {
+		return num < size && num > -1;
+	}
 
 	public void play(){
 		System.out.println("");
 		System.out.println("The carvings are, in truth, a strange sequence of symbols etched onto individual tiles on the sandstone walls.");
 		System.out.println("You recognize them to be hieroglyphics. Fortunately, you can read them.");
 		System.out.println("");
+		
 		board = backend.getBoard();
 		backend.updateSums(board);
 		displayBoard(board);
+		
 		System.out.println("");
         System.out.println("(The minigame is Magic Squares.");
         System.out.println("The four-by-four chunk of numbers on the top left is the 'board'.");
@@ -38,11 +44,12 @@ public class WilliamFrontEnd implements MarkSupporter{
         System.out.println("The top left number (" + board[0][0] + ") would be 0,0.");
         System.out.println("The number to the right (" + board[0][1] + ") of that would be 0,1)");
         System.out.print("");
+        
         String input = CaveExplorer.in.nextLine();
         respondToInput(input);
         backend.updateSums(board);
         
-	    while(backend.stillPlaying() && !input.equals("alohomora")){
+	    while(!backend.victorious() && !input.equals("alohomora")){
 	    	System.out.println("");
 	    	displayBoard(board);
 	    	input = CaveExplorer.in.nextLine();
@@ -58,23 +65,23 @@ public class WilliamFrontEnd implements MarkSupporter{
 	public void respondToInput(String input) {
 		if(input.length() == 7) {
 			if(input.substring(1,2).equals(",") && input.substring(5,6).equals(",") &&
-				(Integer.parseInt(input.substring(0,1)) < board[0].length - 1) && 
-				(Integer.parseInt(input.substring(2,3)) < board[0].length - 1) &&
-				(Integer.parseInt(input.substring(4,5)) < board[0].length - 1) &&
-				(Integer.parseInt(input.substring(6,7)) < board[0].length - 1) &&
-				
-				(Integer.parseInt(input.substring(0,1)) > -1) && 
-				(Integer.parseInt(input.substring(2,3)) > -1) &&
-				(Integer.parseInt(input.substring(4,5)) > -1) &&
-				(Integer.parseInt(input.substring(6,7)) > -1)){
+					withinBounds(Integer.parseInt(input.substring(0,1)), board[0].length - 1) && 
+					withinBounds(Integer.parseInt(input.substring(2,3)), board[0].length - 1) &&
+					withinBounds(Integer.parseInt(input.substring(4,5)), board[0].length - 1) &&
+					withinBounds(Integer.parseInt(input.substring(6,7)), board[0].length - 1)){
 				
 				int a = Integer.parseInt(input.substring(0,1));
 				int b = Integer.parseInt(input.substring(2,3));
 				int c = Integer.parseInt(input.substring(4,5));
 				int d = Integer.parseInt(input.substring(6,7));
-				backend.swap(a,b,c,d,board);
-				System.out.println("");
-				System.out.println("The numbers shift accordingly.");
+				
+				if(a == c && b == d) {
+					System.out.println("You touch the same tile twice. Nothing happens.");
+				}else {
+					backend.swap(a,b,c,d,board);
+					System.out.println("");
+					System.out.println("The hieroglyphics on those tiles shift accordingly.");
+				}
 			}else {
 				System.out.println("You try touching the tiles at the coordinates, but they are not a part of the puzzle. Nothing happens.");
 			}
@@ -119,7 +126,7 @@ public class WilliamFrontEnd implements MarkSupporter{
 	
 	public void reward() {
 		System.out.println("As the numbers align, you hear a clicking sound as unseen mechanisms lock into place.");
-		System.out.println("Nothing else seems to happen though... You decide to try swapping two more tiles.");
+		System.out.println("Nothing else seems to happen though... You decide to try touching two more tiles.");
 		while(!rewarded) {
 			rewardSelect();
 		}
@@ -129,15 +136,10 @@ public class WilliamFrontEnd implements MarkSupporter{
 		String input = CaveExplorer.in.nextLine();
 		if(input.length() == 7) {
 			if(input.substring(1,2).equals(",") && input.substring(5,6).equals(",") &&
-				(Integer.parseInt(input.substring(0,1)) < board[0].length - 1) && 
-				(Integer.parseInt(input.substring(2,3)) < board[0].length - 1) &&
-				(Integer.parseInt(input.substring(4,5)) < board[0].length - 1) &&
-				(Integer.parseInt(input.substring(6,7)) < board[0].length - 1) &&
-				
-				(Integer.parseInt(input.substring(0,1)) > -1) && 
-				(Integer.parseInt(input.substring(2,3)) > -1) &&
-				(Integer.parseInt(input.substring(4,5)) > -1) &&
-				(Integer.parseInt(input.substring(6,7)) > -1)){
+				withinBounds(Integer.parseInt(input.substring(0,1)), board[0].length - 1) && 
+				withinBounds(Integer.parseInt(input.substring(2,3)), board[0].length - 1) &&
+				withinBounds(Integer.parseInt(input.substring(4,5)), board[0].length - 1) &&
+				withinBounds(Integer.parseInt(input.substring(6,7)), board[0].length - 1)){
 				
 				int sum = 0;
 				
