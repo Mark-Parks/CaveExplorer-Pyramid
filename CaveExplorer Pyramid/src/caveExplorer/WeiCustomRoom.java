@@ -4,10 +4,10 @@ public class WeiCustomRoom extends NPCRoom {
 	
 	private String description = "Wowie! A preserved relic! 'How much is it worth?' you wonder.";
 	private boolean active;
-	private String[] artifactDesc = {"A simple clay statue. Nothing to exciting but still worth something",
-									 "A scroll fully illustrated! Definately worth something to scholars.",
-									 "A gold amulet! Only the rich could afford something so luxurious.",
-									 "A humongous Gemstone! Truely stuff of royalty. This sets you up for life."};
+	private String[] artifactDesc = {"A simple clay statue. Nothing too exciting, but still worth something",
+									 "An ancient scroll! Definitely worth something to historians and scholars.",
+									 "A golden amulet! Only the rich could afford something so luxurious.",
+									 "A humongous gemstone! The stuff of royalty. This will set you up for life."};
 	
 	public WeiCustomRoom(String description) {
 		super(description);
