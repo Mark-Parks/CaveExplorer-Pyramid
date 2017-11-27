@@ -53,6 +53,7 @@ public class WeiCustomRoom extends NPCRoom {
 			performAction(direction);
 		}
 	}
+	//things
 	public void performAction(int direction) {
 		if(direction == 5) {
 			if(active) {
@@ -70,6 +71,7 @@ public class WeiCustomRoom extends NPCRoom {
 					System.out.println(artifactDesc[3]);
 					CaveExplorer.inventory.addArtifact(3);
 				}
+				active = false;
 			}else {
 				System.out.println("You have already collected the artifact here.");
 			}
