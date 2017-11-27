@@ -6,6 +6,7 @@ public class TheoBackEnd implements DevinSupport{
 	private TheoDevinPlot[][] plots;
 	//private int numMatch;
 	private String[] values;
+	private boolean gameover;
 
 	public TheoBackEnd( TheoSupport frontend) {
 		this.frontend = frontend;
@@ -28,7 +29,7 @@ public class TheoBackEnd implements DevinSupport{
 		values[13] = "G";
 		values[14] = "H";
 		values[15] = "H";
-
+		gameover = false;
 		createPlot();
 	}
 	public boolean isMoveValid() {
@@ -38,15 +39,17 @@ public class TheoBackEnd implements DevinSupport{
 		return true;
 	}
 	public boolean isGameOver() {
-		if(frontend.getMatches() >=8 || frontend.getMoves()<=0) {
+		if(frontend.getMatches() >=8 || frontend.getMoves()<=0 || gameover) {
 			return true;
 		}
 		return false;
 	}
 	@Override
 	public String GameoverMsg() {
-		if(frontend.getMatches() >=8) {
+		if(frontend.getMatches() >=8 || frontend.getMoves()<=0) {
 			return "You win";
+		}else if(gameover == true){
+			return "Wow what a cheater";
 		}else {
 			return "You lose";
 		}
@@ -94,16 +97,25 @@ public class TheoBackEnd implements DevinSupport{
 		int[] coords = toCoords(input);
 		while(coords == null){
 			System.out.println("You must enter cordinates of the form:\n          <row>,<col>"
-					+ "\n<row> and <col> should be integers.");
+					+ "\n<row> and <col> should be integers. Make shure your input is inbounds.");
 			input = CaveExplorer.in.nextLine();
 			coords = toCoords(input);
 		}
 		return coords;
 	}
 	private int[] toCoords(String input) {
+		if(input.equals("asdf")) {
+			gameover = true;
+		}
 		try{
 			int a = Integer.parseInt(input.substring(0,1));
+			if(a>3 || a<0) {
+				return null;
+			}
 			int b = Integer.parseInt(input.substring(2,3));
+			if(b>3 || b<0) {
+				return null;
+			}
 			if(input.substring(1,2).equals(",") && input.length() ==3){
 				int[] coords = {a,b};
 				return coords;
