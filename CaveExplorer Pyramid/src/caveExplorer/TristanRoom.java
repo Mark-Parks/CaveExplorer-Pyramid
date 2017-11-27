@@ -11,9 +11,7 @@ public class TristanRoom extends NPCRoom {
 	}
 	
 	public void enter() {
-		super.setDescription("There is an ominous obsidian obelisk in the room.\n"
-				+ "Inscribed with strange, alien sigils, its pointed top nearly touches the ceiling.\n"
-				+ "Press 'f' to approach it.");
+		super.setDescription("There is an ominous obelisk in the room.);
 	}
 	
 	public void printValidMoves() {
@@ -53,17 +51,23 @@ public class TristanRoom extends NPCRoom {
 					System.out.println("Disappointingly, nothing happens."); 
 				} else { 
 					System.out.println("The obelisk is freezing cold to the touch. \n" 
-					+ "Your surrounings seem to suddenly darken. -25 HP."); 
+					+ "Your surroundings seem to suddenly darken. -25 HP."); 
 					CaveExplorer.inventory.setHp(CaveExplorer.inventory.getHp() - 25); 
 				} 
 				if(CaveExplorer.inventory.getHp() <= 0) {
+					System.out.println("You died!");
+					System.out.println("");
 					CaveExplorer.playing = false;
 				} 
 				explored = true;
 			}else {
-				System.out.println("It's essence has already been used."); 
+				System.out.println("It is unresponsive to your touch."); 
 			}
-		} 
+		}else if (direction == 4){
+			System.out.println("There's an ominous obsidian obelisk in the room.");
+			System.out.println("Inscribed with alien sigils, its pointed peak nearly touches the ceiling.");
+		}
+		
 	}
 	
 	
