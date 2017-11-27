@@ -3,23 +3,24 @@ package caveExplorer;
 public class MarkNPC extends NPC {
 
 	private CaveRoom[][][] pyramid = CaveExplorer.caves;
+	private int[] attackDMG = {10,20,15,25};
+	private String[] attacks = {"The Mummy's mouth spews forth a swarm of toxic locus! You take "+attackDMG[0]+" damage!",
+								"The Mummy inhales and blows a wave of fire! You take "+attackDMG[1]+" damage!",
+								"The Mummy's bandages unravel and start to strangle you! You take "+attackDMG[2]+" damage!",
+								"The Mummy morphs into a giant crocodile and bites you! You take "+attackDMG[3]+" damage!"};
 	private int currentFlr;
 	private int currentRow;
 	private int currentCol;
 	private NPCRoom currentRoom;
-	private boolean active;
-	private String activeDescription;
-	private String inactiveDescription;
+	private String description;
 	
 	
 	public MarkNPC() {
-		this.activeDescription = "Spooky Mummy is after you!"; 
-		this.inactiveDescription = "There is that Spoopy Mummy!";
+		this.description = "As you feared, this temple is haunted by a spirt, or spirts!\nAnd This Mummy is hostile towards vistors!";
 		this.currentFlr = -1;
 		this.currentCol = -1;
 		this.currentRow = -1;
 		currentRoom = null;
-		active = false;
 	}
 
 	public void setPosition(int flr, int row, int col) {
@@ -27,7 +28,6 @@ public class MarkNPC extends NPC {
 			if(currentRoom != null) {
 				currentRoom.leaveNPC();
 			}
-			active = true;
 			currentFlr = flr;
 			currentRow = row;
 			currentCol = col;
@@ -37,26 +37,33 @@ public class MarkNPC extends NPC {
 	}
 	
 	public void interact() {
-		CaveExplorer.print(inactiveDescription);
-		String s = CaveExplorer.in.nextLine();
-		while(!s.equalsIgnoreCase("bye")) {
-			CaveExplorer.print(activeDescription);
-			s = CaveExplorer.in.nextLine();
-		}
-		CaveExplorer.print("see ya");
-		active = false;
+		CaveExplorer.print(description);
 	}
 	
 	public void autoMove() {
-		if(active) {
-			int[] move = calculateMove();
-			int newFlr = move[0];
-			int newRow = move[1];
-			int newCol = move[2];
-			setPosition(newFlr,newRow, newCol);
+		int[] move = calculateMove();
+		int newFlr = move[0];
+		int newRow = move[1];
+		int newCol = move[2];
+		setPosition(newFlr,newRow, newCol);
+		if(playerSameRoom()) {
+			CaveExplorer.print("The Mummy screeches a terrible scream!");
+			attackPlayer();
 		}
 	}
 	
+	private void attackPlayer() {
+		int playerHP = CaveExplorer.inventory.getHp();
+		int num = (int)(Math.random() * 4);
+		CaveExplorer.print(attacks[num]);
+		CaveExplorer.inventory.setHp(playerHP-attackDMG[num]);
+		
+	}
+
+	private boolean playerSameRoom() {
+		return CaveExplorer.currentRoom.equals(this.currentRoom);
+	}
+
 	public String getSymbol() {
 		return "M";
 	}

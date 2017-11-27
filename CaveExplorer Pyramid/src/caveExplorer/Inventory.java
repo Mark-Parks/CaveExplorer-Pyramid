@@ -3,7 +3,7 @@ package caveExplorer;
 
 public class Inventory {
 
-	private int[] artifactCount;
+	private int[] artifactCount = {0,0,0,0};
 	private String map;
 	private int hp;
 	private CaveRoom[][] level;
@@ -53,7 +53,11 @@ public class Inventory {
 		return map;
 	}
 	public int getHp() {
-		return hp;
+		if(hp < 1) {
+			CaveExplorer.print("You have died, GAME OVER");
+			CaveExplorer.playing = false;
+			return hp;
+		}else return hp;
 	}
 	public void setHp(int x) {
 		hp = x;
@@ -67,7 +71,20 @@ public class Inventory {
 	public void useKey() {
 		keys = keys - 1;
 	}
-	public int[] getArtifactCount(){
-		return artifactCount;
+	public void addArtifact(int RANK) {
+		artifactCount[RANK] = artifactCount[RANK] + 1;
+	}
+	public int getArtifactCount(){
+		return artifactCount[0]+artifactCount[1]+artifactCount[2]+artifactCount[3];
+	}
+
+	public int getFinalScore() {
+		if(CaveExplorer.currentRoom.getFloor() == 0)
+			return 1000 + (artifactCount[0]*10) + (artifactCount[1]*25) + (artifactCount[2]*50)+(artifactCount[3]*100)+hp;
+		if(CaveExplorer.currentRoom.getFloor() == 1)
+			return 20000 + (artifactCount[0]*10) + (artifactCount[1]*25) + (artifactCount[2]*50)+(artifactCount[3]*100)+hp;
+		if(CaveExplorer.currentRoom.getFloor() == 2)
+			return 300000 + (artifactCount[0]*10) + (artifactCount[1]*25) + (artifactCount[2]*50)+(artifactCount[3]*100)+hp;
+		else return (artifactCount[0]*10) + (artifactCount[1]*25) + (artifactCount[2]*50)+(artifactCount[3]*100)+hp;
 	}
 }

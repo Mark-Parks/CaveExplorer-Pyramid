@@ -151,6 +151,9 @@ public class WilliamFrontEnd implements MarkSupporter{
 				System.out.println("");
 				System.out.println("The tiles slowly separate to reveal a golden statuette hidden behind the puzzle wall.");
 				System.out.println("Your expertise in treasure hunting allows you to immediately appraise its value to be around " + sum + " thousand dollars.");
+				CaveExplorer.inventory.addArtifact(2);
+				System.out.println("You also seem to have found a key. Maybe it will lead you upwards into the pyramid!");
+				CaveExplorer.inventory.addKey();
 			}else {
 				System.out.println("You try touching the tiles at the coordinates, but they are not a part of the puzzle. Nothing happens.");
 			}

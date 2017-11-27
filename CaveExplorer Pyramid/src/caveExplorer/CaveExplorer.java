@@ -17,6 +17,7 @@ public class CaveExplorer {
 		CaveRoom.setUpCaves();
 		inventory = new Inventory();
 		inventory.setHp(100);
+		inventory.getArtifactCount();
 		startExploring();
 	}
 
@@ -32,10 +33,15 @@ public class CaveExplorer {
 			print(currentRoom.getDescription());
 			print("HP : "+inventory.getHp());
 			print("KEYS : "+inventory.getKeys());
+			print("ARTIFACTS : "+inventory.getArtifactCount());
 			currentRoom.printValidMoves();
 			print("What would you like to do?");
 			currentRoom.interpretInput(in.nextLine());
 		}
+		print("----------------------GAME OVER----------------------");
+		print("HP : "+inventory.getHp());
+		print("KEYS : "+inventory.getKeys());
+		print("FINAL SCORE : "+inventory.getFinalScore());
 	}
 
 	private static void moveNPCs() {

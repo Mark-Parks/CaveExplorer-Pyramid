@@ -13,8 +13,8 @@ public class NPC {
 	
 	
 	public NPC() {
-		this.activeDescription = "There is a person standing in the room waiting to talk to you. Press 'e' to talk"; 
-		this.inactiveDescription = "that guy is still here";
+		this.activeDescription = ""; 
+		this.inactiveDescription = "";
 		this.currentCol = -1;
 		this.currentRow = -1;
 		this.currentFlr = -1;
