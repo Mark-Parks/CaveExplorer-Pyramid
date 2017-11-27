@@ -73,6 +73,7 @@ public class DevinFrontEnd implements TheoSupport {
 			CaveExplorer.print("");
 		}
 			CaveExplorer.print(backend.GameoverMsg());	
+			
 	}	
 		
 	
