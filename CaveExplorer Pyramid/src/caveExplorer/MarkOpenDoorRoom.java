@@ -3,8 +3,6 @@ package caveExplorer;
 public class MarkOpenDoorRoom extends NPCRoom{
 	
 	private boolean doorIsLocked;
-	private int doorDirection;
-	private CaveRoom lockRoom;
 	private int floor;
 	private int row;
 	private int col;
@@ -12,7 +10,6 @@ public class MarkOpenDoorRoom extends NPCRoom{
 	
 	public MarkOpenDoorRoom(String description, CaveRoom room, int floor, int row, int col, int dir) {
 		super(description);
-		this.lockRoom = room;
 		this.doorIsLocked = doesRoomHaveLockedDoor(room);
 		this.floor = floor;
 		this.row = row;
@@ -64,8 +61,6 @@ public class MarkOpenDoorRoom extends NPCRoom{
 		else if(direction == 5) {
 			if(CaveExplorer.inventory.getKeys() > 0) {
 				CaveExplorer.print("You use the key, and with a satifying *KACHUNK*, the door slides open.");
-				lockRoom.getDoor(doorDirection).setLocked(false);
-				lockRoom.getDoor(doorDirection).setOpen(true);
 				int rowToOpen = row;
 				int colToOpen = col;
 				if(dir == NORTH) {

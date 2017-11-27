@@ -78,7 +78,9 @@ public class DevinFrontEnd implements TheoSupport {
 			moves--;
 			CaveExplorer.print("");
 		}
-			CaveExplorer.print(backend.GameoverMsg());	
+			CaveExplorer.print(backend.GameoverMsg());
+			CaveExplorer.inventory.addKey();
+			CaveExplorer.inventory.addArtifact(3);
 			
 	}	
 		

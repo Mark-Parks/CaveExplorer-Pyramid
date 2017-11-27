@@ -179,7 +179,9 @@ public class WilliamFrontEnd implements MarkSupporter{
 				else {
 					CaveExplorer.inventory.addArtifact(0);
 				}
-				System.out.println("You also seem to have found a key.");
+				System.out.println("You also seem to have found a few keys.");
+				CaveExplorer.inventory.addKey();
+				CaveExplorer.inventory.addKey();
 				CaveExplorer.inventory.addKey();
 				rewarded = true;
 			}else {

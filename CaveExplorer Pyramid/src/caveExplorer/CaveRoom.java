@@ -135,7 +135,7 @@ public class CaveRoom {
 		//CUSTOM NPCS
 		//
 		MarkNPC mummy1 = new MarkNPC();
-		mummy1.setPosition(0,2,2);
+		mummy1.setPosition(0,0,4);
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = mummy1;
 		//
@@ -143,11 +143,11 @@ public class CaveRoom {
 		//
 		c[0][0][3] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the 2nd floor.", 0, 0, 0, 0);
 		c[0][0][3].setFloor(0);
-		c[1][0][0] = new WilliamStairwayRoom("There is a staircase. Press 'i' to go down to the 1st floor.", 0, 0, 0, 0);
+		c[1][0][0] = new WilliamStairwayRoom("There is a staircase. Press 'i' to go down to the 1st floor.", 0, 0, 0, 3);
 		c[1][0][0].setFloor(1);
-		c[1][1][2] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the 3rd floor.", 0, 0, 0, 0);
+		c[1][1][2] = new WilliamStairwayRoom("There is a staircase. Press 'u' to go up to the 3rd floor.", 0, 2, 0, 0);
 		c[1][1][2].setFloor(1);
-		c[2][0][2] = new WilliamStairwayRoom("There is a staircase. Press 'i' to go down to the 2nd floor.", 0, 0, 0, 0);
+		c[2][0][2] = new WilliamStairwayRoom("There is a staircase. Press 'i' to go down to the 2nd floor.", 0, 0, 1, 2);
 		c[2][0][2].setFloor(2);
 		
 		c[0][0][2] = new WeiCustomRoom("you notice an artifact.");
@@ -178,8 +178,6 @@ public class CaveRoom {
 		c[2][1][0].setFloor(2);
 		c[2][2][1] = new WeiCustomRoom("You notice an artifact.");
 		c[2][2][1].setFloor(2);
-		c[2][1][2] = new WeiCustomRoom("You notice an artifact.");
-		c[2][1][2].setFloor(2);
 		c[2][2][2] = new WeixiongTristanRoom("The final challenge awaits.");
 		c[2][2][2].setFloor(2);
 		c[2][1][1] = new GameOverRoom("You have navigated through the Pyramid!");
@@ -221,7 +219,7 @@ public class CaveRoom {
 		c[0][2][2].setConnection(SOUTH, c[0][3][2], new Door());
 		c[0][2][3].setConnection(SOUTH, c[0][3][3], new Door());
 		c[0][2][3].setConnection(EAST, c[0][2][4], new Door());
-		c[0][2][4].setConnection(SOUTH, c[0][3][4], new Door());
+		
 		c[0][2][5].setConnection(SOUTH, c[0][3][5], new Door());
 		c[0][2][5].setConnection(EAST, c[0][2][6], new Door());
 		c[0][2][6].setConnection(SOUTH, c[0][3][6], new Door());
@@ -231,15 +229,16 @@ public class CaveRoom {
 		c[0][3][1].setConnection(SOUTH, c[0][4][1], new Door());
 		c[0][3][2].setConnection(EAST, c[0][3][3], new Door());
 		c[0][3][2].setConnection(SOUTH, c[0][4][2], new Door());
-		c[0][3][3].setConnection(EAST, c[0][3][4], new Door());
 		c[0][3][3].setConnection(SOUTH, c[0][4][3], new Door());
 		c[0][3][4].setConnection(EAST, c[0][3][5], new Door());
+		c[0][3][4].doors[EAST].setOpen(false);
+		c[0][3][4].doors[EAST].setLocked(true);
+		c[0][3][4] = new MarkOpenDoorRoom("You see a door to the East.",c[0][3][4], 0, 3, 4, EAST);
+		c[0][3][3].setConnection(EAST, c[0][3][4], new Door());
+		c[0][2][4].setConnection(SOUTH, c[0][3][4], new Door());
+		c[0][3][5].setConnection(SOUTH, c[0][4][5], new Door());
 		c[0][3][4].setConnection(SOUTH, c[0][4][4], new Door());
 		c[0][3][5].setConnection(EAST, c[0][3][6], new Door());
-		c[0][3][5].doors[EAST].setOpen(false);
-		c[0][3][5].doors[EAST].setLocked(true);
-		c[0][3][4] = new MarkOpenDoorRoom("You see a door to the East.",c[0][1][3], 0, 1, 3, EAST);
-		c[0][3][5].setConnection(SOUTH, c[0][4][5], new Door());
 		c[0][3][6].setConnection(SOUTH, c[0][4][6], new Door());
 		c[0][4][2].setConnection(EAST, c[0][4][3], new Door());
 		c[0][4][0].setConnection(EAST, c[0][4][1], new Door());
@@ -276,8 +275,8 @@ public class CaveRoom {
 		c[1][1][0].setConnection(SOUTH, c[1][2][0], new Door());
 		c[1][1][1].setConnection(SOUTH, c[1][2][1], new Door());
 		c[1][1][2].setConnection(EAST, c[1][1][3], new Door());
-		c[1][1][2].doors[EAST].setOpen(false);
-		c[1][1][2].doors[EAST].setLocked(true);
+		c[1][1][3].doors[WEST].setOpen(false);
+		c[1][1][3].doors[WEST].setLocked(true);
 		c[1][1][3] = new MarkOpenDoorRoom("You see a door to the West.",c[1][1][3], 1, 1, 3, WEST);
 		c[1][1][3].setFloor(1);
 		c[1][1][3].setConnection(SOUTH, c[1][2][3], new Door());
@@ -308,6 +307,7 @@ public class CaveRoom {
 		c[2][1][2].doors[WEST].setOpen(false);
 		c[2][1][2].doors[WEST].setLocked(true);
 		c[2][1][2] = new MarkOpenDoorRoom("You see a door to the West.",c[0][6][3], 0, 6, 3, WEST);
+		c[2][1][2].setConnection(SOUTH, c[2][2][2], new Door());
 		c[2][2][0].setConnection(EAST, c[2][2][1], new Door());
 		c[2][2][1].setConnection(EAST, c[2][2][2], new Door());
 		//

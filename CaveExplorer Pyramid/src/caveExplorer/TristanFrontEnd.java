@@ -33,6 +33,9 @@ public class TristanFrontEnd implements WeixiongSupport{
 			input = in.nextLine();
 			checkUserInput(input);
 		}
+		CaveExplorer.print("You have beaten the final challenge!");
+		CaveExplorer.inventory.addKey();
+		CaveExplorer.inventory.addArtifact(3);
 	}
 	
 	public void startPlaying() {

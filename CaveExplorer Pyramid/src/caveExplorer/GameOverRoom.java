@@ -12,7 +12,7 @@ public class GameOverRoom extends NPCRoom {
 
 	public String getContents() {
 		if(super.getContents() == " ") {
-			return "A";
+			return "E";
 		}else {
 			return super.getContents();
 		}
