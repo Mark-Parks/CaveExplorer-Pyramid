@@ -54,12 +54,18 @@ public class DevinFrontEnd implements TheoSupport {
 				CaveExplorer.print("Pick a valid move");
 				move1=backend.getUserMove();
 			}
+			if(backend.isGameOver()) {
+				break;
+			}
 			move1.setUp(true);
 			displayBoard(plots);
 			TheoDevinPlot move2 = backend.getUserMove();
 			while(move2.getUp()) {
 				CaveExplorer.print("Pick a valid move");
 				move2=backend.getUserMove();
+			}
+			if(backend.isGameOver()) {
+				break;
 			}
 			move2.setUp(true);
 			displayBoard(plots);
