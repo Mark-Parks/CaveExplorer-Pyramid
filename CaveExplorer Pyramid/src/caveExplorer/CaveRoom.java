@@ -185,7 +185,7 @@ public class CaveRoom {
 		//
 		//STARTING PLAYER POSITION
 		//
-		CaveExplorer.currentRoom = c[2][0][2];	
+		CaveExplorer.currentRoom = c[0][6][6];	
 		CaveExplorer.currentRoom.enter();
 		//
 		//ALL THE HALLWAYS AND CONNECTIONS TO EACH ROOM
