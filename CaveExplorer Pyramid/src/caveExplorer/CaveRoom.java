@@ -306,7 +306,7 @@ public class CaveRoom {
 		c[2][1][1].setConnection(EAST, c[2][1][2], new Door());
 		c[2][1][2].doors[WEST].setOpen(false);
 		c[2][1][2].doors[WEST].setLocked(true);
-		c[2][1][2] = new MarkOpenDoorRoom("You see a door to the West.",c[0][6][3], 0, 6, 3, WEST);
+		c[2][1][2] = new MarkOpenDoorRoom("You see a door to the West.",c[2][1][2], 2, 1, 2, WEST);
 		c[2][1][2].setFloor(2);
 		c[2][1][2].setConnection(SOUTH, c[2][2][2], new Door());
 		c[2][2][0].setConnection(EAST, c[2][2][1], new Door());
