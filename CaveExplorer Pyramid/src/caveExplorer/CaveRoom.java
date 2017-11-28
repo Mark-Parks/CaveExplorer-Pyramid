@@ -180,7 +180,7 @@ public class CaveRoom {
 		c[2][2][1].setFloor(2);
 		c[2][2][2] = new WeixiongTristanRoom("The final challenge awaits.");
 		c[2][2][2].setFloor(2);
-		c[2][1][1] = new GameOverRoom("You have navigated through the Pyramid!");
+		c[2][1][1] = new MarkGameOverRoom("You have navigated through the Pyramid!");
 		c[2][1][1].setFloor(2);
 		//
 		//STARTING PLAYER POSITION

@@ -1,8 +1,8 @@
 package caveExplorer;
 
-public class GameOverRoom extends NPCRoom {
+public class MarkGameOverRoom extends NPCRoom {
 
-	public GameOverRoom(String description) {
+	public MarkGameOverRoom(String description) {
 		super(description);
 	}
 	
