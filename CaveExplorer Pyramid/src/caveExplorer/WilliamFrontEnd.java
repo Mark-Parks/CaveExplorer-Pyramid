@@ -185,7 +185,7 @@ public class WilliamFrontEnd implements MarkSupporter{
 			}
 		}
 		else {
-			System.out.println("Invalid input.");
+			System.out.println("Invalid input. (enter in two tiles once more in the format [row],[col] [row],[col] this is to determine the reward)");
 		}
 	}
 
