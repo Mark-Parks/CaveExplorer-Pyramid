@@ -41,6 +41,19 @@ public class MarkWilliamMinigameRoom extends NPCRoom {
 	public void performAction(int direction) {
 		if(direction == 5 && !played) {
 			game.play();
+			int sum = game.getSum();
+			if(sum > 150) {
+				CaveExplorer.inventory.addArtifact(3);
+			}
+			else if(sum > 100) {
+				CaveExplorer.inventory.addArtifact(2);
+			}
+			else if(sum > 50) {
+				CaveExplorer.inventory.addArtifact(1);
+			}
+			else {
+				CaveExplorer.inventory.addArtifact(0);
+			}
 			played = true;
 			super.setDescription("This is where you solved the magic square puzzle.");
 		}

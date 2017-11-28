@@ -8,6 +8,7 @@ public class WilliamFrontEnd implements MarkSupporter{
 	private int[][] board;
 	private WilliamSupporter backend;
 	private boolean rewarded;
+	private int sum;
 	
 	public static final void main(String[] args) {
 		WilliamFrontEnd demo = new WilliamFrontEnd();
@@ -164,21 +165,11 @@ public class WilliamFrontEnd implements MarkSupporter{
 					}
 				}
 				
+				this.sum = sum;
+			
 				System.out.println("");
 				System.out.println("The tiles slowly separate to reveal a golden statuette hidden behind the puzzle wall.");
 				System.out.println("Your expertise in treasure hunting allows you to immediately appraise its value to be around " + sum + " thousand dollars.");
-				if(sum > 150) {
-					CaveExplorer.inventory.addArtifact(3);
-				}
-				else if(sum > 100) {
-					CaveExplorer.inventory.addArtifact(2);
-				}
-				else if(sum > 50) {
-					CaveExplorer.inventory.addArtifact(1);
-				}
-				else {
-					CaveExplorer.inventory.addArtifact(0);
-				}
 				System.out.println("You also seem to have found a few keys.");
 				CaveExplorer.inventory.addKey();
 				CaveExplorer.inventory.addKey();
@@ -191,5 +182,9 @@ public class WilliamFrontEnd implements MarkSupporter{
 		else {
 			System.out.println("Invalid input.");
 		}
+	}
+
+	public int getSum() {
+		return sum;
 	}
 }
