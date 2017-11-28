@@ -42,10 +42,10 @@ public class MarkWilliamMinigameRoom extends NPCRoom {
 		if(direction == 5 && !played) {
 			game.play();
 			int sum = game.getSum();
-			if(sum > 150) {
+			if(sum > 100) {
 				CaveExplorer.inventory.addArtifact(3);
 			}
-			else if(sum > 100) {
+			else if(sum > 75) {
 				CaveExplorer.inventory.addArtifact(2);
 			}
 			else if(sum > 50) {
