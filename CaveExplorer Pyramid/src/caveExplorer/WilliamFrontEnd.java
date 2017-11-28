@@ -22,8 +22,11 @@ public class WilliamFrontEnd implements MarkSupporter{
 		rewarded = false;
 	}
 	
-	public boolean withinBounds(int num, int size) {
-		return num < size && num > -1;
+	public boolean withinBounds(int num1, int num2, int num3, int num4, int size) {
+		return num1 < size && num1 > -1 &&
+				num2 < size && num2 > -1 &&
+				num3 < size && num3 > -1 &&
+				num4 < size && num4 > -1;
 	}
 
 	public void play(){
@@ -66,10 +69,11 @@ public class WilliamFrontEnd implements MarkSupporter{
 	public void respondToInput(String input) {
 		if(input.length() == 7) {
 			if(input.substring(1,2).equals(",") && input.substring(5,6).equals(",") &&
-					withinBounds(Integer.parseInt(input.substring(0,1)), board[0].length - 1) && 
-					withinBounds(Integer.parseInt(input.substring(2,3)), board[0].length - 1) &&
-					withinBounds(Integer.parseInt(input.substring(4,5)), board[0].length - 1) &&
-					withinBounds(Integer.parseInt(input.substring(6,7)), board[0].length - 1)){
+					withinBounds(Integer.parseInt(input.substring(0,1)), 
+							Integer.parseInt(input.substring(2,3)), 
+							Integer.parseInt(input.substring(4,5)),
+							Integer.parseInt(input.substring(6,7)),
+							board[0].length - 1)){
 				
 				int a = Integer.parseInt(input.substring(0,1));
 				int b = Integer.parseInt(input.substring(2,3));
@@ -137,10 +141,11 @@ public class WilliamFrontEnd implements MarkSupporter{
 		String input = CaveExplorer.in.nextLine();
 		if(input.length() == 7) {
 			if(input.substring(1,2).equals(",") && input.substring(5,6).equals(",") &&
-				withinBounds(Integer.parseInt(input.substring(0,1)), board[0].length - 1) && 
-				withinBounds(Integer.parseInt(input.substring(2,3)), board[0].length - 1) &&
-				withinBounds(Integer.parseInt(input.substring(4,5)), board[0].length - 1) &&
-				withinBounds(Integer.parseInt(input.substring(6,7)), board[0].length - 1)){
+					withinBounds(Integer.parseInt(input.substring(0,1)), 
+							Integer.parseInt(input.substring(2,3)), 
+							Integer.parseInt(input.substring(4,5)),
+							Integer.parseInt(input.substring(6,7)),
+							board[0].length - 1)){
 				
 				int sum = 0;
 				
