@@ -21,13 +21,13 @@ public class TristanFrontEnd implements WeixiongSupport{
 
 	public static void main(String[] args) {
 		TristanFrontEnd demo = new TristanFrontEnd();
-		demo.backend.createMaze();
 		demo.startPlaying();
 		demo.play();
 	}
 
 	public void play() {
-		String input = "";	
+		String input = "";
+		demo.backend.createMaze();
 		this.maze = this.backend.getMaze();
 		while(!backend.getGameCleared()) {
 			drawMaze(maze);
